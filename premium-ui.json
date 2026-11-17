@@ -1,0 +1,7 @@
+{
+  "profile": "product-admin",
+  "sourceRoots": ["src"],
+  "locale": "en-IN",
+  "canonicalMap": "DESIGN.md",
+  "ownership": { "Select/Listbox": "native" }
+}

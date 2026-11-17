@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "passed": 10,
+  "failed": 0,
+  "total": 10,
+  "syntheticQaFixtures": true,
+  "results": [
+    {
+      "id": "real-wav-signal",
+      "title": "Real OfflineAudioContext renders nonzero PCM WAV",
+      "status": "passed",
+      "milliseconds": 129,
+      "detail": "Actual PCM: 3.000s, RMS 0.02288, peak 0.17981."
+    },
+    {
+      "id": "real-instrument-tempo",
+      "title": "Instrument and BPM controls change the rendered audio",
+      "status": "passed",
+      "milliseconds": 285,
+      "detail": "199550 samples differ between Piano and Strings. Tempo: 3.000s → 2.300s including the same effects tail."
+    },
+    {
+      "id": "real-synthetic-capture",
+      "title": "Real microphone recorder recognizes an isolated synthetic C–E–G fixture",
+      "status": "passed",
+      "milliseconds": 3560,
+      "detail": "Synthetic QA input only: C4 @ 0.11s / 0.26s, E4 @ 0.60s / 0.63s, G4 @ 1.42s / 0.62s. Original recording: 38005 bytes. Input tracks released."
+    },
+    {
+      "id": "permission-preserves-melody",
+      "title": "A refused re-record keeps the existing melody",
+      "status": "passed",
+      "milliseconds": 131,
+      "detail": "Existing pitches, timing and confidence survived the simulated permission refusal."
+    },
+    {
+      "id": "cancelled-permission-isolated",
+      "title": "Cancelled microphone requests cannot affect a subsequent recording",
+      "status": "passed",
+      "milliseconds": 2315,
+      "detail": "rejected: prior melody preserved on Cancel, later A4 captured, input resources released. late stream: prior melody preserved on Cancel, later A4 captured, input resources released"
+    },
+    {
+      "id": "save-keeps-new-edits",
+      "title": "Edits made while a save is in flight remain in the project",
+      "status": "passed",
+      "milliseconds": 143,
+      "detail": "The server saved its snapshot; newer title and mood edits remain local and unsaved."
+    },
+    {
+      "id": "unlock-stop-transport",
+      "title": "Stopping while audio unlock is pending leaves the studio stopped",
+      "status": "passed",
+      "milliseconds": 354,
+      "detail": "Delayed unlock completed without changing the stopped transport to playing."
+    },
+    {
+      "id": "studio-dom-workflow",
+      "title": "Rendered studio controls edit, arrange, play and save the real project",
+      "status": "passed",
+      "milliseconds": 827,
+      "detail": "Actual DOM controls raised C4 to C♯4, selected Strings / 120 BPM, explicitly applied Cinematic, used the real arranger and CompositionPlayer, then saved and reopened the edited notes. Export gating checked; WAV signal is verified separately."
+    },
+    {
+      "id": "studio-dom-capture-gating",
+      "title": "A pending microphone request disables studio mutations and Cancel preserves the melody",
+      "status": "passed",
+      "milliseconds": 236,
+      "detail": "Record, note editing, settings, project actions and producer controls were disabled during the isolated pending request. Cancel preserved every captured note and ignored the late refusal."
+    },
+    {
+      "id": "app-dom-navigation-presets",
+      "title": "Home HUM, DISCOVER and CREATE actions navigate and apply supported sound settings",
+      "status": "passed",
+      "milliseconds": 279,
+      "detail": "Actual home actions opened HUM, the sound library and a fresh studio. Ambient selected the supported Strings / Ambient controls consistently; presets and new projects created no detected notes."
+    }
+  ]
+}

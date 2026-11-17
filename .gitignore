@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.superpowers/
+*.log
+test-results/
+data/
+.local/
+*.sqlite*
+.env*
+!.env.example

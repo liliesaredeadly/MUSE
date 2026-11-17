@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MUSE — Developer browser checks</title>
+    <style>
+      :root { color-scheme: dark; font: 16px/1.6 system-ui, sans-serif; background: #111218; color: #f3f1fa; }
+      body { max-width: 1000px; margin: 48px auto; padding: 0 24px 64px; }
+      h1 { line-height: 1.2; } button { padding: 12px 20px; font: inherit; cursor: pointer; background: #b7a0ff; color: #111218; border: 0; border-radius: 6px; }
+      button:disabled { opacity: .6; cursor: wait; } button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+      li { margin: 16px 0; padding: 12px 16px; background: #191a23; border-left: 4px solid #696777; }
+      li[data-status="passed"] { border-color: #77d5a0; } li[data-status="failed"] { border-color: #ff8e91; }
+      li[data-status="running"] { border-color: #b7a0ff; } pre { overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+      .description, small { color: #b9b6c6; } #machine-results { border: 1px solid #45424e; padding: 16px; font-size: 13px; }
+      #integration-harness { display: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="integration-harness" aria-hidden="true"></div>
+    <script type="module" src="/tests/browser-tests.jsx"></script>
+  </body>
+</html>
