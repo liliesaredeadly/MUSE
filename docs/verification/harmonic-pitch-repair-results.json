@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-21",
+  "change": "Weak-fundamental recovery with source-supported instrumental backing",
+  "nodeRegression": { "passed": 401, "failed": 0 },
+  "actualTakeNativeChecks": { "passed": 7, "failed": 0, "details": "harmonic-pitch-native-results.json" },
+  "actualTake": {
+    "duration": 7.62,
+    "oldEstimatedVoicedRatio": 0.266404,
+    "newNativeEstimatedVoicedRatio": 0.33202099737532803,
+    "estimatedNotes": 16,
+    "independentHarmonicAnchors": 9,
+    "anchoredDurationSeconds": 1.84,
+    "harmonyScope": "anchored",
+    "events": { "guitar": 37, "piano": 36, "violin": 20, "cello": 10 },
+    "nativeStemRms": { "guitar": 0.001183, "piano": 0.002744, "violin": 0.001139, "cello": 0.001188 },
+    "zeroLagOriginalWaveformCorrelationRounded": 1,
+    "originalPlaybackRate": 1,
+    "fullMixPeak": 0.480331,
+    "clippedSamples": 0,
+    "unsupportedGapPitchedPeak": 0,
+    "unsupportedGapSamplesChecked": 650916
+  },
+  "renderedComparison": {
+    "filename": "MUSE-fixed-hum-guitar-piano-strings.wav",
+    "duration": 9.22,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sha256": "03908b938d257440f98be8318d097be2dc896166e9e5113b88cdbebdfe3c0aa5",
+    "privateAudioCommitted": false
+  },
+  "regressionsCovered": [
+    "Changing formants, strong upper harmonics and a weak or missing fundamental.",
+    "Broadband and colored noise, two tones and incompatible partial families.",
+    "Short bursts inside a longer recording cannot acquire inflated FFT-window durations.",
+    "Independent spectral anchors cannot widen or replace the original recording clock.",
+    "Unpitched gaps remain free of string release tails and delayed pitched echoes.",
+    "Ordinary arrangements, original recording playback and independent instrument gains remain supported."
+  ],
+  "limits": [
+    "Only independently confirmed sections receive pitched backing for this sparse take. This is not a complete verified human transcription.",
+    "Two older private human takes still lacked enough independent evidence and retained their original audio without forced pitched backing.",
+    "Native measurements establish signal, timing, level and headroom; subjective harmony quality and instrument realism remain listening judgments."
+  ]
+}

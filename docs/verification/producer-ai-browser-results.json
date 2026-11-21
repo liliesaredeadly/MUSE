@@ -1,0 +1,114 @@
+{
+  "status": "passed",
+  "passed": 15,
+  "failed": 0,
+  "total": 15,
+  "syntheticQaFixtures": true,
+  "results": [
+    {
+      "id": "real-wav-signal",
+      "title": "Real OfflineAudioContext renders nonzero PCM WAV",
+      "status": "passed",
+      "milliseconds": 65,
+      "detail": "Actual PCM: 3.000s, RMS 0.02288, peak 0.17981."
+    },
+    {
+      "id": "real-instrument-tempo",
+      "title": "Instrument and BPM controls change the rendered audio",
+      "status": "passed",
+      "milliseconds": 176,
+      "detail": "199550 samples differ between Piano and Strings. Tempo: 3.000s → 2.300s including the same effects tail."
+    },
+    {
+      "id": "real-synthetic-capture",
+      "title": "Real microphone recorder recognizes an isolated synthetic C–E–G fixture",
+      "status": "passed",
+      "milliseconds": 3334,
+      "detail": "Synthetic QA input only: C4 @ 0.09s / 0.60s, E4 @ 0.90s / 0.64s, G4 @ 1.75s / 0.64s. Original recording: 38005 bytes. Input tracks released."
+    },
+    {
+      "id": "permission-preserves-melody",
+      "title": "A refused re-record keeps the existing melody",
+      "status": "passed",
+      "milliseconds": 86,
+      "detail": "Existing pitches, timing and confidence survived the simulated permission refusal."
+    },
+    {
+      "id": "cancelled-permission-isolated",
+      "title": "Cancelled microphone requests cannot affect a subsequent recording",
+      "status": "passed",
+      "milliseconds": 2271,
+      "detail": "rejected: prior melody preserved on Cancel, later A4 captured, input resources released. late stream: prior melody preserved on Cancel, later A4 captured, input resources released"
+    },
+    {
+      "id": "save-keeps-new-edits",
+      "title": "Edits made while a save is in flight remain in the project",
+      "status": "passed",
+      "milliseconds": 134,
+      "detail": "The server saved its snapshot; newer title and mood edits remain local and unsaved."
+    },
+    {
+      "id": "unlock-stop-transport",
+      "title": "Stopping while audio unlock is pending leaves the studio stopped",
+      "status": "passed",
+      "milliseconds": 380,
+      "detail": "Delayed unlock completed without changing the stopped transport to playing."
+    },
+    {
+      "id": "studio-dom-workflow",
+      "title": "Rendered studio controls edit, arrange, play and save the real project",
+      "status": "passed",
+      "milliseconds": 664,
+      "detail": "Actual DOM controls raised C4 to C♯4, selected Strings / 120 BPM, explicitly applied Cinematic, used the real arranger and CompositionPlayer, then saved and reopened the edited notes. Export gating checked; WAV signal is verified separately."
+    },
+    {
+      "id": "studio-dom-capture-gating",
+      "title": "A pending microphone request disables studio mutations and Cancel preserves the melody",
+      "status": "passed",
+      "milliseconds": 226,
+      "detail": "Record, note editing, settings, project actions and producer controls were disabled during the isolated pending request. Cancel preserved every captured note and ignored the late refusal."
+    },
+    {
+      "id": "producer-dom-ai-review",
+      "title": "AI directions include detected notes and require an explicit Apply action",
+      "status": "passed",
+      "milliseconds": 134,
+      "detail": "Real rendered Producer sent instruction, settings and captured notes, labelled configuration separately from the AI result, disclosed OpenAI, and changed only settings after Apply."
+    },
+    {
+      "id": "producer-dom-rules-fallback",
+      "title": "A rules fallback identifies its source and displays the recovery notice",
+      "status": "passed",
+      "milliseconds": 109,
+      "detail": "Configured AI fell back visibly to a Rule-based result, kept the explanation inline, and left settings unchanged for review."
+    },
+    {
+      "id": "producer-dom-stale-directions",
+      "title": "Changes to settings or notes discard stale directions and isolate overlapping requests",
+      "status": "passed",
+      "milliseconds": 196,
+      "detail": "A settings edit invalidated the first request; its late result could not replace the second request or clear its pending state. Editing notes then removed the current proposal."
+    },
+    {
+      "id": "producer-dom-status-loading",
+      "title": "Producer status stays honest while configuration is loading",
+      "status": "passed",
+      "milliseconds": 131,
+      "detail": "Checking and cached rules status made no false offline promise. A mocked AI response after server mode changed identified its actual source and still required Apply."
+    },
+    {
+      "id": "producer-dom-status-failure",
+      "title": "An unavailable status endpoint makes no AI or rules-only claim",
+      "status": "passed",
+      "milliseconds": 110,
+      "detail": "A configuration error stayed visible without a false source claim; the later actual rules result accurately identified its source."
+    },
+    {
+      "id": "app-dom-navigation-presets",
+      "title": "Home HUM, DISCOVER and CREATE actions navigate and apply supported sound settings",
+      "status": "passed",
+      "milliseconds": 233,
+      "detail": "Actual home actions opened HUM, the sound library and a fresh studio. Ambient selected the supported Strings / Ambient controls consistently; presets and new projects created no detected notes."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+:is(.reference-page-hum,.reference-page-studio) .reference-match {
+  min-width:0;
+  padding:20px;
+  border-top:1px solid var(--border);
+  color:var(--text);
+  font:12px/1.65 var(--atelier-body);
+}
+.reference-page-hum .reference-match { color:var(--atelier-ink); border-color:var(--paper-border); }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-heading { display:flex; align-items:baseline; justify-content:space-between; gap:10px 18px; flex-wrap:wrap; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-heading h3 { margin:0; font:600 11px/1.5 var(--atelier-body); letter-spacing:1px; text-transform:uppercase; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-heading > span { font-size:10px; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-source { display:flex; align-items:baseline; justify-content:space-between; gap:6px 16px; flex-wrap:wrap; margin-top:12px; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-source strong { font-size:13px; overflow-wrap:anywhere; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match a { display:inline-flex; align-items:center; gap:6px; min-height:32px; color:inherit; text-decoration:underline; text-underline-offset:4px; cursor:pointer; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match a:hover { text-decoration-thickness:2px; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match a:active { opacity:.7; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match a:focus-visible,:is(.reference-page-hum,.reference-page-studio) .reference-match button:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-help { margin:10px 0 14px; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-actions { display:flex; align-items:center; gap:10px 16px; flex-wrap:wrap; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-actions .button { width:222px; max-width:100%; min-height:40px; justify-content:center; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-actions > span { font-size:11px; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-availability { display:flex; align-items:center; justify-content:space-between; gap:8px 16px; flex-wrap:wrap; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-availability p { margin:0; flex:1 1 180px; overflow-wrap:anywhere; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-availability .text-button { min-height:40px; color:inherit; font-size:12px; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-result { min-height:8px; overflow-wrap:anywhere; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-result > p { margin:14px 0 0; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-candidate { margin-top:18px; padding-top:16px; border-top:1px solid var(--border); }
+.reference-page-hum .reference-match-candidate { border-color:var(--paper-border); }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-label { font-size:10px; letter-spacing:1px; text-transform:uppercase; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-candidate h4 { margin:5px 0 7px; font:600 16px/1.4 var(--atelier-body); }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-details { display:flex; gap:4px 18px; flex-wrap:wrap; font:11px/1.7 Consolas,monospace; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-candidate > a { margin-top:5px; }
+:is(.reference-page-hum,.reference-page-studio) .reference-match-candidate p { margin:8px 0 0; font-size:11px; }
+.reference-page-hum .hum-stage-recorder .reference-match { padding:20px 0 0; }
+.reference-page-hum .hum-analysis-result > .reference-match { margin-top:20px; padding:20px 0; border-bottom:1px solid var(--paper-border); }
+@media(max-width:650px), (pointer:coarse) {
+  :is(.reference-page-hum,.reference-page-studio) .reference-match a,:is(.reference-page-hum,.reference-page-studio) .reference-match-actions .button,:is(.reference-page-hum,.reference-page-studio) .reference-match-availability .text-button { min-height:44px; }
+}

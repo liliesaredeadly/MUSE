@@ -1,0 +1,89 @@
+{
+  "verifiedDate": "2026-11-21",
+  "model": "facebook/musicgen-melody",
+  "node": {
+    "command": "npm test",
+    "tests": 464,
+    "passed": 464,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "runnerSeconds": 33.7828976,
+    "evidence": "Summary transcribed from the final observed npm test output. Earlier 455-test file log is historical."
+  },
+  "python": {
+    "command": ".local/musicgen-venv/Scripts/python.exe -m unittest discover -s tests -p musicgen*test.py",
+    "tests": 48,
+    "passed": 48,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "log": ".local/musicgen-final-python.log"
+  },
+  "genuineModelCases": {
+    "syntheticMelodies": 5,
+    "actualUserRecording": 1,
+    "runtimeConditioningChecksPassed": true,
+    "firstRunClientTimeouts": 4,
+    "cachedStyleResultsRecovered": 5,
+    "newInferenceJobsDuringRecovery": 0
+  },
+  "generationSeconds": {
+    "acoustic": 154.469,
+    "pop": 172.031,
+    "orchestra": 150.844,
+    "edm": 299.953,
+    "piano": 286.64
+  },
+  "actualHum": {
+    "requestedSeconds": 5,
+    "outputSeconds": 4.94,
+    "nodeJobSeconds": 305.666,
+    "browserTransferSeconds": 0.4160999999977648,
+    "sha256": "9d79bbe93d66c55776f34ef7557ebed11a7d0530b8880897a8a2fd7b5d3c30c9",
+    "downloadPath": "<user-downloads>/MUSE-musicgen-actual-hum.wav"
+  },
+  "modelDownloadSeconds": 2486,
+  "handoffStatus": {
+    "strictEngine": "strict-note-conditioned",
+    "neural": {
+      "mode": "audio-melody",
+      "configured": true,
+      "ready": false,
+      "provider": "local-transformers",
+      "model": "facebook/musicgen-melody",
+      "reachable": true,
+      "loaded": false,
+      "status": "not-loaded",
+      "backend": "transformers",
+      "device": "cpu",
+      "capabilities": [
+        "jobs",
+        "progress",
+        "cancel"
+      ]
+    }
+  },
+  "modelWeightsCached": true,
+  "paidApiUsed": false,
+  "exactMelodyVerified": false,
+  "professionalMasteringClaimed": false,
+  "limitations": [
+    "CPU misses the 20–40 second target.",
+    "Short previews do not establish full-song coherence or perceptual quality.",
+    "Chroma conditioning and runtime input verification do not guarantee exact pitches or timing.",
+    "Native mobile visual QA was not performed."
+  ],
+  "evidence": [
+    "musicgen-recovery-results.json",
+    "musicgen-real-results.json",
+    "musicgen-playback-results.json",
+    "musicgen-actual-hum-results.json"
+  ],
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "modules": 1606,
+    "seconds": 14.62
+  }
+}

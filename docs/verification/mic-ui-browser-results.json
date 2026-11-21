@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-18",
+  "status": "passed",
+  "passed": 25,
+  "failed": 0,
+  "total": 25,
+  "syntheticQaFixtures": true,
+  "newRegressionChecks": [
+    "zero-note-capture-feedback",
+    "note-boundary-controls",
+    "note-edit-full-midi-range",
+    "note-remove-restores-focus"
+  ],
+  "responsiveInspection": {
+    "widths": [320, 390],
+    "pages": ["Home", "Discover", "Projects", "HUM", "Studio"],
+    "horizontalOverflow": false,
+    "directionProposalAt320": "passed using real local rules",
+    "guideEscapeAndFocusRestoration": "passed from cream direction screen",
+    "nativeInstrumentMenuOpenClose": "passed"
+  },
+  "realWorldCapture": {
+    "existingPrivateTakeDurationSeconds": 9.3,
+    "groupedNotesBefore": 0,
+    "groupedNotesAfter": 2,
+    "sustainedMelodyRecognitionVerified": false,
+    "freshPhysicalMicRetest": "pending user"
+  },
+  "realProjectsModified": false,
+  "liveAiSetup": "deferred by user"
+}

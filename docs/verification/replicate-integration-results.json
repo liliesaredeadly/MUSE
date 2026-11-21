@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-21",
+  "provider": "replicate",
+  "model": "facebook/musicgen-melody-large",
+  "modelVariant": "melody-large",
+  "version": "671ac645ce5e552cc63a54a2bbff63fcf798043055d2dac5fc9e36a837eedcfb",
+  "nodeTests": { "command": "npm test", "tests": 491, "passed": 491, "failed": 0, "skipped": 0, "exitCode": 0, "runnerSeconds": 36.0992191 },
+  "build": { "command": "npm run build", "exitCode": 0, "modules": 1606, "seconds": 15.79 },
+  "tested": ["Original WAV bytes and compiled production instructions reach the mocked provider boundary", "One provider prediction after duplicate Node request replay", "Explicit hosted checkpoint identity", "Validated PCM WAV download and source fingerprint", "No credential headers on delivery downloads", "Cancellation, deadlines, safe errors and no automatic prediction-create retries", "Cloud cost and recording-upload disclosure in the real component", "Local inference selection remains available"],
+  "initialSandboxRun": { "passed": 441, "failed": 50, "reason": "Local HTTP tests cannot connect in the restricted sandbox. The full suite passed outside it." },
+  "liveReplicateAuthenticationVerified": false,
+  "paidHostedGenerationPerformed": false,
+  "hostedAudioQualityVerified": false,
+  "exactMelodyPreservationVerified": false,
+  "credentialStatusAtVerification": "REPLICATE_API_TOKEN was not present in the project .env; its contents were never displayed.",
+  "recordingRetention": "Original take > Download original keeps the recording. Project save retains notes/settings only; reattach the downloaded audio after reopening."
+}

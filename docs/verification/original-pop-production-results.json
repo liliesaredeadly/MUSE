@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-21",
+  "scope": "Original unfamiliar melody production upgrade; generic dance-pop and percussive-pop benchmarks, no song audio or stored song melodies",
+  "verification": {
+    "node": { "command": "npm test", "passed": 310, "failed": 0, "skipped": 0 },
+    "python": { "passed": 8, "failed": 0, "realNeuralInference": false },
+    "browser": { "newOriginalPopProduction": 7, "studioRegression": 29, "existingAudioRoundtrip": 6, "totalPassed": 42, "failed": 0 },
+    "productionBuild": "passed (1600 modules)",
+    "productionSmoke": "passed: SQLite, producer status, built assets, SPA routing, source containment, project read API"
+  },
+  "features": [
+    "Fresh-input pitch range, register, rhythmic density, qualified tempo evidence, syncopation, motion, energy and rest-defined phrases",
+    "production:auto follows existing genre; explicit dance-pop and percussive-pop can be requested through the existing producer",
+    "Reference titles select generic production traits only, without a reference lookup or any copied lead notes",
+    "Input-dependent harmony, economical chord voicing, register separation, lower competing density under busy leads and phrase-aware backing dynamics",
+    "Distinct original synthesized kick, snare, clap, closed/open hats, pluck and pad articulations",
+    "Dry centered lead and low end, bounded backing stereo, backing-only kick ducking and useful bass register",
+    "Exact source melody/contour binding, unchanged source timing and explicit instrument/layer restrictions",
+    "Inclusive 65–1400 Hz detector endpoints with bounded interpolation tolerance, rejecting tested out-of-range tones"
+  ],
+  "unfamiliarMelodyEvidence": {
+    "newNodePcmCases": 8,
+    "newNodePcmNotes": 67,
+    "sampleRates": [8000, 16000, 22050, 44100, 48000, 96000],
+    "nodePitchSequenceErrors": 0,
+    "nodeAssertedBoundaryLimitMs": 30,
+    "newBrowserPcmCases": 2,
+    "newBrowserPcmNotes": 24,
+    "browserActualWavReceiptHashesVerified": true,
+    "browserInputPitchSequenceErrors": 0,
+    "browserMaxInputOnsetOffsetErrorMs": 5,
+    "browserRenderedLeadPitchSequenceErrors": 0,
+    "browserMaxRenderedLeadOnsetOffsetDifferenceMs": 0,
+    "strictSourceEventsEqualAcrossProductionModes": true,
+    "originalMelodiesRequiredForGeneration": true
+  },
+  "newFullMixMeasurements": [
+    { "fixture": 831, "production": "dance-pop", "peak": 0.26801, "rms": 0.03768, "clippedSamples": 0, "stereoDifferenceRms": 0.00134, "backingRms": 0.02454, "backingEvents": 69 },
+    { "fixture": 831, "production": "percussive-pop", "peak": 0.34785, "rms": 0.03538, "clippedSamples": 0, "stereoDifferenceRms": 0.00069, "backingRms": 0.02096, "backingEvents": 53 },
+    { "fixture": 1847, "production": "dance-pop", "peak": 0.27667, "rms": 0.03767, "clippedSamples": 0, "stereoDifferenceRms": 0.00128, "backingRms": 0.02454, "backingEvents": 69 },
+    { "fixture": 1847, "production": "percussive-pop", "peak": 0.2879, "rms": 0.03554, "clippedSamples": 0, "stereoDifferenceRms": 0.00069, "backingRms": 0.02116, "backingEvents": 53 }
+  ],
+  "nativeRenderRepeatability": {
+    "byteIdenticalAcrossProduction": false,
+    "maxPcmDifferenceAcrossProduction": 0.000030518509447574615,
+    "decodedPcm16StepLimit": 0.00003051850947599719,
+    "sameArrangementRerenderAlsoVariedByOneStep": true,
+    "explanation": "Exact source events are required. Repeated identical native OfflineAudioContext renders varied by one PCM16 quantization step in a few samples; waveform comparison uses this measured bound. Production audio was not rounded to force matching hashes."
+  },
+  "referenceStudy": [
+    { "source": "Steve Mac interview", "url": "https://www.musicweek.com/interviews/read/meet-steve-mac-music-week-songwriter-of-the-year-2018/074833", "use": "High-level percussive keyboard texture and economical production context; generic implementation choices, not transcription" },
+    { "source": "Zedd interview", "url": "https://www.gq.com/video/watch/iconic-characters-zedd-breaks-down-his-most-iconic-tracks", "use": "Production-first dance-pop context; generic implementation choices, not transcription" }
+  ],
+  "limits": [
+    "This is a deterministic note-conditioned arrangement and synthesis upgrade, not training or verification of a universal learned audio generator.",
+    "Unknown melodies do not need recognition against a song library. Accuracy still depends on clear monophonic input within the supported range and 60-second capture limit.",
+    "Tempo and musical character are qualified evidence-based suggestions; an ambiguous or rubato phrase can correctly yield no confident BPM.",
+    "Synthetic pitch/timing and finite nonclipping PCM checks do not establish subjective polish, commercial mastering, or perfect human microphone transcription.",
+    "Full-mix pitch transcription is not used as an exact melody proof; decoded lead stems are tested separately.",
+    "Actual MusicGen inference and live external producer quality were not tested. No model weights or song audio were downloaded for this upgrade."
+  ]
+}

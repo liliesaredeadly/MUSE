@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MUSE — Audio melody preservation checks</title>
+    <style>
+      body { max-width:1100px; margin:28px auto; padding:0 20px; font:15px/1.6 Arial,sans-serif; color:#e8e8e8; background:#141414; }
+      button { padding:12px 20px; font:inherit; cursor:pointer; }
+      button:disabled { cursor:wait; }
+      pre { white-space:pre-wrap; overflow-wrap:anywhere; padding:18px; background:#222; border:1px solid #444; }
+    </style>
+  </head>
+  <body>
+    <h1>Audio melody preservation checks</h1>
+    <p>Developer-only generated hums. These checks send synthetic PCM WAV to the real local analysis and arrangement API, then silently render and decode real Web Audio WAV files. They do not record a microphone, save projects, play sound, or call a neural provider.</p>
+    <button id="run" type="button">Run melody preservation checks</button>
+    <pre id="results" role="status" aria-live="polite">Ready. Start the local API and Vite development server, then run these checks.</pre>
+    <script type="module" src="/tests/melody-preservation-browser.js"></script>
+  </body>
+</html>

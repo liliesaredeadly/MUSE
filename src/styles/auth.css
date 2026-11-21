@@ -1,0 +1,97 @@
+/* Account surface only. Home, Discover and the studio retain their existing palettes. */
+.muse-auth-dialog {
+  --auth-ink:#24212B;
+  --auth-paper:#F7F1E7;
+  --auth-lavender:#B3A0CF;
+  --auth-muted:#C1B4BC;
+  --auth-line:#4B414F;
+  --auth-error:#FFACAA;
+  box-sizing:border-box;
+  width:min(490px,calc(100vw - 32px));
+  max-width:none;
+  max-height:calc(100dvh - 32px);
+  margin:auto;
+  padding:0;
+  overflow:auto;
+  border:1px solid var(--auth-line);
+  border-radius:2px;
+  background:var(--auth-ink);
+  color:var(--auth-paper);
+  color-scheme:dark;
+  font:14px/1.5 'Segoe UI Variable','Segoe UI',sans-serif;
+  scrollbar-width:thin;
+  scrollbar-color:var(--auth-lavender) var(--auth-ink);
+}
+.muse-auth-dialog::backdrop { background:rgb(18 15 23 / 76%); }
+.muse-auth-dialog * { box-sizing:border-box; }
+.muse-auth-dialog button,.muse-auth-dialog input { font:inherit; }
+.muse-auth-dialog button { cursor:pointer; }
+.muse-auth-dialog button:disabled { cursor:not-allowed; opacity:.55; }
+.muse-auth-dialog :focus-visible { outline:2px solid var(--auth-lavender); outline-offset:4px; }
+.muse-auth-topline { position:sticky; z-index:1; top:0; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:12px 23px; background:var(--auth-ink); border-bottom:1px solid var(--auth-line); }
+.muse-auth-topline > span { font-size:10px; letter-spacing:1.5px; }
+.muse-auth-close { display:grid; place-items:center; min-width:44px; min-height:44px; margin-right:-10px; padding:9px; border:0; background:transparent; color:var(--auth-paper); }
+.muse-auth-close:hover { color:var(--auth-lavender); }
+.muse-auth-content { padding:27px 34px 25px; }
+.muse-auth-kicker { display:block; margin-bottom:14px; color:var(--auth-lavender); font-size:9px; letter-spacing:1.5px; }
+.muse-auth-dialog h2 { margin:0; font-size:clamp(33px,6vw,43px); font-weight:350; line-height:1.05; letter-spacing:-1.5px; }
+.muse-auth-dialog h2 em { color:var(--auth-lavender); font-family:Georgia,'Times New Roman',serif; font-size:1.05em; font-weight:400; }
+.muse-auth-description { margin:16px 0 25px; color:var(--auth-muted); font-size:12px; line-height:1.7; }
+.muse-auth-form { display:grid; gap:17px; }
+.muse-auth-field { display:grid; gap:6px; min-width:0; }
+.muse-auth-field > label { color:var(--auth-paper); font-size:12px; }
+.muse-auth-field input { width:100%; min-height:45px; padding:11px 12px; border:1px solid #786A7C; border-radius:1px; background:#2C2732; color:var(--auth-paper); }
+.muse-auth-field input:disabled { opacity:.65; }
+.muse-auth-field input[aria-invalid="true"] { border-color:var(--auth-error); }
+.muse-auth-password { position:relative; }
+.muse-auth-password input { padding-right:50px; }
+.muse-auth-reveal { position:absolute; inset:1px 1px 1px auto; display:grid; place-items:center; width:44px; border:0; background:transparent; color:var(--auth-muted); }
+.muse-auth-reveal:hover:not(:disabled) { color:var(--auth-paper); }
+.muse-auth-help,.muse-auth-field-error { margin:0; font-size:11px; line-height:1.6; }
+.muse-auth-help { color:var(--auth-muted); }
+.muse-auth-field-error { color:var(--auth-error); }
+.muse-auth-primary { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; min-height:46px; margin-top:4px; padding:11px 16px; border:1px solid var(--auth-lavender); border-radius:1px; background:var(--auth-lavender); color:var(--auth-ink); font-size:13px; font-weight:600; }
+.muse-auth-primary:hover:not(:disabled) { background:var(--auth-paper); border-color:var(--auth-paper); }
+.muse-auth-error { margin:0 0 19px; padding:12px; border:1px solid var(--auth-error); color:var(--auth-error); font-size:12px; line-height:1.6; overflow-wrap:anywhere; }
+.muse-auth-busy { margin:0 0 18px; padding:10px 0; color:var(--auth-lavender); font-size:12px; }
+.muse-auth-switch { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 16px; margin-top:22px; padding-top:17px; border-top:1px solid var(--auth-line); font-size:12px; }
+.muse-auth-switch > span { color:var(--auth-muted); }
+.muse-auth-switch button,.muse-auth-refresh { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:36px; padding:5px 0; border:0; background:transparent; color:var(--auth-paper); font-size:12px; }
+.muse-auth-switch button:hover:not(:disabled),.muse-auth-refresh:hover:not(:disabled) { color:var(--auth-lavender); }
+.muse-auth-refresh { margin-top:12px; }
+.muse-auth-local-note { margin:23px 0 0; color:var(--auth-muted); font-size:10px; line-height:1.6; }
+.muse-auth-loading { display:flex; align-items:center; gap:12px; min-height:94px; color:var(--auth-muted); }
+.muse-auth-identity { display:flex; align-items:center; gap:16px; min-width:0; margin:26px 0; }
+.muse-auth-avatar { display:grid; flex-shrink:0; place-items:center; width:46px; height:46px; border:1px solid var(--auth-lavender); color:var(--auth-lavender); font:italic 25px Georgia,serif; }
+.muse-auth-identity > div { min-width:0; flex:1; overflow-wrap:anywhere; }
+.muse-auth-identity h3 { margin:0 0 4px; font-size:19px; font-weight:400; }
+.muse-auth-identity p { margin:2px 0; color:var(--auth-muted); font-size:12px; }
+.muse-auth-identity > svg { flex-shrink:0; color:var(--auth-lavender); }
+.muse-auth-dialog .spin { animation:muse-auth-spin 1s linear infinite; }
+@keyframes muse-auth-spin { to { transform:rotate(360deg); } }
+
+.muse-reference-shell .reference-account-button { display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; gap:8px; min-height:44px; padding:8px 0; border:0; background:transparent; color:inherit; font:inherit; }
+.muse-reference-shell .reference-account-button span { font-size:10px; letter-spacing:.6px; white-space:nowrap; }
+.muse-reference-shell .reference-account-button:hover:not(:disabled) { opacity:.7; }
+@media(max-width:1100px) {
+  .muse-reference-shell .reference-header { gap:20px; }
+  .muse-reference-shell .reference-account-button { min-width:44px; }
+  .muse-reference-shell .reference-account-button span { display:none; }
+}
+@media(max-width:640px) {
+  .muse-reference-shell .reference-header { height:auto; min-height:104px; flex-wrap:wrap; gap:0 18px; padding-top:9px; padding-bottom:5px; }
+  .muse-reference-shell .reference-home-link { margin-right:auto; }
+  .muse-reference-shell .reference-hum-link { min-width:44px; width:44px; min-height:44px; padding:10px; }
+  .muse-reference-shell .reference-hum-link span { display:none; }
+  .muse-reference-shell .reference-navigation { order:4; flex-basis:100%; justify-content:space-between; gap:20px; margin:0; }
+  .muse-reference-shell .reference-navigation button { min-height:40px; padding:9px 0; }
+}
+@media(max-width:420px) {
+  .muse-auth-content { padding:24px 23px; }
+  .muse-auth-topline { padding-inline:17px; }
+}
+@media(prefers-reduced-motion:reduce) { .muse-auth-dialog .spin { animation:none; } }
+@media(forced-colors:active) {
+  .muse-auth-dialog,.muse-auth-field input,.muse-auth-primary,.muse-auth-error { border-color:CanvasText; }
+  .muse-auth-dialog :focus-visible { outline-color:Highlight; }
+}

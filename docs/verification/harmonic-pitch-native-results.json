@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "current": null,
+  "passed": 7,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Real source-bound analysis recovers supported harmonic anchors",
+      "passed": true,
+      "metrics": {
+        "duration": 7.62,
+        "noteCount": 16,
+        "voicedRatio": 0.33202099737532803,
+        "anchorCount": 9,
+        "quality": "partial",
+        "harmonyScope": "anchored",
+        "layerEvents": {
+          "guitar": 37,
+          "piano": 36,
+          "violin": 20,
+          "cello": 10
+        }
+      }
+    },
+    {
+      "name": "guitar has actual nonzero native audio",
+      "passed": true,
+      "metrics": {
+        "rms": 0.001183,
+        "peak": 0.028503,
+        "clipped": 0,
+        "duration": 9.22
+      }
+    },
+    {
+      "name": "piano has actual nonzero native audio",
+      "passed": true,
+      "metrics": {
+        "rms": 0.002744,
+        "peak": 0.062502,
+        "clipped": 0,
+        "duration": 9.22
+      }
+    },
+    {
+      "name": "violin has actual nonzero native audio",
+      "passed": true,
+      "metrics": {
+        "rms": 0.001139,
+        "peak": 0.010376,
+        "clipped": 0,
+        "duration": 9.22
+      }
+    },
+    {
+      "name": "cello has actual nonzero native audio",
+      "passed": true,
+      "metrics": {
+        "rms": 0.001188,
+        "peak": 0.006806,
+        "clipped": 0,
+        "duration": 9.22
+      }
+    },
+    {
+      "name": "Original whole-wave lead remains aligned and unchanged by the backing",
+      "passed": true,
+      "metrics": {
+        "zeroLagCorrelation": 1,
+        "constantGainIncludingMaster": 1.473036,
+        "originalDuration": 7.62,
+        "noSyntheticMelody": true,
+        "playbackRate": 1,
+        "fullMix": {
+          "rms": 0.024623,
+          "peak": 0.480331,
+          "clipped": 0,
+          "duration": 9.22
+        },
+        "limitation": "This verifies the retained waveform and real backing audio, not perfect human transcription or subjective harmony quality."
+      }
+    },
+    {
+      "name": "Pitched backing stays silent outside confirmed source regions",
+      "passed": true,
+      "metrics": {
+        "outsidePeak": 0,
+        "outsideRms": 0,
+        "samplesChecked": 650916
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-18",
+  "status": "passed",
+  "passed": 21,
+  "failed": 0,
+  "total": 21,
+  "syntheticQaFixtures": true,
+  "testPage": "http://127.0.0.1:5173/tests/browser.html",
+  "newRegressionChecks": [
+    "drums-layer-control",
+    "save-survives-library-failure",
+    "reopen-current-keeps-edits",
+    "empty-project-can-save",
+    "empty-project-navigation-saves"
+  ],
+  "narrowStudio": {
+    "viewportWidth": 390,
+    "viewportHeight": 844,
+    "documentClientWidth": 380,
+    "documentScrollWidth": 380,
+    "horizontalOverflow": false,
+    "guideEscapeAndFocusRestoration": "passed"
+  },
+  "earlierRun": {
+    "passed": 19,
+    "failed": 1,
+    "total": 20,
+    "failedCheck": "real-synthetic-capture",
+    "detail": "The first C4 note was missed during parallel build/test load. The isolated 20-check rerun and final 21-check run passed."
+  },
+  "physicalMicrophoneVerified": false,
+  "liveOpenAIVerified": false,
+  "realProjectsModified": false
+}

@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MUSE harmonic backing verification</title>
+<style>body{max-width:1000px;margin:30px auto;padding:0 20px;background:#171719;color:#eee;font:15px/1.6 system-ui}button,input{padding:12px;font:inherit}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style></head>
+<body><h1>Original hum and harmonic backing verification</h1><p>Choose a local recording. This uses the real local analysis API and native audio renderer. It checks that guitar, piano and strings have nonzero audio while the complete original lead retains its waveform and timing. No projects are saved, no AI provider is called and no audio is sent outside localhost.</p>
+<label>Local recording <input id="take" type="file" accept="audio/*" aria-label="Verification recording"></label>
+<button id="run">Verify original hum and backing</button><pre id="results" role="status">Ready</pre>
+<script type="module" src="/tests/harmonic-recording-browser.js"></script></body></html>

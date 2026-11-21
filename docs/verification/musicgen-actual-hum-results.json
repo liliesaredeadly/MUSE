@@ -1,0 +1,31 @@
+{
+  "model": "facebook/musicgen-melody",
+  "sourceKind": "actual-user-recording",
+  "sourceFileSha256": "dcf7816302ef66fc3dc2cdd7a8f9f747de20013da51bc9eb0bdb517ba94b9b79",
+  "canonicalConditioningSha256": "fff65aaee1602b46339f46e922880819bdcd13b00537b1479a91a0b83aa7575b",
+  "nodeJobId": "fb6fe2cf-0fc5-42a0-95d3-dd7eac995eff",
+  "nodeElapsedSeconds": 305.666,
+  "requestedSeconds": 5,
+  "output": {
+    "bytes": 316204,
+    "sha256": "9d79bbe93d66c55776f34ef7557ebed11a7d0530b8880897a8a2fd7b5d3c30c9",
+    "sampleRate": 32000,
+    "channels": 1,
+    "frames": 158080,
+    "durationSeconds": 4.94,
+    "rms": 0.1399956922233404,
+    "peak": 0.597412109375,
+    "clippedSampleFraction": 0.0
+  },
+  "runtimeConditioningChecksEnforced": true,
+  "exactMelodyVerified": false,
+  "comparison": {
+    "method": "NumPy STFT pitch-class energy; relative-time frame cosine",
+    "meanRelativeFrameCosine": 0.7359821437460861,
+    "globalChromaCosine": 0.9300592789632635,
+    "comparedRelativeFrames": 54,
+    "notProofOfExactMelody": true,
+    "limitations": "Chroma discards octave, timbre and exact notes. Polyphonic backing and relative-time alignment affect this score; it does not establish melody fidelity or musical quality."
+  },
+  "comparisonScope": "The matching-duration beginning of the original take; strong-channel resampling. Polyphonic chroma is not isolated lead transcription or proof of exact note/timing preservation."
+}

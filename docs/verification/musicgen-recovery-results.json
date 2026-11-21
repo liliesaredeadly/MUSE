@@ -1,0 +1,1141 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "existing-local-musicgen-job-recovery",
+  "metricsAreNotProofOfExactMelody": true,
+  "runs": [
+    {
+      "runId": "recovery-20261121T132240Z-be7d1b",
+      "sourceRunId": "20261121T130321Z-31044e",
+      "sourceReport": "./docs/verification/musicgen-real-results.json",
+      "startedAt": "2026-11-21T13:22:40Z",
+      "newInferenceSubmitted": false,
+      "description": "GET-only recovery of recorded local model jobs. Original benchmark failures remain unchanged.",
+      "cases": [
+        {
+          "fixtureId": "acoustic",
+          "requestId": "bench-acoustic-2319008fd668472f",
+          "status": "failed",
+          "sourceKind": "original-synthetic-test-recording",
+          "originalStatus": "failed",
+          "originalError": {
+            "code": "BENCHMARK_ERROR",
+            "message": "The local service request timed out."
+          },
+          "recoveredExistingJob": true,
+          "newInferenceSubmitted": false,
+          "backendStatus": {
+            "model": "facebook/musicgen-melody",
+            "conditioning": "audio-melody",
+            "loaded": true,
+            "ready": false,
+            "status": "generating",
+            "backend": "transformers",
+            "device": "cpu",
+            "capabilities": [
+              "jobs",
+              "progress",
+              "cancel"
+            ]
+          },
+          "exactMelodyVerified": false,
+          "source": {
+            "bytes": 384044,
+            "sha256": "5d930d87c05645bc4fa6d2fd29621dd7a679706c1a3a87b4bd615e011f52fddf",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 192000,
+            "durationSeconds": 6,
+            "rms": 0.15520383819341782,
+            "peak": 0.29583740234375,
+            "clippedSampleFraction": 0
+          },
+          "prompt": "Warm acoustic folk-pop, fingerpicked steel-string guitar, a gentle upright bass and brushed percussion. Develop the supplied melody into a clear instrumental lead; keep the arrangement intimate with natural dynamics and a quiet ending.",
+          "requestedPreviewSeconds": 4,
+          "model": "facebook/musicgen-melody",
+          "syntheticMelodyNotes": [
+            {
+              "midi": 60,
+              "start": 0.1,
+              "duration": 0.55
+            },
+            {
+              "midi": 64,
+              "start": 0.85,
+              "duration": 0.55
+            },
+            {
+              "midi": 67,
+              "start": 1.6,
+              "duration": 0.8
+            },
+            {
+              "midi": 69,
+              "start": 2.65,
+              "duration": 0.45
+            },
+            {
+              "midi": 67,
+              "start": 3.35,
+              "duration": 0.55
+            },
+            {
+              "midi": 64,
+              "start": 4.2,
+              "duration": 0.6
+            },
+            {
+              "midi": 62,
+              "start": 5.1,
+              "duration": 0.55
+            }
+          ],
+          "error": {
+            "code": "SERVICE_UNAVAILABLE",
+            "message": "The local model service could not be reached within the request deadline."
+          },
+          "fallbackAudioProduced": false,
+          "wallSeconds": 38.203
+        },
+        {
+          "fixtureId": "pop",
+          "requestId": "bench-pop-7fc868383ddf4362",
+          "status": "succeeded",
+          "sourceKind": "original-synthetic-test-recording",
+          "originalStatus": "failed",
+          "originalError": {
+            "code": "BENCHMARK_ERROR",
+            "message": "The local service request timed out."
+          },
+          "recoveredExistingJob": true,
+          "newInferenceSubmitted": false,
+          "backendStatus": {
+            "model": "facebook/musicgen-melody",
+            "conditioning": "audio-melody",
+            "loaded": true,
+            "ready": true,
+            "status": "ready",
+            "backend": "transformers",
+            "device": "cpu",
+            "capabilities": [
+              "jobs",
+              "progress",
+              "cancel"
+            ]
+          },
+          "exactMelodyVerified": false,
+          "source": {
+            "bytes": 384044,
+            "sha256": "928a949776424bbd43afe900bbb43ab2b1835ad6931bdae319c50a505c48b78c",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 192000,
+            "durationSeconds": 6,
+            "rms": 0.14884794591193262,
+            "peak": 0.29583740234375,
+            "clippedSampleFraction": 0
+          },
+          "prompt": "Bright contemporary instrumental pop, a clear piano melody, elastic electric bass, clean syncopated drums and light supporting strings. Let the supplied melody guide the main phrase; create an energetic, balanced mix without vocals.",
+          "requestedPreviewSeconds": 4,
+          "model": "facebook/musicgen-melody",
+          "syntheticMelodyNotes": [
+            {
+              "midi": 62,
+              "start": 0.1,
+              "duration": 0.25
+            },
+            {
+              "midi": 62,
+              "start": 0.6,
+              "duration": 0.35
+            },
+            {
+              "midi": 65,
+              "start": 1.15,
+              "duration": 0.45
+            },
+            {
+              "midi": 69,
+              "start": 1.9,
+              "duration": 0.7
+            },
+            {
+              "midi": 67,
+              "start": 2.85,
+              "duration": 0.3
+            },
+            {
+              "midi": 65,
+              "start": 3.4,
+              "duration": 0.55
+            },
+            {
+              "midi": 64,
+              "start": 4.15,
+              "duration": 0.45
+            },
+            {
+              "midi": 62,
+              "start": 4.9,
+              "duration": 0.8
+            }
+          ],
+          "providerTerminalStatus": "succeeded",
+          "modelSeconds": 172.031,
+          "conditioning": {
+            "audioSha256": "928a949776424bbd43afe900bbb43ab2b1835ad6931bdae319c50a505c48b78c",
+            "inputBytes": 384044,
+            "mode": "audio-melody",
+            "pipeline": {
+              "textEncoderVerified": true,
+              "audioProjectionVerified": true,
+              "initialDecoderPrefixVerified": true,
+              "featureSha256": "f2c7500c1f58d77b4ae0ff0716c08e6b6762269b22796951dbc4cf143d2bc5a4",
+              "textTokens": 46,
+              "chromaFrames": 47,
+              "decoderPrefixFrames": 281
+            }
+          },
+          "pipelineVerified": true,
+          "output": {
+            "bytes": 252204,
+            "sha256": "662655bce8ddc7197a93523cc06110f951f3a60b00f23d9783057e566566f567",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 126080,
+            "durationSeconds": 3.94,
+            "rms": 0.13999569837343637,
+            "peak": 0.72900390625,
+            "clippedSampleFraction": 0,
+            "path": "./.local/musicgen-benchmark/recovery/recovery-20261121T132240Z-be7d1b/pop-generated.wav"
+          },
+          "chromaComparison": {
+            "method": "NumPy STFT pitch-class energy; relative-time frame cosine",
+            "meanRelativeFrameCosine": 0.3479208531067879,
+            "globalChromaCosine": 0.9360909854417037,
+            "comparedRelativeFrames": 44,
+            "notProofOfExactMelody": true,
+            "limitations": "Chroma discards octave, timbre and exact notes. Polyphonic backing and relative-time alignment affect this score; it does not establish melody fidelity or musical quality."
+          },
+          "wallSeconds": 0.172
+        },
+        {
+          "fixtureId": "orchestra",
+          "requestId": "bench-orchestra-e8af193b89eb41d2",
+          "status": "succeeded",
+          "sourceKind": "original-synthetic-test-recording",
+          "originalStatus": "failed",
+          "originalError": {
+            "code": "BENCHMARK_ERROR",
+            "message": "The local service request timed out."
+          },
+          "recoveredExistingJob": true,
+          "newInferenceSubmitted": false,
+          "backendStatus": {
+            "model": "facebook/musicgen-melody",
+            "conditioning": "audio-melody",
+            "loaded": true,
+            "ready": true,
+            "status": "ready",
+            "backend": "transformers",
+            "device": "cpu",
+            "capabilities": [
+              "jobs",
+              "progress",
+              "cancel"
+            ]
+          },
+          "exactMelodyVerified": false,
+          "source": {
+            "bytes": 384044,
+            "sha256": "f43c5371013bd6444e42e57d3547896b9855d9d090d8153d4b5348cb2315779f",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 192000,
+            "durationSeconds": 6,
+            "rms": 0.16719264232210396,
+            "peak": 0.29583740234375,
+            "clippedSampleFraction": 0
+          },
+          "prompt": "A lyrical chamber orchestra with a singing cello lead, soft violins, warm low strings and restrained timpani. Build a gentle crescendo around the supplied melody, preserve breathing space between phrases, and finish quietly. Instrumental.",
+          "requestedPreviewSeconds": 4,
+          "model": "facebook/musicgen-melody",
+          "syntheticMelodyNotes": [
+            {
+              "midi": 55,
+              "start": 0.15,
+              "duration": 0.95
+            },
+            {
+              "midi": 62,
+              "start": 1.3,
+              "duration": 0.75
+            },
+            {
+              "midi": 65,
+              "start": 2.25,
+              "duration": 0.95
+            },
+            {
+              "midi": 64,
+              "start": 3.45,
+              "duration": 0.6
+            },
+            {
+              "midi": 60,
+              "start": 4.3,
+              "duration": 1.2
+            }
+          ],
+          "providerTerminalStatus": "succeeded",
+          "modelSeconds": 150.844,
+          "conditioning": {
+            "audioSha256": "f43c5371013bd6444e42e57d3547896b9855d9d090d8153d4b5348cb2315779f",
+            "inputBytes": 384044,
+            "mode": "audio-melody",
+            "pipeline": {
+              "textEncoderVerified": true,
+              "audioProjectionVerified": true,
+              "initialDecoderPrefixVerified": true,
+              "featureSha256": "63ee0383d78b619b59fd190e39734cf8d68eb7e3b8e5fb158aaf198a414bdb6c",
+              "textTokens": 54,
+              "chromaFrames": 47,
+              "decoderPrefixFrames": 289
+            }
+          },
+          "pipelineVerified": true,
+          "output": {
+            "bytes": 252204,
+            "sha256": "8fffee61f0e3533de82393493d48d0a5a2b6abbe1a993cc750838bf51e5c960c",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 126080,
+            "durationSeconds": 3.94,
+            "rms": 0.13999574657678293,
+            "peak": 0.5286865234375,
+            "clippedSampleFraction": 0,
+            "path": "./.local/musicgen-benchmark/recovery/recovery-20261121T132240Z-be7d1b/orchestra-generated.wav"
+          },
+          "chromaComparison": {
+            "method": "NumPy STFT pitch-class energy; relative-time frame cosine",
+            "meanRelativeFrameCosine": 0.47240862319183563,
+            "globalChromaCosine": 0.87258623247597,
+            "comparedRelativeFrames": 47,
+            "notProofOfExactMelody": true,
+            "limitations": "Chroma discards octave, timbre and exact notes. Polyphonic backing and relative-time alignment affect this score; it does not establish melody fidelity or musical quality."
+          },
+          "wallSeconds": 19.125
+        },
+        {
+          "fixtureId": "edm",
+          "requestId": "bench-edm-3452b88002b3450b",
+          "status": "succeeded",
+          "sourceKind": "original-synthetic-test-recording",
+          "originalStatus": "succeeded",
+          "originalError": null,
+          "recoveredExistingJob": true,
+          "newInferenceSubmitted": false,
+          "backendStatus": {
+            "model": "facebook/musicgen-melody",
+            "conditioning": "audio-melody",
+            "loaded": true,
+            "ready": true,
+            "status": "ready",
+            "backend": "transformers",
+            "device": "cpu",
+            "capabilities": [
+              "jobs",
+              "progress",
+              "cancel"
+            ]
+          },
+          "exactMelodyVerified": false,
+          "source": {
+            "bytes": 384044,
+            "sha256": "ecee8dc83193c42db4816de46f64cf654828812142ae59c31c91d61efb97f3f5",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 192000,
+            "durationSeconds": 6,
+            "rms": 0.13266643003175155,
+            "peak": 0.29583740234375,
+            "clippedSampleFraction": 0
+          },
+          "prompt": "An original melodic electronic dance instrumental, rounded synth lead, tight four-on-the-floor kick, a restrained sub bass and bright rhythmic accents. Use the supplied melody as the main motif; keep transients clear and avoid vocals or a huge noisy wall of sound.",
+          "requestedPreviewSeconds": 4,
+          "model": "facebook/musicgen-melody",
+          "syntheticMelodyNotes": [
+            {
+              "midi": 57,
+              "start": 0.05,
+              "duration": 0.24
+            },
+            {
+              "midi": 64,
+              "start": 0.5,
+              "duration": 0.24
+            },
+            {
+              "midi": 69,
+              "start": 0.95,
+              "duration": 0.4
+            },
+            {
+              "midi": 67,
+              "start": 1.55,
+              "duration": 0.24
+            },
+            {
+              "midi": 64,
+              "start": 2,
+              "duration": 0.24
+            },
+            {
+              "midi": 60,
+              "start": 2.45,
+              "duration": 0.4
+            },
+            {
+              "midi": 64,
+              "start": 3.05,
+              "duration": 0.24
+            },
+            {
+              "midi": 67,
+              "start": 3.5,
+              "duration": 0.24
+            },
+            {
+              "midi": 69,
+              "start": 3.95,
+              "duration": 0.4
+            },
+            {
+              "midi": 72,
+              "start": 4.55,
+              "duration": 0.24
+            },
+            {
+              "midi": 69,
+              "start": 5,
+              "duration": 0.55
+            }
+          ],
+          "providerTerminalStatus": "succeeded",
+          "modelSeconds": 299.953,
+          "conditioning": {
+            "audioSha256": "ecee8dc83193c42db4816de46f64cf654828812142ae59c31c91d61efb97f3f5",
+            "inputBytes": 384044,
+            "mode": "audio-melody",
+            "pipeline": {
+              "textEncoderVerified": true,
+              "audioProjectionVerified": true,
+              "initialDecoderPrefixVerified": true,
+              "featureSha256": "fd11521df67b3199944992edf8b9e6bd4962fc6fc4c6fbd69b6c4ac33d431361",
+              "textTokens": 64,
+              "chromaFrames": 47,
+              "decoderPrefixFrames": 299
+            }
+          },
+          "pipelineVerified": true,
+          "output": {
+            "bytes": 252204,
+            "sha256": "f1083af1ee40503096c65392a1c86f47e5e5f527f66efdcb919d7432fd5c2c3c",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 126080,
+            "durationSeconds": 3.94,
+            "rms": 0.13999571998039506,
+            "peak": 0.60211181640625,
+            "clippedSampleFraction": 0,
+            "path": "./.local/musicgen-benchmark/recovery/recovery-20261121T132240Z-be7d1b/edm-generated.wav"
+          },
+          "chromaComparison": {
+            "method": "NumPy STFT pitch-class energy; relative-time frame cosine",
+            "meanRelativeFrameCosine": 0.3988741137857363,
+            "globalChromaCosine": 0.8695476505751101,
+            "comparedRelativeFrames": 39,
+            "notProofOfExactMelody": true,
+            "limitations": "Chroma discards octave, timbre and exact notes. Polyphonic backing and relative-time alignment affect this score; it does not establish melody fidelity or musical quality."
+          },
+          "wallSeconds": 19.125
+        }
+      ],
+      "variety": {
+        "expectedFixtureCount": 5,
+        "attemptedFixtureCount": 4,
+        "successfulFixtureCount": 3,
+        "sourceHashes": {
+          "acoustic": "5d930d87c05645bc4fa6d2fd29621dd7a679706c1a3a87b4bd615e011f52fddf",
+          "pop": "928a949776424bbd43afe900bbb43ab2b1835ad6931bdae319c50a505c48b78c",
+          "orchestra": "f43c5371013bd6444e42e57d3547896b9855d9d090d8153d4b5348cb2315779f",
+          "edm": "ecee8dc83193c42db4816de46f64cf654828812142ae59c31c91d61efb97f3f5"
+        },
+        "outputHashes": {
+          "pop": "662655bce8ddc7197a93523cc06110f951f3a60b00f23d9783057e566566f567",
+          "orchestra": "8fffee61f0e3533de82393493d48d0a5a2b6abbe1a993cc750838bf51e5c960c",
+          "edm": "f1083af1ee40503096c65392a1c86f47e5e5f527f66efdcb919d7432fd5c2c3c"
+        },
+        "featureHashes": {
+          "pop": "f2c7500c1f58d77b4ae0ff0716c08e6b6762269b22796951dbc4cf143d2bc5a4",
+          "orchestra": "63ee0383d78b619b59fd190e39734cf8d68eb7e3b8e5fb158aaf198a414bdb6c",
+          "edm": "fd11521df67b3199944992edf8b9e6bd4962fc6fc4c6fbd69b6c4ac33d431361"
+        },
+        "uniqueSourceHashCount": 4,
+        "uniqueOutputHashCount": 3,
+        "uniqueFeatureHashCount": 3,
+        "allFiveSourcesDistinct": false,
+        "allFiveOutputsDistinct": false,
+        "allFiveConditioningFeaturesDistinct": false,
+        "notProofOfMelodyFidelity": true,
+        "interpretation": "Different source, output or feature hashes establish byte-level variety only. Pipeline checks establish which conditioning path executed; neither establishes exact notes, timing or perceptual musical quality."
+      },
+      "finishedAt": "2026-11-21T13:23:56Z",
+      "succeeded": 3,
+      "failed": 1
+    },
+    {
+      "runId": "recovery-20261121T132610Z-cd91e7",
+      "sourceRunId": "20261121T130321Z-31044e",
+      "sourceReport": "./docs/verification/musicgen-real-results.json",
+      "startedAt": "2026-11-21T13:26:10Z",
+      "newInferenceSubmitted": false,
+      "description": "GET-only recovery of recorded local model jobs. Original benchmark failures remain unchanged.",
+      "cases": [
+        {
+          "fixtureId": "acoustic",
+          "requestId": "bench-acoustic-2319008fd668472f",
+          "status": "succeeded",
+          "sourceKind": "original-synthetic-test-recording",
+          "originalStatus": "failed",
+          "originalError": {
+            "code": "BENCHMARK_ERROR",
+            "message": "The local service request timed out."
+          },
+          "recoveredExistingJob": true,
+          "newInferenceSubmitted": false,
+          "backendStatus": {
+            "model": "facebook/musicgen-melody",
+            "conditioning": "audio-melody",
+            "loaded": true,
+            "ready": false,
+            "status": "generating",
+            "backend": "transformers",
+            "device": "cpu",
+            "capabilities": [
+              "jobs",
+              "progress",
+              "cancel"
+            ]
+          },
+          "exactMelodyVerified": false,
+          "source": {
+            "bytes": 384044,
+            "sha256": "5d930d87c05645bc4fa6d2fd29621dd7a679706c1a3a87b4bd615e011f52fddf",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 192000,
+            "durationSeconds": 6,
+            "rms": 0.15520383819341782,
+            "peak": 0.29583740234375,
+            "clippedSampleFraction": 0
+          },
+          "prompt": "Warm acoustic folk-pop, fingerpicked steel-string guitar, a gentle upright bass and brushed percussion. Develop the supplied melody into a clear instrumental lead; keep the arrangement intimate with natural dynamics and a quiet ending.",
+          "requestedPreviewSeconds": 4,
+          "model": "facebook/musicgen-melody",
+          "syntheticMelodyNotes": [
+            {
+              "midi": 60,
+              "start": 0.1,
+              "duration": 0.55
+            },
+            {
+              "midi": 64,
+              "start": 0.85,
+              "duration": 0.55
+            },
+            {
+              "midi": 67,
+              "start": 1.6,
+              "duration": 0.8
+            },
+            {
+              "midi": 69,
+              "start": 2.65,
+              "duration": 0.45
+            },
+            {
+              "midi": 67,
+              "start": 3.35,
+              "duration": 0.55
+            },
+            {
+              "midi": 64,
+              "start": 4.2,
+              "duration": 0.6
+            },
+            {
+              "midi": 62,
+              "start": 5.1,
+              "duration": 0.55
+            }
+          ],
+          "providerTerminalStatus": "succeeded",
+          "modelSeconds": 154.469,
+          "conditioning": {
+            "audioSha256": "5d930d87c05645bc4fa6d2fd29621dd7a679706c1a3a87b4bd615e011f52fddf",
+            "inputBytes": 384044,
+            "mode": "audio-melody",
+            "pipeline": {
+              "textEncoderVerified": true,
+              "audioProjectionVerified": true,
+              "initialDecoderPrefixVerified": true,
+              "featureSha256": "d49d2bd774a3e09229eb9f64456c7a1577c4cf027ab8b472798910690c961a89",
+              "textTokens": 54,
+              "chromaFrames": 47,
+              "decoderPrefixFrames": 289
+            }
+          },
+          "pipelineVerified": true,
+          "output": {
+            "bytes": 252204,
+            "sha256": "7f4a16b815f7283c2c87ce379de5ffc293c2439eef5ea3e6c7747e157326ef0f",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 126080,
+            "durationSeconds": 3.94,
+            "rms": 0.13999570835370256,
+            "peak": 0.570953369140625,
+            "clippedSampleFraction": 0,
+            "path": "./.local/musicgen-benchmark/recovery/recovery-20261121T132610Z-cd91e7/acoustic-generated.wav"
+          },
+          "chromaComparison": {
+            "method": "NumPy STFT pitch-class energy; relative-time frame cosine",
+            "meanRelativeFrameCosine": 0.49691493105202317,
+            "globalChromaCosine": 0.8955930527105849,
+            "comparedRelativeFrames": 44,
+            "notProofOfExactMelody": true,
+            "limitations": "Chroma discards octave, timbre and exact notes. Polyphonic backing and relative-time alignment affect this score; it does not establish melody fidelity or musical quality."
+          },
+          "wallSeconds": 0.172
+        },
+        {
+          "fixtureId": "pop",
+          "requestId": "bench-pop-7fc868383ddf4362",
+          "status": "succeeded",
+          "sourceKind": "original-synthetic-test-recording",
+          "originalStatus": "failed",
+          "originalError": {
+            "code": "BENCHMARK_ERROR",
+            "message": "The local service request timed out."
+          },
+          "recoveredExistingJob": true,
+          "newInferenceSubmitted": false,
+          "backendStatus": {
+            "model": "facebook/musicgen-melody",
+            "conditioning": "audio-melody",
+            "loaded": true,
+            "ready": true,
+            "status": "ready",
+            "backend": "transformers",
+            "device": "cpu",
+            "capabilities": [
+              "jobs",
+              "progress",
+              "cancel"
+            ]
+          },
+          "exactMelodyVerified": false,
+          "source": {
+            "bytes": 384044,
+            "sha256": "928a949776424bbd43afe900bbb43ab2b1835ad6931bdae319c50a505c48b78c",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 192000,
+            "durationSeconds": 6,
+            "rms": 0.14884794591193262,
+            "peak": 0.29583740234375,
+            "clippedSampleFraction": 0
+          },
+          "prompt": "Bright contemporary instrumental pop, a clear piano melody, elastic electric bass, clean syncopated drums and light supporting strings. Let the supplied melody guide the main phrase; create an energetic, balanced mix without vocals.",
+          "requestedPreviewSeconds": 4,
+          "model": "facebook/musicgen-melody",
+          "syntheticMelodyNotes": [
+            {
+              "midi": 62,
+              "start": 0.1,
+              "duration": 0.25
+            },
+            {
+              "midi": 62,
+              "start": 0.6,
+              "duration": 0.35
+            },
+            {
+              "midi": 65,
+              "start": 1.15,
+              "duration": 0.45
+            },
+            {
+              "midi": 69,
+              "start": 1.9,
+              "duration": 0.7
+            },
+            {
+              "midi": 67,
+              "start": 2.85,
+              "duration": 0.3
+            },
+            {
+              "midi": 65,
+              "start": 3.4,
+              "duration": 0.55
+            },
+            {
+              "midi": 64,
+              "start": 4.15,
+              "duration": 0.45
+            },
+            {
+              "midi": 62,
+              "start": 4.9,
+              "duration": 0.8
+            }
+          ],
+          "providerTerminalStatus": "succeeded",
+          "modelSeconds": 172.031,
+          "conditioning": {
+            "audioSha256": "928a949776424bbd43afe900bbb43ab2b1835ad6931bdae319c50a505c48b78c",
+            "inputBytes": 384044,
+            "mode": "audio-melody",
+            "pipeline": {
+              "textEncoderVerified": true,
+              "audioProjectionVerified": true,
+              "initialDecoderPrefixVerified": true,
+              "featureSha256": "f2c7500c1f58d77b4ae0ff0716c08e6b6762269b22796951dbc4cf143d2bc5a4",
+              "textTokens": 46,
+              "chromaFrames": 47,
+              "decoderPrefixFrames": 281
+            }
+          },
+          "pipelineVerified": true,
+          "output": {
+            "bytes": 252204,
+            "sha256": "662655bce8ddc7197a93523cc06110f951f3a60b00f23d9783057e566566f567",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 126080,
+            "durationSeconds": 3.94,
+            "rms": 0.13999569837343637,
+            "peak": 0.72900390625,
+            "clippedSampleFraction": 0,
+            "path": "./.local/musicgen-benchmark/recovery/recovery-20261121T132610Z-cd91e7/pop-generated.wav"
+          },
+          "chromaComparison": {
+            "method": "NumPy STFT pitch-class energy; relative-time frame cosine",
+            "meanRelativeFrameCosine": 0.3479208531067879,
+            "globalChromaCosine": 0.9360909854417037,
+            "comparedRelativeFrames": 44,
+            "notProofOfExactMelody": true,
+            "limitations": "Chroma discards octave, timbre and exact notes. Polyphonic backing and relative-time alignment affect this score; it does not establish melody fidelity or musical quality."
+          },
+          "wallSeconds": 0.094
+        },
+        {
+          "fixtureId": "orchestra",
+          "requestId": "bench-orchestra-e8af193b89eb41d2",
+          "status": "succeeded",
+          "sourceKind": "original-synthetic-test-recording",
+          "originalStatus": "failed",
+          "originalError": {
+            "code": "BENCHMARK_ERROR",
+            "message": "The local service request timed out."
+          },
+          "recoveredExistingJob": true,
+          "newInferenceSubmitted": false,
+          "backendStatus": {
+            "model": "facebook/musicgen-melody",
+            "conditioning": "audio-melody",
+            "loaded": true,
+            "ready": true,
+            "status": "ready",
+            "backend": "transformers",
+            "device": "cpu",
+            "capabilities": [
+              "jobs",
+              "progress",
+              "cancel"
+            ]
+          },
+          "exactMelodyVerified": false,
+          "source": {
+            "bytes": 384044,
+            "sha256": "f43c5371013bd6444e42e57d3547896b9855d9d090d8153d4b5348cb2315779f",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 192000,
+            "durationSeconds": 6,
+            "rms": 0.16719264232210396,
+            "peak": 0.29583740234375,
+            "clippedSampleFraction": 0
+          },
+          "prompt": "A lyrical chamber orchestra with a singing cello lead, soft violins, warm low strings and restrained timpani. Build a gentle crescendo around the supplied melody, preserve breathing space between phrases, and finish quietly. Instrumental.",
+          "requestedPreviewSeconds": 4,
+          "model": "facebook/musicgen-melody",
+          "syntheticMelodyNotes": [
+            {
+              "midi": 55,
+              "start": 0.15,
+              "duration": 0.95
+            },
+            {
+              "midi": 62,
+              "start": 1.3,
+              "duration": 0.75
+            },
+            {
+              "midi": 65,
+              "start": 2.25,
+              "duration": 0.95
+            },
+            {
+              "midi": 64,
+              "start": 3.45,
+              "duration": 0.6
+            },
+            {
+              "midi": 60,
+              "start": 4.3,
+              "duration": 1.2
+            }
+          ],
+          "providerTerminalStatus": "succeeded",
+          "modelSeconds": 150.844,
+          "conditioning": {
+            "audioSha256": "f43c5371013bd6444e42e57d3547896b9855d9d090d8153d4b5348cb2315779f",
+            "inputBytes": 384044,
+            "mode": "audio-melody",
+            "pipeline": {
+              "textEncoderVerified": true,
+              "audioProjectionVerified": true,
+              "initialDecoderPrefixVerified": true,
+              "featureSha256": "63ee0383d78b619b59fd190e39734cf8d68eb7e3b8e5fb158aaf198a414bdb6c",
+              "textTokens": 54,
+              "chromaFrames": 47,
+              "decoderPrefixFrames": 289
+            }
+          },
+          "pipelineVerified": true,
+          "output": {
+            "bytes": 252204,
+            "sha256": "8fffee61f0e3533de82393493d48d0a5a2b6abbe1a993cc750838bf51e5c960c",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 126080,
+            "durationSeconds": 3.94,
+            "rms": 0.13999574657678293,
+            "peak": 0.5286865234375,
+            "clippedSampleFraction": 0,
+            "path": "./.local/musicgen-benchmark/recovery/recovery-20261121T132610Z-cd91e7/orchestra-generated.wav"
+          },
+          "chromaComparison": {
+            "method": "NumPy STFT pitch-class energy; relative-time frame cosine",
+            "meanRelativeFrameCosine": 0.47240862319183563,
+            "globalChromaCosine": 0.87258623247597,
+            "comparedRelativeFrames": 47,
+            "notProofOfExactMelody": true,
+            "limitations": "Chroma discards octave, timbre and exact notes. Polyphonic backing and relative-time alignment affect this score; it does not establish melody fidelity or musical quality."
+          },
+          "wallSeconds": 19.078
+        },
+        {
+          "fixtureId": "edm",
+          "requestId": "bench-edm-3452b88002b3450b",
+          "status": "succeeded",
+          "sourceKind": "original-synthetic-test-recording",
+          "originalStatus": "succeeded",
+          "originalError": null,
+          "recoveredExistingJob": true,
+          "newInferenceSubmitted": false,
+          "backendStatus": {
+            "model": "facebook/musicgen-melody",
+            "conditioning": "audio-melody",
+            "loaded": true,
+            "ready": true,
+            "status": "ready",
+            "backend": "transformers",
+            "device": "cpu",
+            "capabilities": [
+              "jobs",
+              "progress",
+              "cancel"
+            ]
+          },
+          "exactMelodyVerified": false,
+          "source": {
+            "bytes": 384044,
+            "sha256": "ecee8dc83193c42db4816de46f64cf654828812142ae59c31c91d61efb97f3f5",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 192000,
+            "durationSeconds": 6,
+            "rms": 0.13266643003175155,
+            "peak": 0.29583740234375,
+            "clippedSampleFraction": 0
+          },
+          "prompt": "An original melodic electronic dance instrumental, rounded synth lead, tight four-on-the-floor kick, a restrained sub bass and bright rhythmic accents. Use the supplied melody as the main motif; keep transients clear and avoid vocals or a huge noisy wall of sound.",
+          "requestedPreviewSeconds": 4,
+          "model": "facebook/musicgen-melody",
+          "syntheticMelodyNotes": [
+            {
+              "midi": 57,
+              "start": 0.05,
+              "duration": 0.24
+            },
+            {
+              "midi": 64,
+              "start": 0.5,
+              "duration": 0.24
+            },
+            {
+              "midi": 69,
+              "start": 0.95,
+              "duration": 0.4
+            },
+            {
+              "midi": 67,
+              "start": 1.55,
+              "duration": 0.24
+            },
+            {
+              "midi": 64,
+              "start": 2,
+              "duration": 0.24
+            },
+            {
+              "midi": 60,
+              "start": 2.45,
+              "duration": 0.4
+            },
+            {
+              "midi": 64,
+              "start": 3.05,
+              "duration": 0.24
+            },
+            {
+              "midi": 67,
+              "start": 3.5,
+              "duration": 0.24
+            },
+            {
+              "midi": 69,
+              "start": 3.95,
+              "duration": 0.4
+            },
+            {
+              "midi": 72,
+              "start": 4.55,
+              "duration": 0.24
+            },
+            {
+              "midi": 69,
+              "start": 5,
+              "duration": 0.55
+            }
+          ],
+          "providerTerminalStatus": "succeeded",
+          "modelSeconds": 299.953,
+          "conditioning": {
+            "audioSha256": "ecee8dc83193c42db4816de46f64cf654828812142ae59c31c91d61efb97f3f5",
+            "inputBytes": 384044,
+            "mode": "audio-melody",
+            "pipeline": {
+              "textEncoderVerified": true,
+              "audioProjectionVerified": true,
+              "initialDecoderPrefixVerified": true,
+              "featureSha256": "fd11521df67b3199944992edf8b9e6bd4962fc6fc4c6fbd69b6c4ac33d431361",
+              "textTokens": 64,
+              "chromaFrames": 47,
+              "decoderPrefixFrames": 299
+            }
+          },
+          "pipelineVerified": true,
+          "output": {
+            "bytes": 252204,
+            "sha256": "f1083af1ee40503096c65392a1c86f47e5e5f527f66efdcb919d7432fd5c2c3c",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 126080,
+            "durationSeconds": 3.94,
+            "rms": 0.13999571998039506,
+            "peak": 0.60211181640625,
+            "clippedSampleFraction": 0,
+            "path": "./.local/musicgen-benchmark/recovery/recovery-20261121T132610Z-cd91e7/edm-generated.wav"
+          },
+          "chromaComparison": {
+            "method": "NumPy STFT pitch-class energy; relative-time frame cosine",
+            "meanRelativeFrameCosine": 0.3988741137857363,
+            "globalChromaCosine": 0.8695476505751101,
+            "comparedRelativeFrames": 39,
+            "notProofOfExactMelody": true,
+            "limitations": "Chroma discards octave, timbre and exact notes. Polyphonic backing and relative-time alignment affect this score; it does not establish melody fidelity or musical quality."
+          },
+          "wallSeconds": 19.016
+        },
+        {
+          "fixtureId": "piano",
+          "requestId": "bench-piano-9040ce6393124e8e",
+          "status": "succeeded",
+          "sourceKind": "original-synthetic-test-recording",
+          "originalStatus": "failed",
+          "originalError": {
+            "code": "BENCHMARK_ERROR",
+            "message": "The local service request timed out."
+          },
+          "recoveredExistingJob": true,
+          "newInferenceSubmitted": false,
+          "backendStatus": {
+            "model": "facebook/musicgen-melody",
+            "conditioning": "audio-melody",
+            "loaded": true,
+            "ready": true,
+            "status": "ready",
+            "backend": "transformers",
+            "device": "cpu",
+            "capabilities": [
+              "jobs",
+              "progress",
+              "cancel"
+            ]
+          },
+          "exactMelodyVerified": false,
+          "source": {
+            "bytes": 384044,
+            "sha256": "1f889f4c64ff7f29fc2b769a7f9d94f6154407feda0c216c0cb8f910d8fe562b",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 192000,
+            "durationSeconds": 6,
+            "rms": 0.1552036104680507,
+            "peak": 0.29583740234375,
+            "clippedSampleFraction": 0
+          },
+          "prompt": "An intimate solo acoustic piano instrumental, a lyrical right-hand melody guided by the supplied recording, sparse left-hand support, expressive soft dynamics and a natural room sound. Keep clear phrase endings and do not add drums or vocals.",
+          "requestedPreviewSeconds": 4,
+          "model": "facebook/musicgen-melody",
+          "syntheticMelodyNotes": [
+            {
+              "midi": 67,
+              "start": 0.1,
+              "duration": 0.65
+            },
+            {
+              "midi": 64,
+              "start": 1,
+              "duration": 0.45
+            },
+            {
+              "midi": 60,
+              "start": 1.7,
+              "duration": 0.75
+            },
+            {
+              "midi": 62,
+              "start": 2.75,
+              "duration": 0.4
+            },
+            {
+              "midi": 65,
+              "start": 3.4,
+              "duration": 0.6
+            },
+            {
+              "midi": 64,
+              "start": 4.25,
+              "duration": 0.45
+            },
+            {
+              "midi": 60,
+              "start": 4.95,
+              "duration": 0.75
+            }
+          ],
+          "providerTerminalStatus": "succeeded",
+          "modelSeconds": 286.64,
+          "conditioning": {
+            "audioSha256": "1f889f4c64ff7f29fc2b769a7f9d94f6154407feda0c216c0cb8f910d8fe562b",
+            "inputBytes": 384044,
+            "mode": "audio-melody",
+            "pipeline": {
+              "textEncoderVerified": true,
+              "audioProjectionVerified": true,
+              "initialDecoderPrefixVerified": true,
+              "featureSha256": "3512c0f4e2f498740e3bef1264c83e0b71e2ba49f42d5b824b5317d906c00136",
+              "textTokens": 61,
+              "chromaFrames": 47,
+              "decoderPrefixFrames": 296
+            }
+          },
+          "pipelineVerified": true,
+          "output": {
+            "bytes": 252204,
+            "sha256": "98db5d2d152bbfe2d9dc8e43ced8a9a4acd6bd656907170cb5329b008c9c06cf",
+            "sampleRate": 32000,
+            "channels": 1,
+            "frames": 126080,
+            "durationSeconds": 3.94,
+            "rms": 0.1399957314630404,
+            "peak": 0.65594482421875,
+            "clippedSampleFraction": 0,
+            "path": "./.local/musicgen-benchmark/recovery/recovery-20261121T132610Z-cd91e7/piano-generated.wav"
+          },
+          "chromaComparison": {
+            "method": "NumPy STFT pitch-class energy; relative-time frame cosine",
+            "meanRelativeFrameCosine": 0.3582006098826982,
+            "globalChromaCosine": 0.912017604426252,
+            "comparedRelativeFrames": 45,
+            "notProofOfExactMelody": true,
+            "limitations": "Chroma discards octave, timbre and exact notes. Polyphonic backing and relative-time alignment affect this score; it does not establish melody fidelity or musical quality."
+          },
+          "wallSeconds": 0.062
+        }
+      ],
+      "variety": {
+        "expectedFixtureCount": 5,
+        "attemptedFixtureCount": 5,
+        "successfulFixtureCount": 5,
+        "sourceHashes": {
+          "acoustic": "5d930d87c05645bc4fa6d2fd29621dd7a679706c1a3a87b4bd615e011f52fddf",
+          "pop": "928a949776424bbd43afe900bbb43ab2b1835ad6931bdae319c50a505c48b78c",
+          "orchestra": "f43c5371013bd6444e42e57d3547896b9855d9d090d8153d4b5348cb2315779f",
+          "edm": "ecee8dc83193c42db4816de46f64cf654828812142ae59c31c91d61efb97f3f5",
+          "piano": "1f889f4c64ff7f29fc2b769a7f9d94f6154407feda0c216c0cb8f910d8fe562b"
+        },
+        "outputHashes": {
+          "acoustic": "7f4a16b815f7283c2c87ce379de5ffc293c2439eef5ea3e6c7747e157326ef0f",
+          "pop": "662655bce8ddc7197a93523cc06110f951f3a60b00f23d9783057e566566f567",
+          "orchestra": "8fffee61f0e3533de82393493d48d0a5a2b6abbe1a993cc750838bf51e5c960c",
+          "edm": "f1083af1ee40503096c65392a1c86f47e5e5f527f66efdcb919d7432fd5c2c3c",
+          "piano": "98db5d2d152bbfe2d9dc8e43ced8a9a4acd6bd656907170cb5329b008c9c06cf"
+        },
+        "featureHashes": {
+          "acoustic": "d49d2bd774a3e09229eb9f64456c7a1577c4cf027ab8b472798910690c961a89",
+          "pop": "f2c7500c1f58d77b4ae0ff0716c08e6b6762269b22796951dbc4cf143d2bc5a4",
+          "orchestra": "63ee0383d78b619b59fd190e39734cf8d68eb7e3b8e5fb158aaf198a414bdb6c",
+          "edm": "fd11521df67b3199944992edf8b9e6bd4962fc6fc4c6fbd69b6c4ac33d431361",
+          "piano": "3512c0f4e2f498740e3bef1264c83e0b71e2ba49f42d5b824b5317d906c00136"
+        },
+        "uniqueSourceHashCount": 5,
+        "uniqueOutputHashCount": 5,
+        "uniqueFeatureHashCount": 5,
+        "allFiveSourcesDistinct": true,
+        "allFiveOutputsDistinct": true,
+        "allFiveConditioningFeaturesDistinct": true,
+        "notProofOfMelodyFidelity": true,
+        "interpretation": "Different source, output or feature hashes establish byte-level variety only. Pipeline checks establish which conditioning path executed; neither establishes exact notes, timing or perceptual musical quality."
+      },
+      "finishedAt": "2026-11-21T13:26:49Z",
+      "succeeded": 5,
+      "failed": 0
+    }
+  ]
+}

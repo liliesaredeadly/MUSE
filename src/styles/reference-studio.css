@@ -1,0 +1,207 @@
+/* The composition canvas follows the reference film; all lanes use real notes. */
+.ref-studio { padding:25px 4.4% 64px; background:var(--bg); color:var(--text); }
+.studio-session-line { display:flex; justify-content:space-between; gap:20px; color:var(--muted); font:9px/1.5 Consolas,monospace; letter-spacing:1px; }
+.studio-session-line > span:last-child { text-align:right; }
+.studio-session-line > span:last-child > span { margin:0 10px; }
+.composition-heading { display:flex; align-items:center; justify-content:space-between; gap:40px; padding:29px 0 28px; }
+.composition-heading h1 { font:clamp(35px,3.4vw,54px)/1.06 'Segoe UI Variable','Segoe UI',sans-serif; font-weight:400; letter-spacing:-1.8px; }
+.composition-heading h1 em { font-family:Georgia,serif; font-weight:400; letter-spacing:-1.8px; }
+.composition-project-title { display:flex; align-items:center; gap:12px; margin-top:17px; }
+.composition-project-title input { width:220px; max-width:100%; padding:3px 0; border:0; border-bottom:1px solid var(--border); border-radius:0; background:transparent; color:var(--text); font-size:12px; }
+.composition-project-title > span { color:var(--muted); font-size:11px; }
+.composition-heading-side { min-width:230px; padding-top:10px; }
+.composition-heading-side .eyebrow { font:9px Consolas,monospace; letter-spacing:1px; color:var(--muted); }
+.composition-heading-side p { margin:10px 0 18px; font-size:12px; }
+.ref-studio .button { min-height:40px; border-radius:0; font-size:12px; }
+.ref-studio .button.subtle { border-color:var(--border); background:transparent; color:var(--text); }
+.ref-studio .button.subtle:hover:not(:disabled) { border-color:var(--muted); background:var(--surface); }
+.ref-studio .button.primary { background:var(--accent); color:var(--bg); }
+
+:is(.ref-studio,.ref-hum) .reference-timeline { border:0; border-radius:0; overflow:visible; background:transparent; }
+:is(.ref-studio,.ref-hum) .reference-timeline > .panel-heading { min-height:0; padding:0 0 15px; border:0; background:transparent; }
+:is(.ref-studio,.ref-hum) .reference-timeline .panel-heading h2 { font-size:11px; font-weight:400; }
+:is(.ref-studio,.ref-hum) .reference-timeline .panel-icon { color:var(--muted); }
+:is(.ref-studio,.ref-hum) .reference-timeline .note-count { color:var(--muted); font-size:10px; }
+:is(.ref-studio,.ref-hum) .reference-timeline .key-label { padding:0; border:0; border-radius:0; background:none; color:var(--muted); font:9px Consolas,monospace; }
+:is(.ref-studio,.ref-hum) .arrangement-column-headings,:is(.ref-studio,.ref-hum) .arrangement-ruler-row,:is(.ref-studio,.ref-hum) .arrangement-track { display:grid; grid-template-columns:190px minmax(0,1fr); }
+:is(.ref-studio,.ref-hum) .arrangement-column-headings { padding:13px 0 0; border-top:1px solid var(--border); color:var(--muted); font:9px Consolas,monospace; letter-spacing:.6px; }
+:is(.ref-studio,.ref-hum) .arrangement-column-headings small { margin-left:14px; color:var(--muted); font-size:8px; }
+:is(.ref-studio,.ref-hum) .arrangement-ruler-row .timeline-ruler { height:30px; padding:8px 1px 5px; border:0; color:var(--muted); font:9px Consolas,monospace; }
+:is(.ref-studio,.ref-hum) .arrangement-track { --track-color:var(--lavender); min-height:66px; margin-bottom:8px; }
+:is(.ref-studio,.ref-hum) .track-identity { display:flex; align-items:center; gap:10px; min-width:0; padding-right:20px; }
+:is(.ref-studio,.ref-hum) .track-identity > div { min-width:0; overflow-wrap:anywhere; }
+:is(.ref-studio,.ref-hum) .track-colour { width:2px; height:30px; flex-shrink:0; background:var(--track-color); }
+:is(.ref-studio,.ref-hum) .track-identity h3 { font-size:11px; font-weight:450; }
+:is(.ref-studio,.ref-hum) .track-identity p { margin-top:3px; color:var(--muted); font:8px/1.5 Consolas,monospace; }
+:is(.ref-studio,.ref-hum) .track-event-count { margin-left:auto; color:var(--muted); font:9px Consolas,monospace; }
+:is(.ref-studio,.ref-hum) .captured-track { min-height:92px; }
+:is(.ref-studio,.ref-hum) .piano-roll,:is(.ref-studio,.ref-hum) .arrangement-lane { position:relative; min-width:0; height:66px; border:1px solid var(--border); border-radius:0; overflow:hidden; background-color:color-mix(in srgb,var(--track-color) 8%,var(--bg)); background-image:linear-gradient(to right,color-mix(in srgb,var(--muted) 16%,transparent) 1px,transparent 1px); background-size:25% 100%; }
+:is(.ref-studio,.ref-hum) .piano-roll { height:92px; background-image:linear-gradient(to right,color-mix(in srgb,var(--muted) 16%,transparent) 1px,transparent 1px),linear-gradient(to bottom,color-mix(in srgb,var(--muted) 8%,transparent) 1px,transparent 1px); background-size:25% 100%,100% 25%; }
+:is(.ref-studio,.ref-hum) .timeline-empty { min-height:180px; }
+:is(.ref-studio,.ref-hum) .timeline-empty .piano-roll { height:180px; }
+:is(.ref-studio,.ref-hum) .midi-note { height:18px; min-width:4px; padding:0 4px; border:0; border-radius:2px; background:var(--lavender); color:var(--bg); font:9px/18px Consolas,monospace; }
+:is(.ref-studio,.ref-hum) .midi-note:hover:not(:disabled),:is(.ref-studio,.ref-hum) .midi-note.selected { background:var(--text); box-shadow:0 0 0 2px var(--lavender); }
+:is(.ref-studio,.ref-hum) .midi-note:focus-visible { outline-offset:-2px; }
+:is(.ref-studio,.ref-hum) .timeline-placeholder { color:var(--muted); }
+:is(.ref-studio,.ref-hum) .timeline-placeholder p { margin:7px 0 2px; color:var(--text); font-size:13px; }
+:is(.ref-studio,.ref-hum) .timeline-placeholder span { color:var(--muted); font-size:10px; }
+:is(.ref-studio,.ref-hum) .arrangement-lane > .arrangement-event { position:absolute; min-width:2px; height:3px; padding:0; border:0; border-radius:1px; background:var(--track-color); opacity:.9; }
+:is(.ref-studio,.ref-hum) .arrangement-lane > .arrangement-chord-name { position:absolute; top:3px; height:auto; padding:0 5px; border:0; background:transparent; color:var(--track-color); font:9px Consolas,monospace; }
+:is(.ref-studio,.ref-hum) .track-chords { --track-color:var(--success); }
+:is(.ref-studio,.ref-hum) .track-bass { --track-color:var(--accent); }
+:is(.ref-studio,.ref-hum) .track-percussion { --track-color:var(--sand); }
+:is(.ref-studio,.ref-hum) .track-percussion .arrangement-event { min-width:2px; height:9px; }
+:is(.ref-studio,.ref-hum) .reference-timeline .playhead { top:0; bottom:0; border-color:var(--text); box-shadow:none; }
+:is(.ref-studio,.ref-hum) .timeline-footnote { margin-top:13px; padding:10px 0; border-top:1px solid var(--border); color:var(--muted); font-size:9px; }
+:is(.ref-studio,.ref-hum) .note-editor { flex-direction:row; flex-wrap:wrap; margin-top:12px; border:1px solid var(--border); background:var(--surface); line-height:1.7; }
+:is(.ref-studio,.ref-hum) .note-editor > span { flex:1 1 220px; min-width:0; }
+:is(.ref-studio,.ref-hum) .note-editor > div { flex-wrap:wrap; max-width:100%; gap:8px; }
+:is(.ref-studio,.ref-hum) .note-editor .button,:is(.ref-studio,.ref-hum) .note-editor .icon-button { min-height:40px; font-size:12px; }
+
+.composition-transport { display:flex; align-items:center; flex-wrap:wrap; gap:25px; min-height:92px; padding:20px 0; border-bottom:1px solid var(--border); }
+.composition-playback { display:flex; align-items:center; gap:13px; }
+.ref-studio .play-button { width:44px; height:44px; border-radius:0; background:var(--accent); color:var(--bg); }
+.transport-label,.ref-studio .transport-lead > span { display:block; margin-bottom:7px; color:var(--muted); font:10px/1.2 Consolas,monospace; letter-spacing:.6px; }
+.ref-studio .transport-time { display:block; color:var(--text); font:12px Consolas,monospace; }
+.ref-studio .transport-time > span { color:var(--muted); }
+.ref-studio .transport-stop { width:40px; height:40px; color:var(--muted); }
+.transport-value { min-width:75px; }
+.transport-value strong { font:12px/1.4 'Segoe UI',sans-serif; }
+.transport-value small { margin-left:7px; color:var(--muted); font:8px Consolas,monospace; }
+.transport-key { min-width:125px; }
+.ref-studio .transport-lead { min-width:160px; }
+.ref-studio .select-wrap select { min-height:40px; padding:9px 30px 9px 11px; border:1px solid var(--border); border-radius:0; background:transparent; color:var(--text); font-size:12px; }
+.ref-studio .select-wrap select option { background:var(--bg); }
+.ref-studio .select-wrap > svg { top:14px; color:var(--muted); }
+.ref-studio .arrangement-action,.composition-ready { margin-left:auto; }
+.composition-ready { display:flex; align-items:center; gap:6px; color:var(--muted); font:10px Consolas,monospace; letter-spacing:.6px; }
+.composition-utilities { display:flex; align-items:center; justify-content:space-between; gap:30px; padding:15px 0 30px; }
+.ref-studio .studio-limits { max-width:610px; margin:0; padding:0; color:var(--muted); font-size:12px; }
+.ref-studio .title-actions { flex-direction:row; flex-wrap:wrap; flex-shrink:0; width:auto; max-width:100%; }
+.ref-studio .title-actions .button { min-height:40px; padding:9px 13px; font-size:12px; }
+.studio-secondary-heading { display:flex; justify-content:space-between; gap:20px; padding:21px 0 15px; border-top:1px solid var(--border); }
+.studio-secondary-heading > span { color:var(--muted); font:9px Consolas,monospace; letter-spacing:1px; }
+.studio-secondary-heading p { color:var(--muted); font-size:10px; }
+.studio-secondary-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); gap:28px; align-items:start; }
+.ref-studio .studio-secondary-grid .panel { border:1px solid var(--border); border-radius:0; background:transparent; }
+.ref-studio .studio-secondary-grid .panel-heading { min-height:45px; padding:12px 16px; border-color:var(--border); background:transparent; }
+.ref-studio .studio-secondary-grid .panel-heading h2 { font-size:11px; font-weight:400; }
+.ref-studio .panel-hint { display:none; }
+.ref-studio .creative-body { padding:17px 16px; }
+.ref-studio .creative-selects { grid-template-columns:1fr 1.3fr; margin-top:20px; gap:18px; }
+.ref-studio .mood-field legend,.ref-studio .field > span { color:var(--muted); font-size:11px; }
+.ref-studio .mood-options { gap:5px; }
+.ref-studio .mood-button { flex:1 1 auto; min-width:80px; min-height:40px; padding:8px; gap:6px; border-color:var(--border); border-radius:0; background:transparent; color:var(--muted); font-size:12px; }
+.ref-studio .mood-button.selected { border-color:var(--lavender); background:color-mix(in srgb,var(--lavender) 14%,transparent); color:var(--text); }
+.ref-studio .mood-button > span,.ref-studio .mood-button.selected > span { color:var(--lavender); }
+.ref-studio .tempo-field strong,.ref-studio .tempo-field small { color:var(--text); }
+.ref-studio .layer-controls { flex-wrap:wrap; border-color:var(--border); gap:12px 17px; }
+.ref-studio .layer-controls label { color:var(--muted); font-size:12px; }
+.ref-studio .input-console { grid-template-columns:55px minmax(0,1fr); padding:17px 16px; gap:14px; }
+.ref-studio .microphone-orb { width:49px; height:49px; border-color:var(--border); border-radius:50%; background:var(--surface); color:var(--accent); box-shadow:none; }
+.ref-studio .input-identity > span { color:var(--muted); font-size:8px; }
+.ref-studio .input-display-heading h3 { font-size:14px; font-weight:400; }
+.ref-studio .input-display-heading p { font-size:12px; color:var(--muted); }
+.ref-studio .recording-timer { font-size:17px; color:var(--text); }
+.ref-studio .recording-timer small,.ref-studio .timer-fraction { color:var(--muted); }
+.ref-studio .record-controls { flex-wrap:wrap; padding:11px 16px; border-color:var(--border); background:transparent; }
+.ref-studio .record-controls .button { min-height:40px; font-size:12px; }
+.ref-studio .capture-hint,.ref-studio .capture-status,.ref-studio .waveform-labels,.ref-studio .input-mode { color:var(--muted); }
+.ref-studio .input-mode { border-color:var(--border); }
+.ref-studio .original-recording { padding:10px 16px; border-color:var(--border); }
+.ref-studio .original-recording > span { color:var(--muted); }
+.studio-producer-section { margin-top:28px; }
+.ref-studio .studio-producer-section > .producer-panel { position:static; border-radius:0; }
+
+/* Hum is an immersive capture stage, then a factual cream analysis page. */
+.ref-hum { min-height:calc(100svh - 65px); }
+.ref-hum-stage { position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,1fr) minmax(390px,.95fr); align-items:center; gap:7%; min-height:100svh; padding:145px 4.4% 65px; background:linear-gradient(90deg,color-mix(in srgb,var(--bg) 36%,transparent),color-mix(in srgb,var(--bg) 12%,transparent)),url('/assets/festival-stage.jpg') center 48%/cover no-repeat; }
+.ref-hum-stage::before { position:absolute; z-index:-1; inset:0; content:''; background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 19%,transparent),transparent 35%,color-mix(in srgb,var(--bg) 28%,transparent)); }
+.hum-stage-copy { align-self:stretch; display:flex; flex-direction:column; justify-content:center; min-width:0; color:var(--text); }
+.hum-stage-copy .eyebrow { color:var(--text); font:9px Consolas,monospace; letter-spacing:1px; }
+.hum-stage-copy h1 { margin:24px 0 28px; font:clamp(49px,6vw,88px)/1.04 'Segoe UI Variable','Segoe UI',sans-serif; font-weight:350; letter-spacing:-3.1px; }
+.hum-stage-copy h1 em { font-family:Georgia,serif; font-weight:400; }
+.hum-stage-copy > p { font-size:13px; line-height:1.9; }
+.hum-stage-footnote { margin-top:auto; padding-top:55px; color:var(--text); font:8px Consolas,monospace; letter-spacing:1px; }
+.hum-stage-recorder { color-scheme:light; padding:24px 26px 18px; background:var(--text); color:var(--bg); }
+.ref-hum .hum-stage-recorder .recorder-panel { border:0; border-radius:0; background:transparent; color:var(--bg); overflow:visible; }
+.ref-hum .hum-stage-recorder .panel-heading { gap:7px; min-height:0; padding:0 0 15px; border-color:color-mix(in srgb,var(--bg) 20%,transparent); background:transparent; }
+.ref-hum .hum-stage-recorder .panel-heading h2 { font:8px Consolas,monospace; text-transform:uppercase; letter-spacing:1px; }
+.ref-hum .hum-stage-recorder .panel-icon,.ref-hum .hum-stage-recorder .input-mode { display:none; }
+.ref-hum .hum-stage-recorder .capture-status { color:var(--bg); font:8px Consolas,monospace; }
+.ref-hum .hum-stage-recorder .capture-dot { background:var(--muted); }
+.ref-hum .hum-stage-recorder .capture-status.is-live .capture-dot { background:var(--accent); }
+.ref-hum .hum-stage-recorder .input-console { display:flex; flex-direction:column-reverse; padding:20px 0 10px; gap:23px; }
+.ref-hum .hum-stage-recorder .input-display { width:100%; }
+.ref-hum .hum-stage-recorder .input-display-heading { display:block; }
+.ref-hum .hum-stage-recorder .input-display-heading h3 { font-size:20px; font-weight:400; line-height:1.4; }
+.ref-hum .hum-stage-recorder .input-display-heading p { max-width:none; margin:7px 0 14px; font-size:12px; color:color-mix(in srgb,var(--bg) 78%,transparent); }
+.ref-hum .hum-stage-recorder .recording-timer { margin:13px 0; text-align:center; color:var(--bg); font:12px Consolas,monospace; letter-spacing:0; }
+.ref-hum .hum-stage-recorder .recording-timer small { display:inline; margin:0; color:color-mix(in srgb,var(--bg) 70%,transparent); font-size:10px; }
+.ref-hum .hum-stage-recorder .timer-fraction { color:var(--bg); font-size:10px; }
+.ref-hum .hum-stage-recorder .waveform-wrap { padding:4px 10px; border:0; border-radius:0; background:color-mix(in srgb,var(--bg) 6%,var(--text)); }
+.ref-hum .hum-stage-recorder .waveform { height:88px; }
+.ref-hum .hum-stage-recorder .waveform-labels { gap:10px; padding:3px 0 7px; color:color-mix(in srgb,var(--bg) 75%,transparent); font-size:7px; }
+.ref-hum .hum-stage-recorder .detected-pitch { color:var(--bg); font-size:8px; }
+.ref-hum .hum-stage-recorder .microphone-orb { width:59px; height:59px; border:0; border-radius:50%; background:var(--accent); color:var(--text); box-shadow:none; }
+.ref-hum .hum-stage-recorder .input-identity > span { margin-top:9px; color:var(--bg); font:8px Consolas,monospace; }
+.ref-hum .hum-stage-recorder .record-controls { justify-content:center; flex-direction:column; padding:9px 0 13px; border:0; background:transparent; gap:13px; }
+.ref-hum .hum-stage-recorder .record-actions { justify-content:center; }
+.ref-hum .hum-stage-recorder .button { min-height:40px; border-radius:0; font-size:12px; }
+.ref-hum .hum-stage-recorder .button.primary { background:transparent; color:var(--bg); border-color:color-mix(in srgb,var(--bg) 25%,transparent); }
+.ref-hum .hum-stage-recorder .button.subtle { background:transparent; color:var(--bg); border-color:color-mix(in srgb,var(--bg) 25%,transparent); }
+.ref-hum .hum-stage-recorder .recording-stop { color:var(--bg); border-color:var(--accent); background:color-mix(in srgb,var(--accent) 20%,var(--text)); }
+.ref-hum .hum-stage-recorder .capture-hint { color:color-mix(in srgb,var(--bg) 75%,transparent); font-size:8px; }
+.hum-stage-caption { margin-top:14px; padding-top:14px; border-top:1px solid color-mix(in srgb,var(--bg) 15%,transparent); text-align:center; color:color-mix(in srgb,var(--bg) 72%,transparent); font:10px Georgia,serif; }
+.ref-hum-analysis { display:grid; grid-template-columns:.8fr 1fr; gap:9%; min-height:calc(100svh - 90px); padding:65px 6% 70px; background:var(--text); color:var(--bg); color-scheme:light; }
+.hum-analysis-intro .eyebrow { color:color-mix(in srgb,var(--bg) 65%,transparent); font:9px Consolas,monospace; }
+.hum-analysis-intro h1 { margin:38px 0 27px; font:clamp(40px,4.2vw,65px)/1.06 'Segoe UI Variable','Segoe UI',sans-serif; font-weight:400; letter-spacing:-2.2px; }
+.hum-analysis-intro h1 em { font-family:Georgia,serif; }
+.hum-analysis-intro > p { font-size:12px; line-height:1.9; color:color-mix(in srgb,var(--bg) 75%,transparent); }
+.hum-analysis-intro .text-button { margin-top:30px; color:var(--bg); font-size:11px; }
+.hum-analysis-result { align-self:center; min-width:0; }
+.ref-hum-analysis .direction-melody-preview { margin:0 0 25px; color:color-mix(in srgb,var(--bg) 64%,var(--text)); }
+.ref-hum-analysis .direction-melody-preview svg { display:block; width:100%; height:90px; color:inherit; fill:currentColor; }
+.ref-hum-analysis .direction-melody-preview > div { display:flex; justify-content:space-between; gap:15px; margin-top:6px; color:color-mix(in srgb,var(--bg) 72%,transparent); font:8px Consolas,monospace; }
+.ref-hum-analysis .reference-timeline { --border:color-mix(in srgb,var(--bg) 20%,transparent); --muted:color-mix(in srgb,var(--bg) 75%,transparent); --text:var(--bg); }
+.ref-hum-analysis .reference-timeline .arrangement-column-headings,.ref-hum-analysis .reference-timeline .arrangement-ruler-row,.ref-hum-analysis .reference-timeline .arrangement-track { grid-template-columns:115px minmax(0,1fr); }
+.ref-hum-analysis .reference-timeline .key-label { display:none; }
+.ref-hum-analysis .reference-timeline .piano-roll { background-color:color-mix(in srgb,var(--lavender) 17%,transparent); }
+.ref-hum-analysis .reference-timeline .midi-note:hover:not(:disabled),.ref-hum-analysis .reference-timeline .midi-note.selected { color:var(--paper); }
+.ref-hum-analysis .reference-timeline .track-identity { padding-right:10px; gap:7px; }
+.ref-hum-analysis .reference-timeline .track-identity h3 { font-size:10px; }
+.ref-hum-analysis .reference-timeline .track-identity p { font-size:8px; }
+.ref-hum-analysis .reference-timeline .track-event-count { display:none; }
+.ref-hum-analysis .reference-timeline .note-editor { background:color-mix(in srgb,var(--lavender) 22%,transparent); }
+.ref-hum-analysis .reference-timeline .note-editor .button,.ref-hum-analysis .reference-timeline .note-editor .icon-button { border-radius:0; background:transparent; color:var(--bg); border-color:color-mix(in srgb,var(--bg) 30%,transparent); }
+.hum-real-analysis { margin:22px 0; }
+.hum-real-analysis > div { display:flex; justify-content:space-between; gap:20px; padding:17px 0; border-bottom:1px solid color-mix(in srgb,var(--bg) 16%,transparent); }
+.hum-real-analysis dt { display:flex; align-items:center; gap:11px; font-size:12px; }
+.hum-real-analysis dt svg { color:color-mix(in srgb,var(--bg) 55%,transparent); }
+.hum-real-analysis dd { margin:0; font:10px/1.6 Consolas,monospace; }
+.ref-hum-analysis .original-recording { padding:12px 0; border-color:color-mix(in srgb,var(--bg) 20%,transparent); }
+.ref-hum-analysis .original-recording > span { color:var(--bg); }
+.hum-analysis-actions { display:flex; flex-wrap:wrap; align-items:center; gap:20px; margin-top:25px; }
+.hum-analysis-actions .button { min-height:44px; border-radius:0; background:var(--bg); color:var(--text); }
+.hum-analysis-actions .text-button { color:var(--bg); font-size:11px; }
+.hum-analysis-note { margin-top:18px; color:color-mix(in srgb,var(--bg) 75%,transparent); font-size:10px; }
+
+@media (min-width:1500px) { .ref-studio { padding-top:35px; } .composition-heading { padding-top:40px; padding-bottom:40px; } .ref-hum-stage { gap:12%; } }
+@media (max-width:1100px) { .composition-transport { gap:19px; } .transport-key { min-width:100px; } .ref-studio .transport-lead { min-width:135px; } .studio-secondary-grid { gap:20px; } .ref-hum-stage { grid-template-columns:1fr 1.05fr; gap:5%; } .hum-stage-recorder { padding:22px; } .hum-stage-copy h1 { font-size:68px; } .ref-hum-analysis { gap:6%; grid-template-columns:.75fr 1fr; } }
+@media (max-width:850px) { .studio-secondary-grid { grid-template-columns:1fr; } .ref-studio .creative-selects { grid-template-columns:1fr 1fr; } .composition-heading-side { min-width:190px; } .composition-heading h1 { font-size:42px; } .composition-utilities { align-items:flex-start; gap:20px; } .composition-transport { column-gap:25px; row-gap:20px; } .composition-ready { margin-left:0; } .ref-hum-stage { grid-template-columns:1fr 1.2fr; gap:5%; } .hum-stage-copy h1 { font-size:54px; letter-spacing:-2.5px; } .hum-stage-copy .eyebrow { max-width:190px; line-height:1.7; } .ref-hum-analysis { grid-template-columns:1fr; gap:35px; padding-top:50px; } .hum-analysis-intro h1 { margin:20px 0; } .hum-analysis-intro > p br { display:none; } .hum-analysis-intro .text-button { margin-top:15px; } }
+@media (max-width:650px) { .ref-studio { padding:21px 5% 40px; } .studio-session-line { font-size:8px; gap:12px; } .composition-heading { align-items:flex-start; gap:25px; padding:27px 0; } .composition-heading h1 { font-size:38px; } .composition-heading-side { min-width:0; max-width:160px; padding-top:5px; } .composition-heading-side p { font-size:10px; } .composition-heading-side .button { flex-wrap:wrap; padding:8px; font-size:10px; } .composition-project-title { align-items:flex-start; flex-direction:column; gap:6px; } .composition-project-title input { width:180px; } :is(.ref-studio,.ref-hum) .arrangement-column-headings,:is(.ref-studio,.ref-hum) .arrangement-ruler-row,:is(.ref-studio,.ref-hum) .arrangement-track { grid-template-columns:118px minmax(0,1fr); } :is(.ref-studio,.ref-hum) .track-identity { gap:7px; padding-right:10px; } :is(.ref-studio,.ref-hum) .track-identity h3 { font-size:10px; } :is(.ref-studio,.ref-hum) .track-identity p { font-size:7px; } :is(.ref-studio,.ref-hum) .track-event-count { display:none; } :is(.ref-studio,.ref-hum) .reference-timeline .key-label { display:none; } .composition-transport { gap:20px; justify-content:space-between; } .composition-playback { gap:9px; } .transport-value { min-width:55px; } .transport-key { min-width:85px; } .ref-studio .transport-lead { flex:1; min-width:140px; } .ref-studio .arrangement-action { margin-left:0; } .composition-utilities { flex-direction:column; padding-bottom:25px; } .ref-studio .title-actions { justify-content:flex-start; } .studio-secondary-heading p { max-width:180px; text-align:right; } .ref-hum-stage { grid-template-columns:1fr; gap:32px; padding:115px 6% 45px; background-position:60% center; } .hum-stage-copy h1 { margin:20px 0; font-size:57px; } .hum-stage-copy h1 br:nth-of-type(2) { display:none; } .hum-stage-copy > p { font-size:12px; } .hum-stage-footnote { display:none; } .hum-stage-recorder { width:100%; max-width:550px; padding:23px; } .ref-hum .hum-stage-recorder .input-console { gap:17px; } .ref-hum .hum-stage-recorder .waveform { height:74px; } .ref-hum-analysis { padding:40px 6% 45px; } .hum-analysis-intro h1 { font-size:48px; } .hum-real-analysis > div { padding:15px 0; } }
+@media (max-width:420px) { .composition-heading { flex-direction:column; gap:20px; } .composition-heading h1 { font-size:42px; } .composition-heading-side { max-width:none; width:100%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; } .composition-heading-side .eyebrow { display:none; } .composition-heading-side p { margin:0; max-width:150px; } .composition-heading-side .button { min-height:38px; } .composition-project-title { flex-direction:row; align-items:center; gap:10px; } .composition-project-title input { width:180px; } :is(.ref-studio,.ref-hum) .arrangement-column-headings,:is(.ref-studio,.ref-hum) .arrangement-ruler-row,:is(.ref-studio,.ref-hum) .arrangement-track { grid-template-columns:94px minmax(0,1fr); } :is(.ref-studio,.ref-hum) .track-identity h3 { font-size:9px; } :is(.ref-studio,.ref-hum) .track-identity p { font-size:7px; } :is(.ref-studio,.ref-hum) .timeline-placeholder { padding:10px; } :is(.ref-studio,.ref-hum) .timeline-placeholder p { font-size:11px; } :is(.ref-studio,.ref-hum) .timeline-placeholder span { font-size:9px; } :is(.ref-studio,.ref-hum) .timeline-footnote { align-items:flex-start; font-size:8px; } .composition-transport { gap:17px; } .transport-key { max-width:110px; } .transport-value strong { font-size:11px; } .ref-studio .creative-selects { grid-template-columns:1fr 1fr; } .ref-studio .tempo-field { grid-column:auto; } .ref-studio .layer-controls { flex-wrap:wrap; } .ref-studio .input-console { grid-template-columns:45px minmax(0,1fr); gap:10px; } .ref-studio .microphone-orb { width:42px; height:42px; } .ref-studio .input-display-heading { flex-wrap:wrap; } .ref-studio .recording-timer { margin-left:auto; } .hum-stage-copy h1 { font-size:50px; } .hum-stage-recorder { padding:20px; } .ref-hum .hum-stage-recorder .input-display-heading h3 { font-size:18px; } .hum-analysis-intro h1 { font-size:43px; } .hum-analysis-actions { gap:15px; } }
+@media (prefers-reduced-motion:reduce) { :is(.ref-studio,.ref-hum) .midi-note,:is(.ref-studio,.ref-hum) .playhead { transition:none; } :is(.ref-studio,.ref-hum) .microphone-orb { animation:none; } }
+@media (max-width:650px) {
+  .ref-studio .composition-heading-side .button { min-height:40px; font-size:12px; }
+  .ref-studio .composition-heading-side p { font-size:12px; }
+  :is(.ref-studio,.ref-hum) .reference-timeline .track-identity h3 { font-size:11px; }
+  :is(.ref-studio,.ref-hum) .reference-timeline .track-identity p { font-size:9px; }
+}
+@media (pointer:coarse) {
+  .ref-studio .button,.ref-studio .mood-button,.ref-studio .select-wrap select,.ref-hum .hum-stage-recorder .button,:is(.ref-studio,.ref-hum) .note-editor .button,:is(.ref-studio,.ref-hum) .note-editor .icon-button { min-height:44px; }
+  .ref-studio .transport-stop { width:44px; height:44px; }
+  .ref-studio .select-wrap > svg { top:16px; }
+  .ref-studio .layer-controls label,.ref-hum-analysis .text-button { min-height:44px; }
+  :is(.ref-studio,.ref-hum) .note-editor .icon-button { min-width:44px; }
+}

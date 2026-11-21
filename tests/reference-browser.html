@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MUSE — Reference browser checks</title>
+    <style>
+      body { margin:24px; font:15px/1.6 Arial,sans-serif; background:#111; color:#eee; }
+      #results { white-space:pre-wrap; overflow-wrap:anywhere; }
+      #reference-harness { max-width:650px; margin-top:28px; }
+      #run { padding:12px 20px; cursor:pointer; }
+    </style>
+  </head>
+  <body>
+    <h1>Reference browser checks</h1>
+    <p>Developer-only synthetic fixtures. No reference audio or real recordings are loaded.</p>
+    <button id="run" type="button">Run reference checks</button>
+    <pre id="results" role="status"></pre>
+    <div id="reference-harness"></div>
+    <script type="module" src="/tests/reference-browser-tests.jsx"></script>
+  </body>
+</html>

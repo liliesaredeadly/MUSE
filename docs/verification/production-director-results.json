@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-21",
+  "feature": "AI Production Director and independent backing layers",
+  "verification": {
+    "node": { "command": "npm test", "passed": 376, "failed": 0 },
+    "browserIntegration": { "page": "/tests/browser.html", "passed": 31, "failed": 0 },
+    "directorInteraction": { "page": "/tests/director-browser.html", "passed": 5, "failed": 0 },
+    "nativeAudio": { "page": "/tests/director-audio-browser.html", "passed": 5, "failed": 0, "syntheticFixturesOnly": true },
+    "productionBuild": { "command": "npm run build", "passed": true },
+    "smoke": { "command": "npm run smoke", "passed": true },
+    "uiStaticAudit": { "mode": "strict", "errors": 0, "warnings": 0 },
+    "narrowViewport": { "width": 390, "height": 844, "documentWidth": 380, "horizontalOverflow": false, "directorInputsPresent": 25 }
+  },
+  "nativeAudioEvidence": {
+    "distinctInstrumentVoices": ["Piano", "Acoustic Guitar", "Violin", "Cello"],
+    "minimumNormalizedPcmDifferenceRms": 0.326585,
+    "guitarGainRms": { "0": 0, "0.2": 0.000311, "0.8": 0.001262 },
+    "sevenLayerMix": { "peak": 0.312897, "rms": 0.034074, "clippedSamples": 0, "endingStartsAtSeconds": 3 },
+    "originalWaveformFixtures": [
+      { "sourceRate": 44100, "sourceDuration": 4, "zeroLagCorrelation": 1, "maxLeadPcmDifference": 0, "playbackRate": 1, "clippedMixSamples": 0 },
+      { "sourceRate": 16000, "sourceDuration": 4, "zeroLagCorrelation": 1, "maxLeadPcmDifference": 0, "playbackRate": 1, "clippedMixSamples": 0 }
+    ]
+  },
+  "actualUserTakeUi": {
+    "originalDurationSeconds": 7.62,
+    "reliablePitchCoverageDisplayedPercent": 27,
+    "originalLeadSelected": true,
+    "backingBpm": 114,
+    "blueprintApplied": true,
+    "compositionReady": true,
+    "pitchedLayersBlockedWithExplanation": true,
+    "audioPublished": false
+  },
+  "reviewCorrections": [
+    "First-time HUM direction opens the editable Director before any blueprint exists.",
+    "Scoped AI refinements reject unrelated global, instrument and target-property changes.",
+    "Trailing drum-off and negated-removal instructions retain their requested meaning.",
+    "Soft piano does not reduce adjacent guitar gain; light drums changes drum gain.",
+    "Final-section strings and selected production styles affect actual backing events."
+  ],
+  "limitations": [
+    "Pitch detection and MIDI are estimates; universal humming, singing and whistling transcription is not established.",
+    "The user's current sparse pitch evidence cannot authorize guessed harmonic backing; the original waveform remains the lead.",
+    "Instrument sounds are Web Audio synth approximations, not sampled acoustic instruments or commercial mastering.",
+    "OpenAI planning is optional and currently the UI reports a local planner. Live provider inference was not tested.",
+    "The existing MusicGen Melody reference-audio adapter remains a separate optional preview. Real neural inference was not run.",
+    "Native waveform fixtures establish render preservation, not the accuracy of unannotated human transcription.",
+    "Original audio remains session-only; saved projects retain the blueprint and notes but require source reattachment."
+  ]
+}

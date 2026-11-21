@@ -1,6 +1,32 @@
 const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 const MIN_FREQUENCY = 65;
 const MAX_FREQUENCY = 1400;
+const MIN_RMS = 0.001;
+
+function conditionFrame(samples, sampleRate, mean) {
+  // Broadband breath and device noise can dominate YIN's squared difference.
+  // A Butterworth low-pass preserves the supported fundamentals while reducing
+  // that noise; the periodicity threshold still decides whether a note exists.
+  const angle = 2 * Math.PI * Math.min(MAX_FREQUENCY * 1.5, sampleRate * 0.45) / sampleRate;
+  const cosine = Math.cos(angle);
+  const alpha = Math.sin(angle) / Math.SQRT2;
+  const denominator = 1 + alpha;
+  const b0 = (1 - cosine) / (2 * denominator);
+  const b1 = 2 * b0;
+  const a1 = -2 * cosine / denominator;
+  const a2 = (1 - alpha) / denominator;
+  const conditioned = new Float64Array(samples.length);
+  let z1 = 0;
+  let z2 = 0;
+  for (let i = 0; i < samples.length; i++) {
+    const input = samples[i] - mean;
+    const output = b0 * input + z1;
+    z1 = b1 * input - a1 * output + z2;
+    z2 = b0 * input - a2 * output;
+    conditioned[i] = output;
+  }
+  return conditioned;
+}
 
 export function midiToFrequency(midi) {
   return Number.isFinite(midi) ? 440 * 2 ** ((midi - 69) / 12) : NaN;
@@ -15,8 +41,9 @@ export function frequencyToNote(frequency) {
 
 /**
  * Monophonic YIN pitch estimate for a raw time-domain frame, usually 4096 samples.
- * Confidence is periodicity (1 - normalized difference), not a calibrated chance
- * that a musical note is correct. No result means insufficient usable evidence.
+ * Confidence is periodicity after noise conditioning (1 - normalized difference),
+ * not a calibrated chance that a note is correct. No result means insufficient
+ * usable evidence.
  */
 export function detectPitch(samples, sampleRate) {
   if (!samples || samples.length < 256 || !Number.isFinite(sampleRate) || sampleRate <= 0) return null;
@@ -31,7 +58,8 @@ export function detectPitch(samples, sampleRate) {
   mean /= samples.length;
   let energy = 0;
   for (let i = 0; i < samples.length; i++) energy += (samples[i] - mean) ** 2;
-  if (Math.sqrt(energy / samples.length) < 0.008) return null;
+  if (Math.sqrt(energy / samples.length) < MIN_RMS) return null;
+  samples = conditionFrame(samples, sampleRate, mean);
 
   const windowSize = Math.min(2048, samples.length - maxLag - 1);
   const difference = new Float64Array(maxLag + 1);

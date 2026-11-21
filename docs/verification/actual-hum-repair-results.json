@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-21",
+  "userConfirmed": { "originalTakeSoundsRight": true, "requestedOutput": "Preserve the actual hum as the lead, with music around it" },
+  "diagnosis": {
+    "actualOriginalDurationSeconds": 7.62,
+    "openProjectGuessedNotes": 5,
+    "currentOfflineGuessedNotes": 19,
+    "currentNormalizedVoicedCoverage": 0.26640419947506583,
+    "problem": "Synthetic-note preservation only copied a sparse, unreliable transcription. Much of the human melody was absent before arrangement. Piano decay could further bury reconstructed notes under backing.",
+    "noClaimOfHumanTranscriptionRepair": true
+  },
+  "repair": [
+    "New recordings/imports select an explicit Original hum lead, using the actual received normalized WAV at playback rate 1 and its entire source duration.",
+    "Playback and WAV export independently verify source hash, size and clock; no synthesized melody doubles or replaces the waveform.",
+    "Only a bounded constant gain, native resampling and at most 3 ms outside-edge fades affect the original waveform.",
+    "Limited transcription disables guessed chords and bass; requested unpitched rhythm develops around the actual voice.",
+    "Persistent transcription-quality feedback survives generation and style changes.",
+    "Producer instrument suggestions preserve the original voice; the explicit lead selector or note editing can select instrumental reconstruction.",
+    "Imports are staged before committing. Invalid/overlong imports retain the previous usable take.",
+    "Silent recordings do not enable composition as a substitute for a missing melody.",
+    "Missing original WAVs fail clearly; saved project settings never silently fall back to guessed instrumental notes."
+  ],
+  "actualTakeNativeAudioVerification": {
+    "passed": 4,
+    "failed": 0,
+    "actualLocalWavReceiptHashVerified": true,
+    "sourceClockSeconds": 7.62,
+    "normalizedSourceSampleRate": 16000,
+    "sourceChannels": "strongest captured channel normalized to mono",
+    "outputSampleRate": 44100,
+    "sourceComparison": "Independent native buffer-source resampling, zero-lag waveform comparison after fitted constant gain; exclude outer 10 ms to cover the short boundary fades",
+    "styles": [
+      { "style": "dance-pop", "zeroLagWaveformCorrelationRounded": 1, "constantGainIncludingMaster": 1.473036, "residualRms": 0.000016, "leadRms": 0.024273, "backingRms": 0.010674, "leadToBackingRmsRatio": 2.273956, "fullMixPeak": 0.480331, "clippedSamples": 0, "fullOriginalDurationPreserved": true, "synthesizedLeadPresent": false },
+      { "style": "percussive-pop", "zeroLagWaveformCorrelationRounded": 1, "constantGainIncludingMaster": 1.473036, "residualRms": 0.000016, "leadRms": 0.024273, "backingRms": 0.007376, "leadToBackingRmsRatio": 3.290678, "fullMixPeak": 0.480331, "clippedSamples": 0, "fullOriginalDurationPreserved": true, "synthesizedLeadPresent": false }
+    ],
+    "missingWaveformRejectedWithoutSubstitution": true
+  },
+  "regressionVerification": {
+    "node": { "passed": 337, "failed": 0, "skipped": 0 },
+    "python": { "passed": 8, "failed": 0 },
+    "studioBrowser": { "passed": 31, "failed": 0 },
+    "actualTakeBrowser": { "passed": 4, "failed": 0 },
+    "build": "passed: 1601 modules",
+    "productionSmoke": "passed: SQLite, producer status, built assets, SPA routing, source containment, project read API"
+  },
+  "limits": [
+    "This implements the user's chosen recorded-voice lead; it does not establish accurate instrumental transcription of this take.",
+    "The protected waveform is the normalized mono PCM received by Muse, not a byte-identical copy of the original stereo WebM container.",
+    "Waveform matching and clipping/foreground metrics are objective checks, not a human subjective listening verdict.",
+    "Original source audio remains session-only. Reopened projects require the original file; exported WAV contains the voice and backing.",
+    "No private audio is included in this report or committed to source, and no audio was sent to an external provider.",
+    "Real MusicGen inference and universally accurate human pitch transcription remain unverified."
+  ]
+}

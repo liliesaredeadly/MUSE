@@ -1,0 +1,317 @@
+{
+  "date": "2026-11-19",
+  "isolatedBrowser": true,
+  "checks": [
+    {
+      "label": "studio",
+      "viewportWidth": 390,
+      "title": "QA — Nocturne — MUSE Studio",
+      "width": 390,
+      "scrollWidth": 380,
+      "passed": true
+    },
+    {
+      "label": "projects",
+      "viewportWidth": 390,
+      "title": "MUSE — My projects",
+      "width": 390,
+      "scrollWidth": 380,
+      "passed": true
+    },
+    {
+      "label": "hum-analysis",
+      "viewportWidth": 390,
+      "title": "MUSE — Hum a melody",
+      "width": 390,
+      "scrollWidth": 380,
+      "passed": true
+    },
+    {
+      "label": "direction",
+      "viewportWidth": 390,
+      "title": "MUSE — Give your sound a feeling",
+      "width": 390,
+      "scrollWidth": 380,
+      "passed": true
+    },
+    {
+      "label": "studio",
+      "viewportWidth": 320,
+      "title": "QA — Nocturne — MUSE Studio",
+      "width": 320,
+      "scrollWidth": 310,
+      "passed": true
+    },
+    {
+      "label": "projects",
+      "viewportWidth": 320,
+      "title": "MUSE — My projects",
+      "width": 320,
+      "scrollWidth": 310,
+      "passed": true
+    },
+    {
+      "label": "hum-analysis",
+      "viewportWidth": 320,
+      "title": "MUSE — Hum a melody",
+      "width": 320,
+      "scrollWidth": 310,
+      "passed": true
+    },
+    {
+      "label": "direction",
+      "viewportWidth": 320,
+      "title": "MUSE — Give your sound a feeling",
+      "width": 320,
+      "scrollWidth": 310,
+      "passed": true
+    },
+    {
+      "label": "projects-empty",
+      "viewportWidth": 390,
+      "title": "MUSE — My projects",
+      "width": 390,
+      "scrollWidth": 380,
+      "passed": true
+    },
+    {
+      "label": "projects-empty",
+      "viewportWidth": 320,
+      "title": "MUSE — My projects",
+      "width": 320,
+      "scrollWidth": 310,
+      "passed": true
+    }
+  ],
+  "protectedPages": [
+    {
+      "page": "home",
+      "width": 1440,
+      "pixelIdentical": true,
+      "stylesheetsToggled": 3,
+      "method": "same page, Atelier styles disabled then enabled"
+    },
+    {
+      "page": "discover",
+      "width": 1440,
+      "pixelIdentical": true,
+      "stylesheetsToggled": 3,
+      "method": "same page, Atelier styles disabled then enabled"
+    },
+    {
+      "page": "home",
+      "width": 390,
+      "pixelIdentical": true,
+      "stylesheetsToggled": 3,
+      "method": "same page, Atelier styles disabled then enabled"
+    },
+    {
+      "page": "discover",
+      "width": 390,
+      "pixelIdentical": true,
+      "stylesheetsToggled": 3,
+      "method": "same page, Atelier styles disabled then enabled"
+    },
+    {
+      "page": "home",
+      "width": 320,
+      "pixelIdentical": true,
+      "stylesheetsToggled": 3,
+      "method": "same page, Atelier styles disabled then enabled"
+    },
+    {
+      "page": "discover",
+      "width": 320,
+      "pixelIdentical": true,
+      "stylesheetsToggled": 3,
+      "method": "same page, Atelier styles disabled then enabled"
+    }
+  ],
+  "consoleErrors": [],
+  "guideFocusRestored": true,
+  "browserChecks": {
+    "status": "passed",
+    "passed": 25,
+    "failed": 0,
+    "total": 25,
+    "syntheticQaFixtures": true,
+    "results": [
+      {
+        "id": "zero-note-capture-feedback",
+        "title": "A zero-note take keeps its audio, microphone identity and useful feedback",
+        "status": "passed",
+        "milliseconds": 1144,
+        "detail": "The real recorder keeps its audio and microphone identity, explains zero-note results persistently, and offers an original download."
+      },
+      {
+        "id": "note-boundary-controls",
+        "title": "Pitch edit buttons respect MIDI limits and expose selection",
+        "status": "passed",
+        "milliseconds": 234,
+        "detail": "Boundary actions are unavailable and selected note state is exposed to assistive technology."
+      },
+      {
+        "id": "note-edit-full-midi-range",
+        "title": "Valid low and high pitches edit by exactly one semitone",
+        "status": "passed",
+        "milliseconds": 140,
+        "detail": "MIDI 0→1 and 127→126 remain exact semitone edits; an unavailable edit has no side effects."
+      },
+      {
+        "id": "note-remove-restores-focus",
+        "title": "Removing a note keeps keyboard focus in the melody editor",
+        "status": "passed",
+        "milliseconds": 449,
+        "detail": "Deletion focuses the next note, the previous note, or the empty melody area as appropriate."
+      },
+      {
+        "id": "drums-layer-control",
+        "title": "Drums shows its included percussion and restores the independent toggle for other leads",
+        "status": "passed",
+        "milliseconds": 191,
+        "detail": "Drums visibly includes its rhythm; switching lead restores the separately editable percussion preference."
+      },
+      {
+        "id": "save-survives-library-failure",
+        "title": "A persisted project stays saved when the library cannot refresh",
+        "status": "passed",
+        "milliseconds": 121,
+        "detail": "A successful POST is authoritative; a later list outage cannot undo its saved state or hide its library entry."
+      },
+      {
+        "id": "reopen-current-keeps-edits",
+        "title": "Reopening the current library project preserves its latest edits",
+        "status": "passed",
+        "milliseconds": 114,
+        "detail": "The same-project gallery snapshot cannot replace the title or edited pitches saved during reopen."
+      },
+      {
+        "id": "empty-project-can-save",
+        "title": "Removing every note still permits an explicit save",
+        "status": "passed",
+        "milliseconds": 175,
+        "detail": "The real Save control persists an intentionally empty melody and clears its dirty state."
+      },
+      {
+        "id": "empty-project-navigation-saves",
+        "title": "New and Open preserve edits after the final note is removed",
+        "status": "passed",
+        "milliseconds": 215,
+        "detail": "Both New and Open save a dirty empty project before switching, preserving deleted notes and title edits."
+      },
+      {
+        "id": "real-wav-signal",
+        "title": "Real OfflineAudioContext renders nonzero PCM WAV",
+        "status": "passed",
+        "milliseconds": 171,
+        "detail": "Actual PCM: 3.000s, RMS 0.02288, peak 0.17981."
+      },
+      {
+        "id": "real-instrument-tempo",
+        "title": "Instrument and BPM controls change the rendered audio",
+        "status": "passed",
+        "milliseconds": 484,
+        "detail": "199550 samples differ between Piano and Strings. Tempo: 3.000s → 2.300s including the same effects tail."
+      },
+      {
+        "id": "real-synthetic-capture",
+        "title": "Real microphone recorder recognizes an isolated synthetic C–E–G fixture",
+        "status": "passed",
+        "milliseconds": 2880,
+        "detail": "Synthetic QA input only: C4 @ 0.17s / 0.64s, E4 @ 1.02s / 0.64s, G4 @ 1.88s / 0.64s. Original recording: 38005 bytes. Input tracks released."
+      },
+      {
+        "id": "permission-preserves-melody",
+        "title": "A refused re-record keeps the existing melody",
+        "status": "passed",
+        "milliseconds": 88,
+        "detail": "Existing pitches, timing and confidence survived the simulated permission refusal."
+      },
+      {
+        "id": "cancelled-permission-isolated",
+        "title": "Cancelled microphone requests cannot affect a subsequent recording",
+        "status": "passed",
+        "milliseconds": 2326,
+        "detail": "rejected: prior melody preserved on Cancel, later A4 captured, input resources released. late stream: prior melody preserved on Cancel, later A4 captured, input resources released"
+      },
+      {
+        "id": "save-keeps-new-edits",
+        "title": "Edits made while a save is in flight remain in the project",
+        "status": "passed",
+        "milliseconds": 127,
+        "detail": "The server saved its snapshot; newer title and mood edits remain local and unsaved."
+      },
+      {
+        "id": "unlock-stop-transport",
+        "title": "Stopping while audio unlock is pending leaves the studio stopped",
+        "status": "passed",
+        "milliseconds": 334,
+        "detail": "Delayed unlock completed without changing the stopped transport to playing."
+      },
+      {
+        "id": "studio-dom-workflow",
+        "title": "Rendered studio controls edit, arrange, play and save the real project",
+        "status": "passed",
+        "milliseconds": 713,
+        "detail": "Actual DOM controls raised C4 to C♯4, selected Strings / 120 BPM, explicitly applied Cinematic, used the real arranger and CompositionPlayer, then saved and reopened the edited notes. Export gating checked; WAV signal is verified separately."
+      },
+      {
+        "id": "studio-dom-capture-gating",
+        "title": "A pending microphone request disables studio mutations and Cancel preserves the melody",
+        "status": "passed",
+        "milliseconds": 231,
+        "detail": "Record, note editing, settings, project actions and producer controls were disabled during the isolated pending request. Cancel preserved every captured note and ignored the late refusal."
+      },
+      {
+        "id": "producer-dom-ai-review",
+        "title": "AI directions include detected notes and require an explicit Apply action",
+        "status": "passed",
+        "milliseconds": 170,
+        "detail": "Real rendered Producer sent instruction, settings and captured notes, labelled configuration separately from the AI result, disclosed OpenAI, and changed only settings after Apply."
+      },
+      {
+        "id": "producer-dom-rules-fallback",
+        "title": "A rules fallback identifies its source and displays the recovery notice",
+        "status": "passed",
+        "milliseconds": 115,
+        "detail": "Configured AI fell back visibly to a Rule-based result, kept the explanation inline, and left settings unchanged for review."
+      },
+      {
+        "id": "producer-dom-stale-directions",
+        "title": "Changes to settings or notes discard stale directions and isolate overlapping requests",
+        "status": "passed",
+        "milliseconds": 280,
+        "detail": "A settings edit invalidated the first request; its late result could not replace the second request or clear its pending state. Editing notes then removed the current proposal."
+      },
+      {
+        "id": "producer-dom-status-loading",
+        "title": "Producer status stays honest while configuration is loading",
+        "status": "passed",
+        "milliseconds": 139,
+        "detail": "Checking and cached rules status made no false offline promise. A mocked AI response after server mode changed identified its actual source and still required Apply."
+      },
+      {
+        "id": "producer-dom-status-failure",
+        "title": "An unavailable status endpoint makes no AI or rules-only claim",
+        "status": "passed",
+        "milliseconds": 187,
+        "detail": "A configuration error stayed visible without a false source claim; the later actual rules result accurately identified its source."
+      },
+      {
+        "id": "app-dom-navigation-presets",
+        "title": "Home HUM, DISCOVER and CREATE actions navigate and apply supported sound settings",
+        "status": "passed",
+        "milliseconds": 229,
+        "detail": "Actual home actions opened HUM, the sound library and a fresh studio. Ambient selected the supported Strings / Ambient controls consistently; presets and new projects created no detected notes."
+      },
+      {
+        "id": "app-dom-direction-composition",
+        "title": "A saved melody becomes a reviewed direction and composition through the reference UI",
+        "status": "passed",
+        "milliseconds": 608,
+        "detail": "Actual top navigation opened the only saved project. The cream producer page reviewed the real melody and AI proposal without applying or arranging. Explicit Create applied Strings / Cinematic / 100 BPM, built real chord accompaniment, opened the dark studio with transport, and saved the original notes and chosen settings."
+      }
+    ]
+  },
+  "status": "passed"
+}

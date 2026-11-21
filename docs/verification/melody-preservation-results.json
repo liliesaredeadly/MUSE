@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-21",
+  "scope": "Completed recording to offline extraction, bound arrangement and rendered lead verification; no UI redesign",
+  "automated": {
+    "node": { "passed": 235, "failed": 0 },
+    "pythonMusicgenContract": { "passed": 5, "failed": 0, "realModelInference": false },
+    "browserAudioRoundtrip": { "passed": 6, "failed": 0, "realLocalApi": true, "realWebAudioRendering": true },
+    "existingBrowserRegression": { "passed": 27, "failed": 0 },
+    "productionBuild": "passed"
+  },
+  "generatedContiguousPcmFixtures": {
+    "distinctMelodies": 6,
+    "exactPitchSequences": 6,
+    "maxExtractionOnsetErrorMs": 20,
+    "maxExtractionOffsetErrorMs": 10,
+    "maxExtractionDurationErrorMs": 30,
+    "includes": ["irregular timing and rests", "80–120 ms notes", "repeated pitch with 40 ms rest", "quiet breathy input", "weak fundamental", "vibrato and glide"]
+  },
+  "actualApiAndRenderedLead": {
+    "distinctInputWavFiles": 4,
+    "inputHashesVerified": true,
+    "instruments": ["Piano", "Synthesizer", "Strings"],
+    "pitchSequenceErrors": 0,
+    "maxRenderedLeadOnsetOffsetDifferenceMs": 10,
+    "repeatedPitchGapMs": 40,
+    "vibratoSpanCents": { "input": 45.015, "rendered": 38.027 },
+    "backingBpmsCompared": [90, 150],
+    "leadWavByteIdenticalAcrossBackingTempo": true,
+    "fullMixAudioChangedWithBacking": true,
+    "substitutedNotesRejectedHttpStatus": 409,
+    "fullMixMelodyIdentificationVerified": false
+  },
+  "privateHumanTakeAggregateOnly": [
+    { "label": "existing first take", "durationSeconds": 8.76, "offlineNotes": 19, "voicedCoverage": 0.2648, "transcriptionGroundTruthVerified": false },
+    { "label": "existing fresh take", "durationSeconds": 9.3, "offlineNotes": 6, "voicedCoverage": 0.0903, "limitedEvidenceWarning": true, "transcriptionGroundTruthVerified": false }
+  ],
+  "symbolicLeadComparisons": { "samples": 8, "arrangementsAcrossStylesAndBpms": 40, "pitchTimingContourChanges": 0 },
+  "neuralAlternative": {
+    "model": "facebook/musicgen-melody",
+    "adapterAndLocalServiceImplemented": true,
+    "waveformSampleRateLayoutAndHashHandoffTested": true,
+    "realInferenceRun": false,
+    "reason": "CPU-only Torch; AudioCraft, torchaudio and model weights unavailable",
+    "outputRole": "explicit unverified preview, never a replacement for the locked lead"
+  },
+  "limits": [
+    "Preserving extracted notes is distinct from correctly transcribing an unannotated human recording.",
+    "The low-coverage human take is not proven musically correct.",
+    "Known-waveform checks validate the tested monophonic fixtures, not arbitrary songs or every microphone.",
+    "Full polyphonic mix listening quality and actual neural model quality remain unverified.",
+    "MIDI preserves discrete pitches/gates; continuous bends are rendered in playback and WAV only."
+  ]
+}

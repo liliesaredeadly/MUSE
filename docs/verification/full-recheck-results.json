@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-21",
+  "scope": "Full Muse regression recheck: capture, completed-file analysis, source conditioning, composition, playback, export, persistence, producer, reference matching and accounts",
+  "verification": {
+    "node": { "command": "npm test", "passed": 272, "failed": 0, "skipped": 0 },
+    "python": { "command": "python -B -m unittest discover -s tests -p '*_test.py'", "passed": 8, "failed": 0 },
+    "browser": {
+      "studioIntegration": { "passed": 29, "failed": 0 },
+      "actualApiAndRenderedAudio": { "passed": 6, "failed": 0 },
+      "referenceIntegration": { "passed": 5, "failed": 0 },
+      "accountIntegration": { "passed": 5, "failed": 0 },
+      "totalPassed": 45
+    },
+    "productionBuild": "passed (1600 modules)",
+    "productionSmoke": "passed: SQLite health, producer status, HTML/assets, SPA route, source containment, project read API",
+    "gitDiffCheck": "passed; existing Windows line-ending warnings only"
+  },
+  "reproducedAndFixed": [
+    "Fractional-period sampling error caused supported high notes to drop to false subharmonics.",
+    "Stereo channel selection could favor loud encoder padding beyond the capture cutoff.",
+    "Incomplete trailing RIFF chunks and missing padding were accepted; Python also accepted inconsistent container lengths.",
+    "Client API response-body timeouts were described as malformed responses rather than deadlines.",
+    "Expired conditioning blocked subsequent arrangement despite retaining the original take. Renewal now coalesces and verifies identical audio SHA plus the complete melody before one retry.",
+    "Transposition could exceed the shared contour frequency limit and leave an unsavable melody. Rejected edits now preserve the current project and source binding.",
+    "MIDI backing note-offs could release a same-pitch lead on the same channel.",
+    "Solo piano, piano/strings combinations and negative bass requests left unwanted layers or lost requested instruments. Explicit requested percussion is retained.",
+    "Local saves could silently lose damaged notes/contours, round fractional BPM, or create a library larger than its own read limit.",
+    "Invalid reference metadata, spectra or confidence could produce erroneous candidates.",
+    "Neural generation had no concurrency bound or shutdown cancellation, and some failed response streams were not cancelled.",
+    "Expired conditioning audio stayed in idle memory until another request. Unreferenced expiry timers now dispose it on schedule.",
+    "Malformed successful account responses could reach application state and break rendering.",
+    "Account form limits counted Unicode UTF-16 units differently from the server.",
+    "A session cookie rotated by another tab left sign-out using a stale CSRF token. One bounded session refresh now recovers."
+  ],
+  "melodyEvidence": {
+    "actualApiDistinctInputWavs": 4,
+    "receivedWavHashesVerified": true,
+    "renderedLeadInstruments": ["Piano", "Synthesizer", "Strings"],
+    "renderedPitchSequenceErrors": 0,
+    "maxRenderedOnsetOffsetDifferenceMs": 10,
+    "repeatedPitchRestMs": 40,
+    "vibratoSpanCents": { "input": 45.015, "rendered": 38.027 },
+    "leadWavIdenticalAcrossBackingBpm": [90, 150],
+    "fullMixChangesWithBacking": true,
+    "substitutedSourceNotesRejectedStatus": 409,
+    "offlineSyntheticFixtures": 6,
+    "existingPrivateHumanTakesReanalyzedLocally": 2,
+    "strictLeadComparisonsAcrossFiveStyles": { "arrangements": 40, "pitchTimingContourChanges": 0 },
+    "privateTakeVoicedCoverage": [0.26484018264840165, 0.09032258064516127]
+  },
+  "limits": [
+    "Passing these regressions does not prove the absence of every possible error.",
+    "The human takes have no annotated melody ground truth; low voiced coverage remains explicitly warned.",
+    "Real MusicGen inference was not run. Python tests use actual Torch tensors with a model double, not downloaded neural weights.",
+    "Exact rendered comparisons use isolated lead stems. Polyphonic full-mix transcription and subjective listening quality are not established by these tests.",
+    "The reference matcher returns a conservative similarity candidate, not a verified transcription of Alone or guaranteed song identification.",
+    "MIDI preserves discrete notes and gates; continuous pitch contours are rendered in playback and WAV."
+  ]
+}

@@ -5,6 +5,19 @@ import { buildArrangement } from '../src/music/arrangement.js';
 
 const settings = { bpm: 90, sourceBpm: 90, instrument: 'Piano', mood: 'Dreamy', genre: 'Ambient', accompaniment: true, percussion: false };
 
+test('instrument preferences keep the recorded hum as the stated lead without claiming voice conversion', () => {
+  const current = { ...settings, leadSource: 'recording' };
+  for (const text of ['Make it cinematic with strings', 'Add piano accompaniment']) {
+    const result = interpretDirection(text, current);
+    assert.deepEqual(result.changes, interpretDirection(text, settings).changes, 'The wording fix must not change proposed layers or settings.');
+    assert.match(result.message, /original hum.*remain.*lead/i);
+    assert.match(result.message, /instrumental preference/i);
+    assert.doesNotMatch(result.message, /(?:strings|piano) lead for the captured melody/i);
+    assert.equal(Object.hasOwn(result.changes, 'leadSource'), false);
+  }
+  assert.deepEqual(current, { ...settings, leadSource: 'recording' });
+});
+
 test('proposes supported creative settings without changing the current settings', () => {
   const current = { ...settings };
   const result = interpretDirection('Make it cinematic with strings, electronic, and add drums at 112 bpm.', current);
@@ -50,6 +63,30 @@ test('negative directions remove musical layers without selecting forbidden soun
   assert.deepEqual(interpretDirection('not cinematic; no synth; not pop', settings).changes, {});
   assert.deepEqual(interpretDirection("don't add drums", settings).changes, { percussion: false });
   assert.deepEqual(interpretDirection('no piano, use strings', settings).changes, { instrument: 'Strings' });
+});
+
+test('a later exclusion cancels a matching lead or mood proposal', () => {
+  for (const [text, expected] of [
+    ['Use piano, not piano', {}],
+    ['Make it cinematic, not cinematic', {}],
+    ['Use synth, avoid synthesizer', {}],
+    ['Cinematic strings, not cinematic', { instrument: 'Strings' }],
+    ['Use piano, not strings', { instrument: 'Piano' }],
+    ['Make it cinematic, not dreamy', { mood: 'Cinematic' }],
+    ['Use piano, not piano, use strings', { instrument: 'Strings' }],
+  ]) assert.deepEqual(interpretDirection(text, settings).changes, expected, text);
+});
+
+test('removing drums also removes the rhythm implied by the Drums lead', () => {
+  const current = { ...settings, instrument: 'Drums', percussion: true };
+  const result = interpretDirection('Remove drums', current);
+  const arrangement = buildArrangement([{ midi: 60, start: 0, duration: 2 }], { ...current, ...result.changes });
+  assert.deepEqual(result.changes, { percussion: false, instrument: 'Synthesizer' });
+  assert.ok(arrangement.events.some(event => event.track === 'melody' && event.midi === 60 && event.instrument === 'Synthesizer'));
+  assert.equal(arrangement.events.some(event => event.track === 'percussion'), false);
+  assert.equal(current.instrument, 'Drums');
+  assert.deepEqual(interpretDirection('Remove drums, use piano', current).changes, { percussion: false, instrument: 'Piano' });
+  assert.deepEqual(interpretDirection('Remove drums, add percussion', current).changes, { percussion: true });
 });
 
 test('adding chords enables the supported accompaniment layer', () => {
@@ -113,4 +150,103 @@ test('unrecognised requests stay honest and suggestions can be interpreted', () 
 
 test('words containing recognised words do not cause accidental changes', () => {
   assert.deepEqual(interpretDirection('pianola synthesize bassoon dreaminess drumming popularity', settings).changes, {});
+});
+
+test('only-piano directions actually remove strings, bass and percussion', () => {
+  for (const text of ['only piano', 'use just piano', 'piano only']) {
+    const result = interpretDirection(text, { ...settings, percussion: true });
+    const arrangement = buildArrangement([{ midi: 60, start: 0, duration: 2 }], { ...settings, percussion: true, ...result.changes });
+    assert.deepEqual([...new Set(arrangement.events.map(event => event.instrument))], ['Piano'], text);
+    assert.match(result.message, /accompaniment off/i);
+  }
+});
+
+test('piano and strings directions produce both requested sounds without automatic bass or drums', () => {
+  for (const text of ['piano and strings', 'only piano and strings', 'strings and piano']) {
+    const result = interpretDirection(text, { ...settings, percussion: true });
+    const arrangement = buildArrangement([{ midi: 60, start: 0.25, duration: 2 }], { ...settings, percussion: true, ...result.changes });
+    assert.deepEqual([...new Set(arrangement.events.map(event => event.instrument))].sort(), ['Piano', 'Strings'], text);
+    assert.equal(arrangement.melodyProof.preserved, true);
+    assert.equal(result.changes.bass, false);
+  }
+});
+
+test('negative and contradictory restricted-instrument requests are not presented as supported pairs', () => {
+  assert.deepEqual(interpretDirection('not only piano', settings).changes, {});
+  assert.deepEqual(interpretDirection('piano and strings, no strings', settings).changes, {});
+  assert.equal(interpretDirection('piano and strings, remove accompaniment', settings).changes.accompaniment, false);
+  assert.notEqual(interpretDirection('piano and strings, not ambient', settings).changes.genre, 'Ambient');
+});
+
+test('explicitly removing bass suppresses automatic bass and a current Bass lead', () => {
+  for (const instrument of ['Piano', 'Bass']) for (const text of ['remove bass', 'no bass']) {
+    const current = { ...settings, instrument };
+    const result = interpretDirection(text, current);
+    const arrangement = buildArrangement([{ midi: 60, start: 0, duration: 2 }], { ...current, ...result.changes });
+    assert.equal(result.changes.bass, false);
+    assert.equal(arrangement.events.some(event => event.instrument === 'Bass'), false, `${text} with ${instrument} lead`);
+    assert.equal(arrangement.melodyProof.preserved, true);
+  }
+});
+
+test('piano and strings preserve compatible explicit backing genres and explain incompatible ones', () => {
+  for (const genre of ['Pop', 'Classical', 'Experimental']) {
+    const result = interpretDirection(`piano and strings in ${genre}`, settings);
+    const arrangement = buildArrangement([{ midi: 60, start: 0, duration: 2 }], { ...settings, ...result.changes });
+    assert.equal(result.changes.genre, genre);
+    assert.deepEqual([...new Set(arrangement.events.map(event => event.instrument))].sort(), ['Piano', 'Strings']);
+  }
+  const electronic = interpretDirection('piano and strings electronic', settings);
+  assert.match(electronic.message, /electronic.*synth|synth.*electronic/i);
+  assert.match(electronic.message, /ambient.*both|both.*ambient/i);
+});
+
+test('restricted pitched sounds retain explicitly requested percussion', () => {
+  for (const text of ['piano and strings, add drums', 'only piano, add percussion']) {
+    const result = interpretDirection(text, settings);
+    const arrangement = buildArrangement([{ midi: 60, start: 0, duration: 2 }], { ...settings, ...result.changes });
+    assert.equal(result.changes.percussion, true, text);
+    assert.ok(arrangement.events.some(event => event.track === 'percussion'), text);
+  }
+});
+
+test('production benchmarks choose generic backing styles without changing the user melody clock', () => {
+  for (const [text, production, genre] of [
+    ['Use Beauty and a Beat production', 'dance-pop', 'Electronic'],
+    ['a dance-pop arrangement', 'dance-pop', 'Electronic'],
+    ['Shape of You production', 'percussive-pop', 'Pop'],
+    ['tropical pop', 'percussive-pop', 'Pop'],
+    ['deep rhythmic pop', 'percussive-pop', 'Pop'],
+  ]) {
+    const result = interpretDirection(text, settings);
+    assert.equal(result.changes.production, production, text);
+    assert.equal(result.changes.genre, genre, text);
+    assert.equal(result.changes.accompaniment, true, text);
+    assert.equal(result.changes.bass, true, text);
+    assert.equal(result.changes.percussion, true, text);
+    for (const key of ['bpm', 'sourceBpm', 'preserveMelodyTiming', 'notes']) assert.equal(Object.hasOwn(result.changes, key), false, key);
+    assert.match(result.message, /production.*(only|traits)|original.*melody|your.*melody/i);
+  }
+});
+
+test('production references respect explicit layer and instrument restrictions', () => {
+  const result = interpretDirection('Shape of You production, no drums and no bass', settings);
+  assert.equal(result.changes.production, 'percussive-pop');
+  assert.equal(result.changes.bass, false);
+  assert.equal(result.changes.percussion, false);
+  const solo = interpretDirection('Beauty and a Beat production, only piano', settings);
+  assert.equal(solo.changes.production, 'auto');
+  assert.equal(solo.changes.instrument, 'Piano');
+  assert.equal(solo.changes.accompaniment, false);
+  assert.equal(solo.changes.percussion, false);
+  const pair = interpretDirection('Shape of You production, piano and strings', settings);
+  assert.equal(pair.changes.production, 'auto');
+  assert.equal(pair.changes.bass, false);
+  assert.equal(pair.changes.percussion, false);
+});
+
+test('negative production references do not activate a benchmark', () => {
+  for (const text of ['not Shape of You', 'avoid dance-pop', 'without Beauty and a Beat', 'Shape of You, but not Shape of You']) {
+    assert.equal(Object.hasOwn(interpretDirection(text, settings).changes, 'production'), false, text);
+  }
 });

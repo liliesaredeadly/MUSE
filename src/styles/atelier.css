@@ -1,0 +1,326 @@
+/* Atelier owns only the four expressly selected pages. Home and Discover keep
+   their existing markup, assets, tokens and reference styles unchanged. */
+.muse-reference-shell:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) {
+  --atelier-ink:#0B0B0C;
+  --atelier-paper:#F3F2ED;
+  --atelier-surface:#202021;
+  --atelier-muted:#A6A6A0;
+  --atelier-line:#3B3B3C;
+  --atelier-display:'Bahnschrift','Arial Narrow',Arial,sans-serif;
+  --atelier-body:Arial,'Helvetica Neue',sans-serif;
+  --bg:var(--atelier-ink);
+  --text:var(--atelier-paper);
+  --paper:var(--atelier-paper);
+  --surface:#171718;
+  --surface-raised:#272728;
+  --muted:var(--atelier-muted);
+  --border:var(--atelier-line);
+  --paper-raised:#E8E7E1;
+  --paper-border:#C4C4BB;
+  --paper-muted:#62625D;
+  --record:#D9684B;
+  --accent:var(--atelier-paper);
+  --blush:var(--atelier-paper);
+  --lavender:#BABAB2;
+  --sand:#D2D1C5;
+  --font-sans:var(--atelier-body);
+  --scrollbar-thumb:#72726D;
+  --scrollbar-track:#171718;
+  --scrollbar-hover:#B5B5AC;
+  --scrollbar-active:#D9D9CF;
+  background:var(--atelier-ink);
+  color:var(--atelier-paper);
+  font-family:var(--atelier-body);
+}
+.muse-reference-shell:is(.reference-page-direction,.reference-page-library) {
+  background:var(--atelier-paper);
+  color:var(--atelier-ink);
+  color-scheme:light;
+}
+
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-header {
+  position:sticky;
+  inset:auto;
+  top:0;
+  height:80px;
+  margin:0;
+  padding:0 5%;
+  gap:40px;
+  border-bottom:1px solid #D4D4CC;
+  background:var(--atelier-paper);
+  color:var(--atelier-ink);
+}
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-wordmark {
+  font-family:var(--atelier-display);
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:-2px;
+}
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-navigation { gap:30px; }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-navigation button {
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:1.6px;
+}
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-hum-link {
+  min-width:160px;
+  min-height:42px;
+  border:1px solid var(--atelier-ink);
+  border-radius:0;
+  padding:10px 17px;
+  font-weight:600;
+}
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-hum-link:hover:not(:disabled) {
+  background:var(--atelier-ink);
+  color:var(--atelier-paper);
+}
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-home-link:hover:not(:disabled) { color:var(--atelier-ink); opacity:.65; }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-footer {
+  margin:0;
+  padding:18px 5%;
+  min-height:64px;
+  border-color:var(--atelier-line);
+  background:var(--atelier-ink);
+  color:var(--atelier-muted);
+  font-size:11px;
+}
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-guide-link { font-size:11px; }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-guide-link:hover { color:var(--atelier-paper); }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-error { border-color:var(--danger); }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-header :focus-visible { outline-color:var(--atelier-ink); }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) :focus-visible { outline-color:var(--atelier-paper); }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-guide :focus-visible { outline-color:var(--atelier-paper); }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-guide { border-color:var(--atelier-line); }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-guide > h2 { font:700 32px/1.05 var(--atelier-display); text-transform:uppercase; }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .guide-steps strong { color:var(--atelier-paper); }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .guide-steps span { color:var(--atelier-muted); font-size:12px; }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .guide-honesty { border-color:var(--atelier-line); border-radius:0; background:var(--atelier-surface); color:var(--atelier-paper); }
+:is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .guide-honesty p { color:var(--atelier-muted); font-size:12px; }
+
+/* Studio: black work surface, campaign-scale title, precise musical controls. */
+.reference-page-studio .ref-studio { padding:30px 5% 72px; background:var(--atelier-ink); }
+.reference-page-studio .studio-session-line { font-family:var(--atelier-body); font-size:10px; letter-spacing:1.4px; }
+.reference-page-studio .composition-heading { align-items:end; gap:48px; padding:42px 0 38px; }
+.reference-page-studio .composition-heading h1 {
+  font-family:var(--atelier-display);
+  font-stretch:condensed;
+  font-size:clamp(52px,6.5vw,94px);
+  font-weight:700;
+  line-height:.91;
+  letter-spacing:-.045em;
+  text-transform:uppercase;
+}
+.reference-page-studio .composition-heading h1 em { font:inherit; letter-spacing:inherit; }
+.reference-page-studio .composition-project-title { margin-top:27px; gap:20px; }
+.reference-page-studio .composition-project-title input { width:260px; padding:9px 0; font-size:14px; border-color:var(--atelier-line); }
+.reference-page-studio .composition-project-title > span { font-size:11px; }
+.reference-page-studio .composition-heading-side { min-width:220px; max-width:270px; padding-bottom:7px; }
+.reference-page-studio .composition-heading-side p { font-size:14px; line-height:1.6; }
+.reference-page-studio .composition-heading-side .eyebrow { font-family:var(--atelier-body); font-size:10px; letter-spacing:1.5px; }
+.reference-page-studio .button {
+  min-height:44px;
+  padding:12px 18px;
+  border-radius:0;
+  font:600 11px/1.3 var(--atelier-body);
+  letter-spacing:.65px;
+  text-transform:uppercase;
+}
+.reference-page-studio .button.primary,.reference-page-studio .play-button { background:var(--atelier-paper); color:var(--atelier-ink); border-color:var(--atelier-paper); }
+.reference-page-studio .button.primary:hover:not(:disabled),.reference-page-studio .play-button:hover:not(:disabled) { background:#D9D9D1; border-color:#D9D9D1; box-shadow:none; }
+.reference-page-studio .button.subtle { background:transparent; color:var(--atelier-paper); border-color:#62625D; }
+.reference-page-studio .button.subtle:hover:not(:disabled) { background:var(--atelier-paper); color:var(--atelier-ink); border-color:var(--atelier-paper); }
+.reference-page-studio .reference-timeline { padding-top:8px; }
+.reference-page-studio .reference-timeline > .panel-heading { padding-bottom:20px; }
+.reference-page-studio .reference-timeline .panel-heading h2 { font-size:12px; letter-spacing:1px; text-transform:uppercase; }
+.reference-page-studio .reference-timeline .note-count { font-size:11px; }
+.reference-page-studio .arrangement-column-headings { padding-top:19px; font-family:var(--atelier-body); font-size:10px; letter-spacing:1px; }
+.reference-page-studio .arrangement-track { --track-color:var(--atelier-paper); margin-bottom:10px; }
+.reference-page-studio .track-identity h3 { font-family:var(--atelier-body); font-size:12px; }
+.reference-page-studio .track-identity p { font-family:var(--atelier-body); font-size:10px; line-height:1.5; }
+.reference-page-studio .piano-roll,.reference-page-studio .arrangement-lane { background-color:#171718; border-color:#39393A; }
+.reference-page-studio .timeline-empty .piano-roll { height:210px; }
+.reference-page-studio .timeline-placeholder p { font-size:14px; }
+.reference-page-studio .timeline-placeholder span { font-size:12px; }
+.reference-page-studio .midi-note { background:#A8A8A0; color:var(--atelier-ink); border-color:#A8A8A0; }
+.reference-page-studio .midi-note:hover:not(:disabled),.reference-page-studio .midi-note.selected { background:var(--atelier-paper); color:var(--atelier-ink); border-color:var(--atelier-paper); }
+.reference-page-studio .midi-note.selected { box-shadow:inset 0 0 0 2px var(--atelier-ink); }
+.reference-page-studio .midi-note:focus-visible { outline-color:var(--atelier-ink); outline-offset:-4px; }
+.reference-page-studio .note-editor { padding:16px; border:1px solid var(--atelier-line); background:var(--atelier-surface); }
+.reference-page-studio .note-editor > div { flex-wrap:wrap; gap:8px; }
+.reference-page-studio .timeline-footnote { font-family:var(--atelier-body); font-size:10px; }
+.reference-page-studio .composition-transport { gap:26px; margin-top:18px; padding:20px; border:1px solid var(--atelier-line); background:#151516; }
+.reference-page-studio .play-button { width:52px; height:52px; }
+.reference-page-studio .transport-stop { width:42px; height:42px; border:1px solid var(--atelier-line); color:var(--atelier-paper); }
+.reference-page-studio .transport-label,.reference-page-studio .transport-lead > span { font-family:var(--atelier-body); font-size:10px; letter-spacing:1px; }
+.reference-page-studio .transport-value strong { font-family:var(--atelier-body); font-size:14px; }
+.reference-page-studio .select-wrap select { min-height:44px; padding:11px 32px 11px 12px; border-color:#62625D; color:var(--atelier-paper); background:var(--atelier-ink); font-size:13px; }
+.reference-page-studio .select-wrap > svg { top:16px; }
+.reference-page-studio .composition-utilities { gap:24px; padding:20px 0 36px; }
+.reference-page-studio .title-actions .button { min-height:44px; font-size:11px; }
+.reference-page-studio .studio-secondary-heading { padding:24px 0 18px; }
+.reference-page-studio .studio-secondary-heading > span { font-family:var(--atelier-body); font-size:11px; font-weight:600; letter-spacing:1.4px; }
+.reference-page-studio .studio-secondary-heading p { font-size:12px; }
+.reference-page-studio .studio-secondary-grid { gap:24px; }
+.reference-page-studio .studio-secondary-grid .panel { background:#141415; }
+.reference-page-studio .studio-secondary-grid .panel-heading { padding:16px 20px; min-height:53px; }
+.reference-page-studio .studio-secondary-grid .panel-heading h2 { font-size:12px; text-transform:uppercase; letter-spacing:1px; }
+.reference-page-studio .creative-body { padding:22px 20px; }
+.reference-page-studio .mood-field legend,.reference-page-studio .field > span { font-family:var(--atelier-body); font-size:10px; letter-spacing:1px; }
+.reference-page-studio .mood-options { gap:7px; }
+.reference-page-studio .mood-button { min-height:42px; padding:9px; border-color:var(--atelier-line); font:12px var(--atelier-body); }
+.reference-page-studio .mood-button.selected { border-color:var(--atelier-paper); background:var(--atelier-paper); color:var(--atelier-ink); }
+.reference-page-studio .mood-button.selected > span { color:var(--atelier-ink); }
+.reference-page-studio .mood-button:hover:not(:disabled) { border-color:var(--atelier-paper); }
+.reference-page-studio .layer-controls label { min-height:40px; font-size:12px; }
+.reference-page-studio .input-console { padding:22px 20px; }
+.reference-page-studio .input-display-heading h3 { font-size:14px; }
+.reference-page-studio .input-display-heading p { font-size:12px; line-height:1.6; }
+.reference-page-studio .microphone-orb { width:54px; height:54px; color:var(--atelier-paper); border-color:#666660; background:var(--atelier-ink); }
+.reference-page-studio .microphone-orb.listening { color:var(--record); border-color:var(--record); }
+.reference-page-studio .record-controls { padding:16px 20px; }
+.reference-page-studio .record-controls .recording-stop { border-color:var(--record); background:var(--record); color:var(--atelier-ink); }
+.reference-page-studio .capture-hint,.reference-page-studio .waveform-labels { font-size:10px; }
+.reference-page-studio .original-recording { padding:16px 20px; }
+.reference-page-studio .original-download { color:var(--atelier-paper); }
+.reference-page-studio .studio-producer-section { margin-top:32px; }
+.reference-page-studio .studio-producer-section > .producer-panel { border:1px solid var(--atelier-line); background:#141415; }
+.reference-page-studio .producer-panel > .panel-heading { padding:20px; border-color:var(--atelier-line); background:transparent; }
+.reference-page-studio .producer-panel > .panel-heading h2 { font-size:12px; text-transform:uppercase; letter-spacing:1px; }
+.reference-page-studio .producer-panel .small-badge { border-radius:0; background:transparent; border-color:var(--atelier-line); color:var(--atelier-muted); }
+.reference-page-studio .producer-body { display:grid; grid-template-columns:minmax(160px,.6fr) minmax(0,1.4fr); gap:24px 36px; padding:28px; }
+.reference-page-studio .producer-analysis { grid-column:1; grid-row:1 / span 5; margin:0; padding:0 20px 0 0; border:0; border-right:1px solid var(--atelier-line); background:transparent; }
+.reference-page-studio .producer-intro,.reference-page-studio .prompt-list,.reference-page-studio .producer-form,.reference-page-studio .producer-response,.reference-page-studio .producer-disclosure,.reference-page-studio .inline-error { grid-column:2; margin:0; }
+.reference-page-studio .producer-avatar { display:none; }
+.reference-page-studio .producer-intro h3 { font:700 clamp(30px,4vw,48px)/.98 var(--atelier-display); text-transform:uppercase; letter-spacing:-1.5px; }
+.reference-page-studio .producer-intro h3 em { font:inherit; }
+.reference-page-studio .producer-intro p,.reference-page-studio .producer-analysis-hint { color:var(--atelier-muted); font-size:13px; line-height:1.65; }
+.reference-page-studio .prompt-list { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.reference-page-studio .prompt-list button { min-height:44px; padding:12px; border-color:var(--atelier-line); border-radius:0; background:transparent; color:var(--atelier-paper); font-size:12px; }
+.reference-page-studio .prompt-list button:hover:not(:disabled) { transform:none; background:var(--atelier-surface); border-color:var(--atelier-paper); }
+.reference-page-studio .prompt-list button svg { color:inherit; }
+.reference-page-studio .producer-form { padding:8px; border:1px solid #62625D; border-radius:0; background:var(--atelier-ink); }
+.reference-page-studio .producer-form textarea { min-height:110px; font-size:14px; }
+.reference-page-studio .producer-form textarea::placeholder { color:var(--atelier-muted); }
+.reference-page-studio .producer-form > div > span { color:var(--atelier-muted); font-size:11px; }
+.reference-page-studio .send-button { width:42px; height:42px; border-radius:0; background:var(--atelier-paper); color:var(--atelier-ink); }
+.reference-page-studio .producer-response { padding:22px; border:1px solid #73736C; border-radius:0; background:var(--atelier-surface); color:var(--atelier-paper); }
+.reference-page-studio .producer-response p { font-size:14px; line-height:1.75; }
+.reference-page-studio .change-tags > span { border:1px solid #60605B; border-radius:0; background:transparent; color:var(--atelier-paper); font-size:11px; }
+.reference-page-studio .producer-suggestions button { border-radius:0; border-color:#60605B; background:transparent; color:var(--atelier-paper); font-size:12px; }
+.reference-page-studio .producer-disclosure { color:var(--atelier-muted); font-size:11px; line-height:1.7; }
+.reference-page-studio .inline-error { border-color:var(--danger); border-radius:0; background:#251616; color:var(--danger); }
+
+/* HUM: the existing photograph is treated locally, never changed on disk. */
+.reference-page-hum.reference-photo-shell::before { display:none; }
+.reference-page-hum .reference-error { margin-top:20px; }
+.reference-page-hum .ref-hum-stage { min-height:calc(100svh - 144px); padding:68px 5%; gap:7%; grid-template-columns:minmax(0,1.05fr) minmax(360px,.9fr); background:var(--atelier-ink); }
+.reference-page-hum .ref-hum-stage::before { background:linear-gradient(90deg,#000B,#0003),url('/assets/festival-stage.jpg') center 45%/cover no-repeat; filter:grayscale(1); opacity:.68; }
+.reference-page-hum .hum-stage-copy .eyebrow { font:600 10px/1.7 var(--atelier-body); letter-spacing:1.7px; }
+.reference-page-hum .hum-stage-copy h1 { max-width:740px; margin:26px 0; font:700 clamp(60px,7.2vw,106px)/.9 var(--atelier-display); font-stretch:condensed; letter-spacing:-.045em; text-transform:uppercase; }
+.reference-page-hum .hum-stage-copy h1 em { font:inherit; }
+.reference-page-hum .hum-stage-copy > p { max-width:330px; font-size:15px; line-height:1.75; }
+.reference-page-hum .hum-stage-footnote { padding-top:60px; font:10px/1.6 var(--atelier-body); letter-spacing:1.4px; }
+.reference-page-hum .hum-stage-recorder { padding:30px; border:1px solid var(--atelier-paper); background:var(--atelier-paper); color:var(--atelier-ink); }
+.reference-page-hum .hum-stage-recorder .panel-heading { padding-bottom:18px; }
+.reference-page-hum .hum-stage-recorder .panel-heading h2 { font:600 11px/1.4 var(--atelier-body); letter-spacing:1.4px; }
+.reference-page-hum .hum-stage-recorder .capture-status { font:11px/1.4 var(--atelier-body); }
+.reference-page-hum .hum-stage-recorder .input-display-heading h3 { font:700 30px/1.05 var(--atelier-display); letter-spacing:-.7px; text-transform:uppercase; }
+.reference-page-hum .hum-stage-recorder .input-display-heading p { font-size:13px; line-height:1.65; }
+.reference-page-hum .hum-stage-recorder .recording-timer { margin:18px 0; font:14px/1.4 Consolas,monospace; }
+.reference-page-hum .hum-stage-recorder .waveform-wrap { padding:8px 12px; background:#E4E4DC; }
+.reference-page-hum .hum-stage-recorder .waveform-labels { padding-top:7px; font-size:9px; }
+.reference-page-hum .hum-stage-recorder .detected-pitch { font-size:10px; }
+.reference-page-hum .hum-stage-recorder .microphone-orb { width:66px; height:66px; border:1px solid var(--atelier-ink); background:var(--atelier-ink); color:var(--atelier-paper); }
+.reference-page-hum .hum-stage-recorder .microphone-orb.listening { background:var(--record); border-color:var(--record); color:var(--atelier-ink); }
+.reference-page-hum .hum-stage-recorder .button { min-height:44px; padding:12px 18px; border-radius:0; font:600 11px/1.4 var(--atelier-body); letter-spacing:.6px; text-transform:uppercase; }
+.reference-page-hum .hum-stage-recorder .button.primary { background:var(--atelier-ink); border-color:var(--atelier-ink); color:var(--atelier-paper); }
+.reference-page-hum .hum-stage-recorder .button.primary:hover:not(:disabled) { background:#343435; color:var(--atelier-paper); }
+.reference-page-hum .hum-stage-recorder .button.subtle { border-color:#77776E; color:var(--atelier-ink); }
+.reference-page-hum .hum-stage-recorder .recording-stop { background:var(--record); border-color:var(--record); color:var(--atelier-ink); }
+.reference-page-hum .capture-status.is-live .capture-dot,.reference-page-studio .capture-status.is-live .capture-dot { background:var(--record); }
+.reference-page-hum .input-level meter,.reference-page-studio .input-level meter { accent-color:var(--record); }
+.reference-page-hum .waveform,.reference-page-studio .waveform { filter:grayscale(1); }
+.reference-page-hum .hum-stage-recorder .capture-hint { font-size:10px; }
+.reference-page-hum .hum-stage-caption { font:11px/1.6 var(--atelier-body); }
+.reference-page-hum .capture-feedback { font-size:13px; border-color:#B6B6AC; }
+.reference-page-hum .original-download { color:var(--atelier-ink); }
+.reference-page-hum .ref-hum-analysis { padding:64px 5% 72px; gap:7%; background:var(--atelier-paper); color:var(--atelier-ink); }
+.reference-page-hum .hum-analysis-intro h1 { margin:30px 0; font:700 clamp(48px,5.3vw,78px)/.94 var(--atelier-display); text-transform:uppercase; letter-spacing:-.045em; }
+.reference-page-hum .hum-analysis-intro h1 em { font:inherit; }
+.reference-page-hum .hum-analysis-intro > p { font-size:15px; line-height:1.8; }
+.reference-page-hum .hum-analysis-intro .text-button { min-height:44px; font-size:12px; color:var(--atelier-ink); }
+.reference-page-hum .hum-real-analysis dt { font-size:13px; }
+.reference-page-hum .hum-real-analysis dd { font-size:12px; }
+.reference-page-hum .hum-analysis-actions { gap:18px; }
+.reference-page-hum .hum-analysis-actions .button { min-height:46px; padding:13px 20px; background:var(--atelier-ink); color:var(--atelier-paper); font:600 11px/1.4 var(--atelier-body); text-transform:uppercase; letter-spacing:.6px; }
+.reference-page-hum .hum-analysis-actions .text-button { min-height:44px; color:var(--atelier-ink); font-size:12px; }
+.reference-page-hum .ref-hum-analysis :focus-visible,.reference-page-hum .hum-stage-recorder :focus-visible { outline-color:var(--atelier-ink); }
+.reference-page-hum .ref-hum-analysis .midi-note:focus-visible { outline-color:var(--atelier-paper); outline-offset:-3px; box-shadow:0 0 0 2px var(--atelier-ink); }
+
+@media(max-width:900px) {
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-header { gap:24px; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-navigation { gap:20px; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-hum-link { min-width:44px; padding:11px; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-hum-link span { display:none; }
+  .reference-page-studio .composition-heading { gap:28px; }
+  .reference-page-studio .composition-heading h1 { font-size:66px; }
+  .reference-page-studio .studio-secondary-grid { grid-template-columns:1fr; }
+  .reference-page-hum .ref-hum-stage { grid-template-columns:1fr 1fr; gap:5%; padding:55px 5%; }
+  .reference-page-hum .hum-stage-copy h1 { font-size:70px; }
+  .reference-page-hum .hum-stage-recorder { padding:23px; }
+  .reference-page-hum .ref-hum-analysis { grid-template-columns:1fr; gap:38px; }
+}
+@media(max-width:650px) {
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-header { height:72px; padding:0 5%; gap:18px; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-wordmark { font-size:28px; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-navigation { gap:14px; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-navigation button { font-size:10px; letter-spacing:.45px; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-hum-link { width:42px; min-width:42px; min-height:42px; padding:10px; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-footer { padding:18px 5%; gap:13px; flex-wrap:wrap; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-privacy { margin-left:0; }
+  .reference-page-studio .ref-studio { padding:25px 5% 48px; }
+  .reference-page-studio .composition-heading { padding:32px 0; gap:25px; align-items:start; flex-direction:column; }
+  .reference-page-studio .composition-heading h1 { font-size:clamp(44px,10vw,64px); }
+  .reference-page-studio .composition-project-title { margin-top:22px; flex-wrap:wrap; }
+  .reference-page-studio .composition-project-title input { width:200px; }
+  .reference-page-studio .composition-heading-side { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; width:100%; min-width:0; max-width:none; padding:0; }
+  .reference-page-studio .composition-heading-side p { max-width:170px; margin:0; font-size:13px; }
+  .reference-page-studio .composition-heading-side .eyebrow { display:none; }
+  .reference-page-studio .timeline-empty .piano-roll { height:170px; }
+  .reference-page-studio .arrangement-column-headings,.reference-page-studio .arrangement-ruler-row,.reference-page-studio .arrangement-track { grid-template-columns:120px minmax(0,1fr); }
+  .reference-page-studio .reference-timeline .track-identity h3 { font-size:11px; }
+  .reference-page-studio .reference-timeline .track-identity p { font-size:9px; }
+  .reference-page-studio .track-identity { gap:7px; padding-right:10px; }
+  .reference-page-studio .composition-transport { padding:16px; gap:20px; }
+  .reference-page-studio .composition-utilities { align-items:start; gap:16px; }
+  .reference-page-studio .title-actions { width:100%; }
+  .reference-page-studio .title-actions .button { flex:1; }
+  .reference-page-studio .producer-body { display:flex; flex-direction:column; padding:20px; gap:22px; }
+  .reference-page-studio .producer-analysis { padding:0 0 18px; border-right:0; border-bottom:1px solid var(--atelier-line); }
+  .reference-page-studio .producer-intro h3 { font-size:38px; }
+  .reference-page-studio .prompt-list { grid-template-columns:1fr; }
+  .reference-page-hum .ref-hum-stage { grid-template-columns:1fr; padding:48px 5%; gap:40px; }
+  .reference-page-hum .hum-stage-copy h1 { max-width:600px; margin:23px 0; font-size:clamp(58px,12vw,76px); }
+  .reference-page-hum .hum-stage-copy h1 br:nth-of-type(2) { display:initial; }
+  .reference-page-hum .hum-stage-copy > p { font-size:14px; }
+  .reference-page-hum .hum-stage-recorder { max-width:none; padding:24px; }
+  .reference-page-hum .ref-hum-analysis { padding:44px 5% 52px; }
+  .reference-page-hum .hum-analysis-intro h1 { font-size:clamp(46px,10vw,64px); }
+}
+@media(max-width:360px) {
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-header { gap:10px; padding:0 4%; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-navigation { gap:10px; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-wordmark { font-size:24px; }
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-navigation button { font-size:9px; letter-spacing:.3px; }
+  .reference-page-studio .composition-heading-side .button { width:100%; }
+  .reference-page-studio .arrangement-column-headings,.reference-page-studio .arrangement-ruler-row,.reference-page-studio .arrangement-track { grid-template-columns:112px minmax(0,1fr); }
+  .reference-page-hum .hum-stage-recorder { padding:20px; }
+}
+@media(pointer:coarse) {
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) .reference-hum-link { min-width:44px; min-height:44px; }
+  .reference-page-studio .button,.reference-page-studio .mood-button,.reference-page-studio .select-wrap select,.reference-page-studio .transport-stop { min-height:44px; }
+  .reference-page-studio .transport-stop,.reference-page-studio .send-button { min-width:44px; min-height:44px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  :is(.reference-page-studio,.reference-page-hum,.reference-page-direction,.reference-page-library) button { transition:none; }
+}

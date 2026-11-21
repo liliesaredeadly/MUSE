@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>MUSE protected original-recording checks</title>
+<style>body{max-width:1050px;margin:30px auto;padding:0 20px;background:#171719;color:#eee;font:15px/1.6 system-ui}button,input{padding:12px;font:inherit}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style></head>
+<body><h1>Protected original-recording checks</h1>
+<p>Choose a local take or leave the input empty for a clearly synthetic whole-wave fixture. These checks use the real local analysis and arrangement API, silently render native Web Audio WAVs, and compare the original normalized waveform with its protected lead. No microphone, playback, project writes, external provider or song-reference audio.</p>
+<label for="take">Optional local take (WAV or browser recording)</label><input id="take" type="file" accept="audio/*">
+<button id="run">Run protected original checks</button><pre id="results" role="status">Ready</pre>
+<script type="module" src="/tests/original-recording-browser.js"></script></body></html>

@@ -6,6 +6,16 @@ const STABLE_DURATION = 0.12;
 const MIN_NOTE_DURATION = 0.12;
 const RELEASE_DURATION = 0.12;
 
+function samePitch(note, pitch) {
+  if (!note || !pitch) return false;
+  if (note.midi === pitch.midi) return true;
+  if (!Number.isFinite(pitch.frequency) || pitch.frequency <= 0) return false;
+  // A small hysteresis around rounded note boundaries tolerates natural tuning
+  // wobble. A full semitone change still starts a separate candidate.
+  const continuousMidi = 69 + 12 * Math.log2(pitch.frequency / 440);
+  return Math.abs(continuousMidi - note.midi) <= 0.65;
+}
+
 function stopTracks(stream) {
   for (const track of stream?.getTracks() || []) {
     try { track.stop(); } catch { /* Continue releasing any other tracks. */ }
@@ -20,7 +30,7 @@ function notify(callback, value) {
 /**
  * Browser-only capture. Notes use seconds on the active capture clock; pause time
  * is excluded. onFrame delivers fresh waveform arrays, pitch or null, time and
- * RMS level at <=25fps. onNotes receives immutable snapshots of stable notes.
+ * RMS level at 25fps on average. onNotes receives immutable snapshots of stable notes.
  * stop() is idempotent and resolves {notes, blob, duration}; blob is null only
  * when the browser cannot record encoded audio. On a device/encoder failure,
  * onAutoStop also returns a partial result with an additional error property.
@@ -39,10 +49,10 @@ export class MicrophoneRecorder {
   }
 
   async start() {
+    if (this._stopping) await this._stopping;
     if (this.state === 'disposed') throw new Error('This microphone recorder has been disposed.');
     if (this.state === 'recording' || this.state === 'paused') return;
     if (this.state === 'requesting') return this._starting;
-    if (this._stopping) await this._stopping;
     if (!globalThis.navigator?.mediaDevices?.getUserMedia) {
       throw new Error('Microphone capture needs a supported browser on localhost or HTTPS.');
     }
@@ -57,8 +67,10 @@ export class MicrophoneRecorder {
     this._candidate = null;
     this._chunks = [];
     this._captureError = null;
+    this.input = null;
+    this._signal = { frames: 0, pitchedFrames: 0, peakLevel: 0 };
     this._pausedSeconds = 0;
-    this._lastFrame = -Infinity;
+    this._nextFrame = 0;
     notify(this.onNotes, []);
 
     this._starting = (async () => {
@@ -70,6 +82,9 @@ export class MicrophoneRecorder {
           throw new DOMException('Microphone startup was cancelled.', 'AbortError');
         }
         this._stream = stream;
+        const track = stream.getAudioTracks?.()[0];
+        const inputSettings = track?.getSettings?.() || {};
+        this.input = { label: track?.label || 'Default microphone', channelCount: inputSettings.channelCount || null };
         this._context = new AudioContext();
         await this._context.resume();
         if (token !== this._token) throw new DOMException('Microphone startup was cancelled.', 'AbortError');
@@ -86,7 +101,18 @@ export class MicrophoneRecorder {
           this._media = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
           const chunks = this._chunks;
           this._media.ondataavailable = ({ data }) => { if (data?.size) chunks.push(data); };
-          this._media.onerror = ({ error }) => this._autoStop(error || new Error('The microphone recording failed.'));
+          this._mediaDone = new Promise((resolve) => {
+            this._media.onstop = () => {
+              resolve();
+              if (this.state === 'recording' || this.state === 'paused') {
+                this._autoStop(new Error('The microphone recording stopped unexpectedly. Captured audio has been kept.'));
+              }
+            };
+          });
+          this._media.onerror = ({ error }) => {
+            this._captureError = error || new Error('The microphone recording failed.');
+            this._autoStop(this._captureError);
+          };
           this._media.start(250);
         }
         this._startedAt = this._context.currentTime;
@@ -125,14 +151,25 @@ export class MicrophoneRecorder {
     try {
       const time = this._time();
       if (time >= MAX_DURATION) { this._autoStop(); return; }
-      if (time - this._lastFrame >= FRAME_INTERVAL - 0.000001) {
-        this._lastFrame = time;
+      if (time >= this._nextFrame - 0.000001) {
+        // Keep analysis on its 40ms clock: starting a new delay at each rAF
+        // callback turns 25Hz into 20Hz on a 60Hz display. Skip stale deadlines
+        // after a stall; each callback supplies at most one real observation.
+        const skipped = Math.max(0, Math.floor((time - this._nextFrame + 0.000001) / FRAME_INTERVAL));
+        const frameTime = this._nextFrame + skipped * FRAME_INTERVAL;
+        this._nextFrame = frameTime + FRAME_INTERVAL;
         this._analyser.getFloatTimeDomainData(this._samples);
         let energy = 0;
         for (const sample of this._samples) energy += sample * sample;
         const pitch = detectPitch(this._samples, this._context.sampleRate);
-        this._groupPitch(pitch, time);
-        notify(this.onFrame, { waveform: this._samples.slice(), pitch, time, level: Math.sqrt(energy / this._samples.length) });
+        const level = Math.sqrt(energy / this._samples.length);
+        this._signal.frames++;
+        if (pitch) this._signal.pitchedFrames++;
+        this._signal.peakLevel = Math.max(this._signal.peakLevel, level);
+        // Note evidence represents the scheduled interval. Callback jitter must
+        // not turn three analysis frames into less than 120ms of evidence.
+        this._groupPitch(pitch, frameTime);
+        notify(this.onFrame, { waveform: this._samples.slice(), pitch, time, level });
       }
       if (this.state === 'recording') this._scheduleFrame();
     } catch (error) {
@@ -141,32 +178,35 @@ export class MicrophoneRecorder {
   }
 
   _groupPitch(pitch, time) {
-    if (pitch && this._current?.midi === pitch.midi) {
+    // A missed analysis interval is not evidence of a held note. Expire old
+    // evidence before a matching pitch can extend it across the gap.
+    if (this._current && time - this._current.end >= RELEASE_DURATION - 0.000001) this._finishNote();
+    if (this._candidate && time - this._candidate.end >= RELEASE_DURATION - 0.000001) this._candidate = null;
+    if (samePitch(this._current, pitch)) {
       this._current.end = time;
       this._current.sum += pitch.confidence;
       this._current.count++;
       this._candidate = null;
     } else if (pitch) {
-      if (this._candidate?.midi === pitch.midi) {
+      if (samePitch(this._candidate, pitch)) {
         this._candidate.end = time;
         this._candidate.sum += pitch.confidence;
         this._candidate.count++;
       } else {
         this._candidate = { midi: pitch.midi, name: pitch.name, start: time, end: time, sum: pitch.confidence, count: 1 };
       }
-      if (time - this._candidate.start >= STABLE_DURATION - 0.000001 && this._candidate.count >= 3) {
-        this._finishNote(Math.min(this._candidate.start, this._current?.end ?? time));
+      // Each detector frame supplies one bounded analysis interval. Three
+      // adjacent 40ms frames represent 120ms, though their timestamps span 80ms.
+      if (time - this._candidate.start + FRAME_INTERVAL >= STABLE_DURATION - 0.000001 && this._candidate.count >= 3) {
+        this._finishNote(Math.min(this._candidate.start, (this._current?.end ?? time) + FRAME_INTERVAL));
         this._current = this._candidate;
         this._candidate = null;
       }
-    } else {
-      this._candidate = null;
     }
-    if (this._current && time - this._current.end >= RELEASE_DURATION) this._finishNote(this._current.end);
     this._emitNotes();
   }
 
-  _note(current, end = current.end) {
+  _note(current, end = current.end + FRAME_INTERVAL) {
     return {
       midi: current.midi, name: current.name, start: current.start,
       duration: Math.max(0, end - current.start), confidence: current.sum / current.count,
@@ -194,7 +234,7 @@ export class MicrophoneRecorder {
     if (this.state !== 'recording') return;
     this._duration = this._time();
     this._pausedAt = this._context.currentTime;
-    this._finishNote(this._current?.end ?? this._duration);
+    this._finishNote(Math.min((this._current?.end ?? this._duration) + FRAME_INTERVAL, this._duration));
     this._candidate = null;
     this.state = 'paused';
     cancelAnimationFrame(this._frameId);
@@ -211,7 +251,7 @@ export class MicrophoneRecorder {
       if (this._media?.state === 'paused') this._media.resume();
     } catch (error) { this._autoStop(error); return; }
     this._pausedSeconds += this._context.currentTime - this._pausedAt;
-    this._lastFrame = -Infinity;
+    this._nextFrame = this._duration;
     this.state = 'recording';
     this._scheduleLimit();
     this._scheduleFrame();
@@ -230,7 +270,7 @@ export class MicrophoneRecorder {
     const duration = this.state === 'requesting' ? 0 : this._time();
     ++this._token;
     this._duration = duration;
-    this._finishNote(Math.min(this._current?.end ?? duration, duration));
+    this._finishNote(Math.min((this._current?.end ?? duration) + FRAME_INTERVAL, duration));
     this._candidate = null;
     if (this.state !== 'disposed') this.state = 'idle';
     cancelAnimationFrame(this._frameId);
@@ -238,21 +278,18 @@ export class MicrophoneRecorder {
     this._stopping = (async () => {
       const media = this._media;
       try {
-        if (media && media.state !== 'inactive') {
-          await new Promise((resolve) => {
-            media.onstop = resolve;
-            media.onerror = ({ error }) => {
-              this._captureError = error || new Error('The microphone recording failed.');
-              resolve();
-            };
+        if (media) {
+          let waitForStop = true;
+          if (media.state !== 'inactive') {
             try { media.stop(); }
-            catch (error) { this._captureError = error; resolve(); }
-            // Release hardware immediately; encoded final data arrives onstop.
-            stopTracks(this._stream);
-          });
+            catch (error) { this._captureError = error; waitForStop = false; }
+          }
+          // Even an inactive encoder can have final data and stop events queued.
+          stopTracks(this._stream);
+          if (waitForStop) await this._mediaDone;
         }
         const blob = media ? new Blob(this._chunks, { type: media.mimeType || this._chunks[0]?.type || 'audio/webm' }) : null;
-        this._result = { notes: this._notes.map((note) => ({ ...note })), blob, duration };
+        this._result = { notes: this._notes.map((note) => ({ ...note })), blob, duration, input: this.input, signal: { ...this._signal } };
         if (this._captureError) this._result.error = this._captureError;
         return this._result;
       } finally {

@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-19",
+  "files": [
+    {
+      "file": "src/App.jsx",
+      "unchanged": true
+    },
+    {
+      "file": "src/styles.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/styles/reference-shell.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/styles/reference-studio.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/styles/reference-direction.css",
+      "unchanged": true
+    },
+    {
+      "file": "public/assets/festival-stage.jpg",
+      "unchanged": true
+    },
+    {
+      "file": "public/desert-session.png",
+      "unchanged": true
+    },
+    {
+      "file": "index.html",
+      "unchanged": true
+    }
+  ],
+  "selectorCount": 417,
+  "unsafeSelectors": [],
+  "passed": true
+}

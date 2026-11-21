@@ -1,0 +1,96 @@
+{
+  "verifiedDate": "2026-11-21",
+  "scope": "JSON verification reports only; credentials and local recordings were not read or uploaded.",
+  "reportsParsed": 29,
+  "reportsRedacted": 11,
+  "pathFieldsRedacted": 20,
+  "remainingPersonalWindowsPaths": 0,
+  "replacementPolicy": {
+    "workspacePaths": "Workspace-relative paths beginning with ./",
+    "downloadPaths": "<user-downloads>/filename",
+    "otherUserPaths": "<user-home>/relative-path"
+  },
+  "preserved": [
+    "Numeric measurements",
+    "Audio and feature hashes",
+    "Model inputs",
+    "Timestamps"
+  ],
+  "changes": [
+    {
+      "file": "atelier-ui-audit.json",
+      "redactedFields": [
+        "projectRoot"
+      ]
+    },
+    {
+      "file": "bugfix-ui-audit.json",
+      "redactedFields": [
+        "projectRoot"
+      ]
+    },
+    {
+      "file": "mic-ui-audit.json",
+      "redactedFields": [
+        "projectRoot"
+      ]
+    },
+    {
+      "file": "musicgen-playback-results.json",
+      "redactedFields": [
+        "downloadPath"
+      ]
+    },
+    {
+      "file": "musicgen-real-results.json",
+      "redactedFields": [
+        "runs.0.cases.3.output.path"
+      ]
+    },
+    {
+      "file": "musicgen-recovery-results.json",
+      "redactedFields": [
+        "runs.0.sourceReport",
+        "runs.0.cases.1.output.path",
+        "runs.0.cases.2.output.path",
+        "runs.0.cases.3.output.path",
+        "runs.1.sourceReport",
+        "runs.1.cases.0.output.path",
+        "runs.1.cases.1.output.path",
+        "runs.1.cases.2.output.path",
+        "runs.1.cases.3.output.path",
+        "runs.1.cases.4.output.path"
+      ]
+    },
+    {
+      "file": "musicgen-test-summary.json",
+      "redactedFields": [
+        "actualHum.downloadPath"
+      ]
+    },
+    {
+      "file": "producer-ai-ui-audit.json",
+      "redactedFields": [
+        "projectRoot"
+      ]
+    },
+    {
+      "file": "reference-final-ui-audit.json",
+      "redactedFields": [
+        "projectRoot"
+      ]
+    },
+    {
+      "file": "reference-ui-audit.json",
+      "redactedFields": [
+        "projectRoot"
+      ]
+    },
+    {
+      "file": "video-reference-ui-audit.json",
+      "redactedFields": [
+        "projectRoot"
+      ]
+    }
+  ]
+}

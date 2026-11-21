@@ -1,0 +1,206 @@
+{
+  "recording": "actual-latest-local-user-take",
+  "cancellation": {
+    "source": {
+      "sha256": "fff65aaee1602b46339f46e922880819bdcd13b00537b1479a91a0b83aa7575b",
+      "bytes": 243884,
+      "sampleRate": 16000,
+      "channels": 1,
+      "selectedChannel": 0,
+      "duration": 7.62
+    },
+    "status": "cancelled",
+    "job": {
+      "id": "d1027830-bb1c-4eef-96bb-dec2c02e6362",
+      "requestId": "7ade7ab8-7a76-462c-bbe9-75dc9726b5a7",
+      "status": "cancelled",
+      "stage": "arranging",
+      "progress": null,
+      "model": "facebook/musicgen-melody",
+      "conditioning": {
+        "audioSha256": "fff65aaee1602b46339f46e922880819bdcd13b00537b1479a91a0b83aa7575b",
+        "inputBytes": 243884
+      },
+      "createdAt": "2026-11-21T11:49:06.064Z",
+      "startedAt": "2026-11-21T11:49:06.069Z",
+      "updatedAt": "2026-11-21T11:49:34.058Z",
+      "elapsedSeconds": 27.989,
+      "production": {
+        "prompt": "Instrumental acoustic music with a intimate character, 90 BPM and low energy. The arrangement features soft violin sustained tones; bass a low foundation; acoustic guitar rhythmic accompaniment; soft piano supporting chords; drums a rhythmic pulse. Use a acoustic, soft, warm texture and intimate atmosphere. Develop short phrases through subtle changes in the backing. Keep the main melodic phrase clearly audible above the supporting parts.",
+        "analysis": {
+          "genre": "Acoustic",
+          "mood": "intimate",
+          "bpm": 90,
+          "energy": "low",
+          "instrumentation": [
+            {
+              "id": "violin",
+              "instrument": "Violin",
+              "role": "sustain",
+              "section": "full",
+              "gain": 0.35
+            },
+            {
+              "id": "bass",
+              "instrument": "Bass",
+              "role": "bass",
+              "section": "full",
+              "gain": 0.5
+            },
+            {
+              "id": "guitar",
+              "instrument": "Acoustic Guitar",
+              "role": "rhythm",
+              "section": "full",
+              "gain": 0.55
+            },
+            {
+              "id": "piano",
+              "instrument": "Piano",
+              "role": "chords",
+              "section": "full",
+              "gain": 0.3
+            },
+            {
+              "id": "drums",
+              "instrument": "Drums",
+              "role": "percussion",
+              "section": "full",
+              "gain": 0.45
+            }
+          ],
+          "structure": [
+            "Develop short phrases through subtle changes in the backing"
+          ],
+          "texture": [
+            "acoustic",
+            "soft",
+            "warm"
+          ],
+          "atmosphere": [
+            "intimate"
+          ],
+          "melody": {
+            "noteCount": 16,
+            "duration": 7.61,
+            "register": "low",
+            "motion": "mixed",
+            "density": 2.1947873799725652,
+            "estimatedBpm": null,
+            "tempoConfidence": 0
+          },
+          "interpretation": "local-rules",
+          "provenance": {
+            "genre": "direction",
+            "mood": "direction",
+            "bpm": "settings",
+            "energy": "direction",
+            "instrumentation": "blueprint-and-direction",
+            "texture": "direction",
+            "atmosphere": "direction",
+            "melody": "detected-notes"
+          }
+        },
+        "techniques": [
+          {
+            "id": "descriptive-conditioning",
+            "label": "Descriptive music direction",
+            "description": "Combine genre, emotion, instrument roles and atmosphere in a concise description.",
+            "sourceIds": [
+              "meta-description"
+            ],
+            "reason": "The text describes audible musical qualities for the generation model."
+          },
+          {
+            "id": "tempo-direction",
+            "label": "Tempo direction",
+            "description": "Use the requested pulse rate as a descriptive target.",
+            "sourceIds": [
+              "ableton-tempo",
+              "ableton-genre"
+            ],
+            "reason": "The selected settings specify a BPM."
+          },
+          {
+            "id": "section-development",
+            "label": "Phrase development",
+            "description": "Develop shorter patterns into contrasting musical sections.",
+            "sourceIds": [
+              "ableton-form"
+            ],
+            "reason": "The backing should develop rather than remain a static loop."
+          }
+        ],
+        "sources": [
+          {
+            "id": "meta-description",
+            "title": "MusicGen: text and melody-conditioned examples",
+            "publisher": "Meta AI",
+            "url": "https://audiocraft.metademolab.com/musicgen.html"
+          },
+          {
+            "id": "ableton-tempo",
+            "title": "Beat and tempo",
+            "publisher": "Ableton Learning Music",
+            "url": "https://learningmusic.ableton.com/make-beats/beat-and-tempo.html"
+          },
+          {
+            "id": "ableton-genre",
+            "title": "Tempo and genre",
+            "publisher": "Ableton Learning Music",
+            "url": "https://learningmusic.ableton.com/make-beats/tempo-and-genre.html"
+          },
+          {
+            "id": "ableton-form",
+            "title": "Play with song structures",
+            "publisher": "Ableton Learning Music",
+            "url": "https://learningmusic.ableton.com/song-structure/song-structure.html"
+          }
+        ],
+        "warnings": []
+      },
+      "audioUrl": null,
+      "error": {
+        "message": "Music generation was cancelled.",
+        "code": "MODEL_CANCELLED",
+        "retryable": false
+      }
+    },
+    "error": "",
+    "availability": {
+      "mode": "audio-melody",
+      "configured": true,
+      "ready": false,
+      "provider": "local-transformers",
+      "model": "facebook/musicgen-melody",
+      "reachable": true,
+      "loaded": false,
+      "status": "not-loaded",
+      "backend": "transformers",
+      "device": "cpu",
+      "capabilities": [
+        "jobs",
+        "progress",
+        "cancel"
+      ],
+      "canSubmit": true
+    }
+  },
+  "genuineGeneratedAudioVerified": false,
+  "rejectedPreFixRun": {
+    "id": "ea1a9302-dab7-445e-b359-e1479896a3b5",
+    "status": "ready",
+    "elapsedSeconds": 483.657,
+    "conditioning": {
+      "audioSha256": "fff65aaee1602b46339f46e922880819bdcd13b00537b1479a91a0b83aa7575b",
+      "inputBytes": 243884
+    },
+    "acceptedForMelodyTesting": false,
+    "reason": "Installed Transformers initial-cache path discarded conditioning; result withheld pending compatibility fix and runtime decoder validation."
+  },
+  "phase": "initial-debugging-before-conditioning-compatibility-fix",
+  "supersededBy": [
+    "musicgen-playback-results.json",
+    "musicgen-recovery-results.json"
+  ]
+}

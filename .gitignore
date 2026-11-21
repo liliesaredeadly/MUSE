@@ -5,6 +5,8 @@ dist/
 test-results/
 data/
 .local/
+__pycache__/
 *.sqlite*
 .env*
 !.env.example
+*.zip

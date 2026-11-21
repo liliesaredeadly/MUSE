@@ -1,0 +1,31 @@
+{
+  "status": "loaded",
+  "jobId": "fb6fe2cf-0fc5-42a0-95d3-dd7eac995eff",
+  "model": "facebook/musicgen-melody",
+  "conditioning": {
+    "audioSha256": "fff65aaee1602b46339f46e922880819bdcd13b00537b1479a91a0b83aa7575b",
+    "inputBytes": 243884
+  },
+  "generationSeconds": 305.666,
+  "transferSeconds": 0.4160999999977648,
+  "bytes": 316204,
+  "duration": 4.94,
+  "exactMelodyVerified": false,
+  "media": [
+    {
+      "currentTime": 7.62,
+      "duration": 7.62,
+      "ended": true,
+      "id": "original",
+      "readyState": 4
+    },
+    {
+      "currentTime": 4.94,
+      "duration": 4.94,
+      "ended": true,
+      "id": "generated",
+      "readyState": 4
+    }
+  ],
+  "downloadPath": "<user-downloads>/MUSE-musicgen-actual-hum.wav"
+}

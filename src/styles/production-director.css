@@ -1,0 +1,214 @@
+/* Editable production controls reuse the atelier workbench; other pages never match. */
+:is(.reference-page-studio,.reference-page-direction) .production-director {
+  min-width:0;
+  border:1px solid var(--atelier-line);
+  border-radius:0;
+  color:var(--atelier-paper);
+  background:var(--atelier-ink);
+}
+:is(.reference-page-studio,.reference-page-direction) .production-director > .panel-heading {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  padding:20px 28px;
+  border-bottom:1px solid var(--atelier-line);
+  color:var(--atelier-paper);
+}
+:is(.reference-page-studio,.reference-page-direction) .production-director > .panel-heading h2 {
+  flex:1;
+  font:600 12px/1.5 var(--atelier-body);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+:is(.reference-page-studio,.reference-page-direction) .production-director .small-badge {
+  border:1px solid var(--atelier-muted);
+  border-radius:0;
+  color:var(--atelier-paper);
+  background:transparent;
+  font:11px/1.5 var(--atelier-body);
+}
+:is(.reference-page-studio,.reference-page-direction) .director-body {
+  display:grid;
+  grid-template-columns:minmax(220px,.75fr) minmax(0,1.3fr);
+  gap:clamp(28px,4vw,64px);
+  padding:32px 28px;
+}
+:is(.reference-page-studio,.reference-page-direction) .director-instructions,
+:is(.reference-page-studio,.reference-page-direction) .director-blueprint { min-width:0; }
+:is(.reference-page-studio,.reference-page-direction) .director-kicker {
+  color:var(--atelier-muted);
+  font:600 10px/1.6 var(--atelier-body);
+  letter-spacing:.12em;
+}
+:is(.reference-page-studio,.reference-page-direction) .director-instructions > :is(h1,h3),
+:is(.reference-page-studio,.reference-page-direction) .director-blueprint-heading :is(h2,h3) {
+  margin:15px 0 20px;
+  font:700 clamp(32px,3.7vw,50px)/1 var(--atelier-display);
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+}
+:is(.reference-page-studio,.reference-page-direction) .production-director em { color:inherit; font:inherit; }
+:is(.reference-page-studio,.reference-page-direction) .director-instructions > p,
+:is(.reference-page-studio,.reference-page-direction) .director-summary,
+:is(.reference-page-studio,.reference-page-direction) .director-empty {
+  color:var(--atelier-muted);
+  font:14px/1.75 var(--atelier-body);
+}
+:is(.reference-page-studio,.reference-page-direction) .director-form { margin-top:28px; }
+:is(.reference-page-studio,.reference-page-direction) .director-form > label {
+  display:block;
+  margin-bottom:10px;
+  font:600 12px/1.5 var(--atelier-body);
+}
+:is(.reference-page-studio,.reference-page-direction) .director-form textarea {
+  display:block;
+  box-sizing:border-box;
+  width:100%;
+  min-height:150px;
+  max-height:360px;
+  padding:15px;
+  border:1px solid var(--atelier-muted);
+  border-radius:0;
+  color:var(--atelier-paper);
+  background:var(--atelier-ink);
+  font:14px/1.7 var(--atelier-body);
+  field-sizing:content;
+}
+:is(.reference-page-studio,.reference-page-direction) .director-form textarea::placeholder { color:var(--atelier-muted); opacity:1; }
+:is(.reference-page-studio,.reference-page-direction) .director-help,
+:is(.reference-page-studio,.reference-page-direction) .director-disclosure,
+:is(.reference-page-studio,.reference-page-direction) .director-accept > p {
+  margin:12px 0;
+  color:var(--atelier-muted);
+  font:12px/1.7 var(--atelier-body);
+}
+:is(.reference-page-studio,.reference-page-direction) .director-form > .button { min-width:180px; }
+:is(.reference-page-studio,.reference-page-direction) .director-instructions > .director-disclosure { margin-top:24px; font-size:11px; }
+:is(.reference-page-studio,.reference-page-direction) .director-blueprint {
+  padding-left:28px;
+  border-left:1px solid var(--atelier-line);
+}
+:is(.reference-page-studio,.reference-page-direction) .director-blueprint-heading { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+:is(.reference-page-studio,.reference-page-direction) .director-blueprint-heading :is(h2,h3) { font-size:32px; }
+:is(.reference-page-studio,.reference-page-direction) .director-status {
+  min-height:44px;
+  margin:0 0 14px;
+  color:var(--atelier-muted);
+  font:12px/1.7 var(--atelier-body);
+}
+:is(.reference-page-studio,.reference-page-direction) .director-notice,
+:is(.reference-page-studio,.reference-page-direction) .director-blocked {
+  margin:12px 0 0;
+  padding:12px 0;
+  border-top:1px solid var(--atelier-line);
+  color:var(--atelier-paper);
+  font:12px/1.7 var(--atelier-body);
+}
+:is(.reference-page-studio,.reference-page-direction) .production-director fieldset {
+  min-width:0;
+  margin:0 0 22px;
+  padding:16px 0 0;
+  border:0;
+  border-top:1px solid var(--atelier-line);
+}
+:is(.reference-page-studio,.reference-page-direction) .production-director legend {
+  padding-right:12px;
+  color:var(--atelier-paper);
+  font:600 11px/1.5 var(--atelier-body);
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+:is(.reference-page-studio,.reference-page-direction) .director-character,
+:is(.reference-page-studio,.reference-page-direction) .director-layer-controls {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:end;
+  gap:16px;
+}
+:is(.reference-page-studio,.reference-page-direction) .production-director .field { min-width:0; margin:0; }
+:is(.reference-page-studio,.reference-page-direction) .production-director .field > span {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+  color:var(--atelier-muted);
+  font:11px/1.5 var(--atelier-body);
+}
+:is(.reference-page-studio,.reference-page-direction) .production-director .select-wrap select {
+  width:100%;
+  min-height:42px;
+  padding:9px 30px 9px 10px;
+  border:1px solid var(--atelier-muted);
+  border-radius:0;
+  color:var(--atelier-paper);
+  background:var(--atelier-ink);
+  font:12px/1.6 var(--atelier-body);
+  color-scheme:dark;
+}
+:is(.reference-page-studio,.reference-page-direction) .production-director .select-wrap > svg { color:var(--atelier-muted); }
+:is(.reference-page-studio,.reference-page-direction) .director-range input { display:block; width:100%; min-height:42px; margin:0; accent-color:var(--atelier-paper); }
+:is(.reference-page-studio,.reference-page-direction) .director-range output { color:var(--atelier-paper); font:12px/1.5 Consolas,monospace; }
+:is(.reference-page-studio,.reference-page-direction) .director-instrument-choices { display:flex; flex-wrap:wrap; gap:5px 20px; }
+:is(.reference-page-studio,.reference-page-direction) .director-instrument-choice {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-height:42px;
+  color:var(--atelier-paper);
+  cursor:pointer;
+  font:12px/1.5 var(--atelier-body);
+}
+:is(.reference-page-studio,.reference-page-direction) .director-instrument-choice input { width:16px; height:16px; margin:0; accent-color:var(--atelier-paper); }
+:is(.reference-page-studio,.reference-page-direction) .director-layer-controls { grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+:is(.reference-page-studio,.reference-page-direction) .director-layer-actions { display:flex; flex-wrap:wrap; align-items:center; gap:4px 16px; margin-top:8px; }
+:is(.reference-page-studio,.reference-page-direction) .director-layer-actions > span { margin-right:auto; color:var(--atelier-muted); font:11px/1.5 var(--atelier-body); }
+:is(.reference-page-studio,.reference-page-direction) .director-layer-actions .text-button { min-height:40px; color:var(--atelier-paper); font:12px/1.5 var(--atelier-body); }
+:is(.reference-page-studio,.reference-page-direction) .director-accept { padding-top:4px; border-top:1px solid var(--atelier-line); }
+:is(.reference-page-studio,.reference-page-direction) .production-director .button {
+  min-height:44px;
+  border:1px solid var(--atelier-muted);
+  border-radius:0;
+  color:var(--atelier-paper);
+  background:transparent;
+  font:600 12px/1.5 var(--atelier-body);
+}
+:is(.reference-page-studio,.reference-page-direction) .production-director .button.primary { width:100%; border-color:var(--atelier-paper); color:var(--atelier-ink); background:var(--atelier-paper); }
+:is(.reference-page-studio,.reference-page-direction) .production-director .button:hover:not(:disabled) { border-color:var(--atelier-paper); background:var(--atelier-surface); }
+:is(.reference-page-studio,.reference-page-direction) .production-director .button.primary:hover:not(:disabled) { color:var(--atelier-paper); }
+:is(.reference-page-studio,.reference-page-direction) .production-director :focus-visible { outline:2px solid var(--atelier-paper); outline-offset:4px; }
+:is(.reference-page-studio,.reference-page-direction) .production-director .inline-error { margin:12px 0 20px; }
+.reference-page-studio .director-midi-export { margin:24px 0; }
+.reference-page-studio .director-midi-export .button { white-space:normal; text-align:left; }
+.reference-page-direction .production-director-direction { border:0; }
+.reference-page-direction .production-director-direction .director-instructions { color:var(--atelier-ink); }
+.reference-page-direction .production-director-direction .director-body { gap:48px; padding:32px; }
+.reference-page-direction .production-director-direction .director-instructions { padding:26px; background:var(--atelier-paper); }
+.reference-page-direction .production-director-direction .director-instructions :is(.director-kicker,p,label) { color:var(--atelier-ink); }
+.reference-page-direction .production-director-direction .director-instructions :focus-visible { outline-color:var(--atelier-ink); }
+.reference-page-direction .production-director-direction .director-form textarea:focus-visible { outline-color:var(--atelier-paper); outline-offset:-4px; }
+.reference-page-direction .production-director-direction .director-instructions .direction-melody-preview { color:var(--atelier-ink); }
+
+@media(max-width:900px) {
+  :is(.reference-page-studio,.reference-page-direction) .director-body { grid-template-columns:minmax(190px,.7fr) minmax(0,1fr); gap:24px; padding:24px; }
+  :is(.reference-page-studio,.reference-page-direction) .director-blueprint { padding-left:24px; }
+  :is(.reference-page-studio,.reference-page-direction) .director-layer-controls { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  :is(.reference-page-studio,.reference-page-direction) .director-layer-controls .director-range { grid-column:1 / -1; }
+  .reference-page-direction .production-director-direction .director-body { gap:24px; padding:24px; }
+}
+@media(max-width:650px) {
+  :is(.reference-page-studio,.reference-page-direction) .director-body { grid-template-columns:minmax(0,1fr); gap:32px; padding:20px; }
+  :is(.reference-page-studio,.reference-page-direction) .production-director > .panel-heading { padding:18px 20px; }
+  :is(.reference-page-studio,.reference-page-direction) .director-blueprint { padding:28px 0 0; border-left:0; border-top:1px solid var(--atelier-line); }
+  :is(.reference-page-studio,.reference-page-direction) .director-instructions > :is(h1,h3) { font-size:38px; }
+  :is(.reference-page-studio,.reference-page-direction) .director-form > .button { width:100%; }
+  :is(.reference-page-studio,.reference-page-direction) .director-instrument-choices { gap:4px 16px; }
+  .reference-page-direction .production-director-direction .director-body { padding:20px; }
+  .reference-page-direction .production-director-direction .director-instructions { padding:20px; }
+}
+@media(pointer:coarse) {
+  :is(.reference-page-studio,.reference-page-direction) .production-director :is(.director-instrument-choice,.text-button,select,input[type="range"]) { min-height:44px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  :is(.reference-page-studio,.reference-page-direction) .production-director * { animation:none; transition:none; }
+}

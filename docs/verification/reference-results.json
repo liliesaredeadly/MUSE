@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-21",
+  "reference": {
+    "title": "Alone",
+    "artist": "Alan Walker",
+    "sourceUrl": "https://www.youtube.com/watch?v=1-xGerv5FOk",
+    "decodedDurationSeconds": 163.282766,
+    "privateAudioVerified": true,
+    "featureFrames": 1633,
+    "notesVerified": false
+  },
+  "checks": {
+    "node": { "passed": 187, "failed": 0 },
+    "pythonPreparation": { "passed": 3, "failed": 0 },
+    "referenceBrowserWorkflow": { "passed": 5, "failed": 0, "syntheticFixtures": true },
+    "existingBrowserAndAudio": { "passed": 27, "failed": 0, "syntheticFixtures": true },
+    "productionBuild": "passed",
+    "strictUiAuditFindings": 0,
+    "mobileLayout": { "viewportWidth": 390, "documentScrollWidth": 380, "referenceAvailable": true },
+    "actualReferenceNegativeQueries": { "generatedQueries": 24, "candidates": 0 }
+  },
+  "limits": [
+    "Spectral similarity candidates are not calibrated song-identification probabilities.",
+    "No reference melody transcription or exact song-note replacement is implemented.",
+    "Compositions continue to use the captured, editable hummed notes.",
+    "Physical-microphone recognition accuracy and subjective listening quality remain unverified.",
+    "Reference audio/features stay local and are not bundled with the build or tracked source."
+  ]
+}

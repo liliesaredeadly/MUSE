@@ -48,6 +48,7 @@ export function openProjectDatabase(dbPath = DEFAULT_DB_PATH) {
     };
   }
   return {
+    connection: database,
     list() { return selectAll.all().map(projectFromRow); },
     get(id) { return projectFromRow(selectOne.get(id)); },
     save(project) {

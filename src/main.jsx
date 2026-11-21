@@ -1,7 +1,16 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App.jsx';
 import './styles.css';
+import './styles/reference-shell.css';
+import './styles/reference-studio.css';
+import './styles/reference-direction.css';
+import './styles/atelier.css';
+import './styles/atelier-direction.css';
+import './styles/atelier-library.css';
+import './styles/reference-match.css';
+import './styles/auth.css';
+import './styles/production-director.css';
+import App from './App.jsx';
 
 class ErrorBoundary extends React.Component {
   state = { error: false };

@@ -1,0 +1,650 @@
+
+> muse-studio@0.1.0 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: captured pitches and exact phrase timing survive arrangement without invented melody
+ok 1 - captured pitches and exact phrase timing survive arrangement without invented melody
+  ---
+  duration_ms: 7.5467
+  ...
+# Subtest: doubling BPM halves melody positions and duration
+ok 2 - doubling BPM halves melody positions and duration
+  ---
+  duration_ms: 1.0663
+  ...
+# Subtest: chord labels have time spans and accompaniment harmonizes with the captured phrase
+ok 3 - chord labels have time spans and accompaniment harmonizes with the captured phrase
+  ---
+  duration_ms: 1.565
+  ...
+# Subtest: empty and wholly invalid input cannot create a backing composition
+ok 4 - empty and wholly invalid input cannot create a backing composition
+  ---
+  duration_ms: 0.7874
+  ...
+# Subtest: instrument and mood controls change audible event parameters without changing pitches
+ok 5 - instrument and mood controls change audible event parameters without changing pitches
+  ---
+  duration_ms: 0.9259
+  ...
+# Subtest: genre controls alter backing rhythm and percussion toggle creates actual drum events
+ok 6 - genre controls alter backing rhythm and percussion toggle creates actual drum events
+  ---
+  duration_ms: 0.9516
+  ...
+# Subtest: drum instrument retains pitched melody and adds percussion
+ok 7 - drum instrument retains pitched melody and adds percussion
+  ---
+  duration_ms: 1.8326
+  ...
+# Subtest: malformed settings fall back to safe timing and recognized instrument
+ok 8 - malformed settings fall back to safe timing and recognized instrument
+  ---
+  duration_ms: 0.4577
+  ...
+# Subtest: unbounded time values cannot create an infinite accompaniment loop
+ok 9 - unbounded time values cannot create an infinite accompaniment loop
+  ---
+  duration_ms: 0.8179
+  ...
+# Subtest: A4 maps to 440 Hz and middle C maps to its note name
+ok 10 - A4 maps to 440 Hz and middle C maps to its note name
+  ---
+  duration_ms: 4.0924
+  ...
+# Subtest: generated sine 65.406 Hz is detected without an octave shift
+ok 11 - generated sine 65.406 Hz is detected without an octave shift
+  ---
+  duration_ms: 17.2432
+  ...
+# Subtest: generated sine 146.832 Hz is detected without an octave shift
+ok 12 - generated sine 146.832 Hz is detected without an octave shift
+  ---
+  duration_ms: 6.8342
+  ...
+# Subtest: generated sine 440 Hz is detected without an octave shift
+ok 13 - generated sine 440 Hz is detected without an octave shift
+  ---
+  duration_ms: 4.7625
+  ...
+# Subtest: generated sine 1046.502 Hz is detected without an octave shift
+ok 14 - generated sine 1046.502 Hz is detected without an octave shift
+  ---
+  duration_ms: 5.2293
+  ...
+# Subtest: generated sine 1396.913 Hz is detected without an octave shift
+ok 15 - generated sine 1396.913 Hz is detected without an octave shift
+  ---
+  duration_ms: 4.826
+  ...
+# Subtest: a humming-like harmonic signal retains the weak fundamental
+ok 16 - a humming-like harmonic signal retains the weak fundamental
+  ---
+  duration_ms: 6.5953
+  ...
+# Subtest: DC offset does not shift a 44.1 kHz sampled note
+ok 17 - DC offset does not shift a 44.1 kHz sampled note
+  ---
+  duration_ms: 5.3903
+  ...
+# Subtest: silence, inaudible input and unpitched white noise produce no note
+ok 18 - silence, inaudible input and unpitched white noise produce no note
+  ---
+  duration_ms: 9.7123
+  ...
+# Subtest: invalid, short and out-of-range input is rejected
+ok 19 - invalid, short and out-of-range input is rejected
+  ---
+  duration_ms: 12.8039
+  ...
+# Subtest: stable microphone frames become a timed note and captured audio; stop releases the microphone
+ok 20 - stable microphone frames become a timed note and captured audio; stop releases the microphone
+  ---
+  duration_ms: 73.765
+  ...
+# Subtest: pause excludes elapsed paused time and splits notes across the pause
+ok 21 - pause excludes elapsed paused time and splits notes across the pause
+  ---
+  duration_ms: 116.3792
+  ...
+# Subtest: silence and brief pitch transients do not fabricate recorded notes
+ok 22 - silence and brief pitch transients do not fabricate recorded notes
+  ---
+  duration_ms: 17.7466
+  ...
+# Subtest: a refused permission can be retried without leaking resources
+ok 23 - a refused permission can be retried without leaking resources
+  ---
+  duration_ms: 2.3374
+  ...
+# Subtest: disposing during a pending permission request releases a late stream
+ok 24 - disposing during a pending permission request releases a late stream
+  ---
+  duration_ms: 0.5975
+  ...
+# Subtest: 60 active seconds auto-stop once and return the completed capture
+ok 25 - 60 active seconds auto-stop once and return the completed capture
+  ---
+  duration_ms: 20.4491
+  ...
+# Subtest: an asynchronous recording error releases the microphone and returns partial capture
+ok 26 - an asynchronous recording error releases the microphone and returns partial capture
+  ---
+  duration_ms: 6.4677
+  ...
+# Subtest: a failed analyser frame stops capture instead of leaking the microphone
+ok 27 - a failed analyser frame stops capture instead of leaking the microphone
+  ---
+  duration_ms: 3.8511
+  ...
+# Subtest: recording can restart after a completed session with fresh notes and audio
+ok 28 - recording can restart after a completed session with fresh notes and audio
+  ---
+  duration_ms: 57.7215
+  ...
+# Subtest: a failed pause releases the microphone and reports the partial recording
+ok 29 - a failed pause releases the microphone and reports the partial recording
+  ---
+  duration_ms: 2.6826
+  ...
+# Subtest: a failed resume retains the active duration recorded before the pause
+ok 30 - a failed resume retains the active duration recorded before the pause
+  ---
+  duration_ms: 8.4951
+  ...
+# Subtest: missing credentials or fetch preserve the rules result without contacting a provider
+ok 31 - missing credentials or fetch preserve the rules result without contacting a provider
+  ---
+  duration_ms: 6.7278
+  ...
+# Subtest: AI returns a validated proposal and leaves the current settings and melody untouched
+ok 32 - AI returns a validated proposal and leaves the current settings and melody untouched
+  ---
+  duration_ms: 53.815
+  ...
+# Subtest: request uses Responses strict structured output and contains only bounded musical context
+ok 33 - request uses Responses strict structured output and contains only bounded musical context
+  ---
+  duration_ms: 2.8191
+  ...
+# Subtest: empty melody has an honest empty summary and invalid settings never enter the request
+ok 34 - empty melody has an honest empty summary and invalid settings never enter the request
+  ---
+  duration_ms: 1.6316
+  ...
+# Subtest: provider failures fall back once without revealing credentials or provider errors
+    # Subtest: HTTP 400
+    ok 1 - HTTP 400
+      ---
+      duration_ms: 1.6527
+      ...
+    # Subtest: HTTP 401
+    ok 2 - HTTP 401
+      ---
+      duration_ms: 1.0275
+      ...
+    # Subtest: HTTP 403
+    ok 3 - HTTP 403
+      ---
+      duration_ms: 1.3314
+      ...
+    # Subtest: HTTP 429
+    ok 4 - HTTP 429
+      ---
+      duration_ms: 1.0975
+      ...
+    # Subtest: HTTP 500
+    ok 5 - HTTP 500
+      ---
+      duration_ms: 1.0214
+      ...
+    # Subtest: HTTP 503
+    ok 6 - HTTP 503
+      ---
+      duration_ms: 2.1071
+      ...
+    # Subtest: network error
+    ok 7 - network error
+      ---
+      duration_ms: 0.8338
+      ...
+    # Subtest: invalid HTTP JSON
+    ok 8 - invalid HTTP JSON
+      ---
+      duration_ms: 1.1367
+      ...
+    # Subtest: synchronous error
+    ok 9 - synchronous error
+      ---
+      duration_ms: 0.5328
+      ...
+    1..9
+ok 35 - provider failures fall back once without revealing credentials or provider errors
+  ---
+  duration_ms: 13.8129
+  ...
+# Subtest: refused, incomplete and missing assistant responses never become AI proposals
+    # Subtest: refusal
+    ok 1 - refusal
+      ---
+      duration_ms: 1.4021
+      ...
+    # Subtest: incomplete response
+    ok 2 - incomplete response
+      ---
+      duration_ms: 1.2674
+      ...
+    # Subtest: failed response
+    ok 3 - failed response
+      ---
+      duration_ms: 0.9094
+      ...
+    # Subtest: missing completion status
+    ok 4 - missing completion status
+      ---
+      duration_ms: 0.934
+      ...
+    # Subtest: unfinished message
+    ok 5 - unfinished message
+      ---
+      duration_ms: 1.4439
+      ...
+    # Subtest: missing output
+    ok 6 - missing output
+      ---
+      duration_ms: 0.9824
+      ...
+    # Subtest: empty output
+    ok 7 - empty output
+      ---
+      duration_ms: 2.147
+      ...
+    # Subtest: tool output only
+    ok 8 - tool output only
+      ---
+      duration_ms: 0.8969
+      ...
+    1..8
+ok 36 - refused, incomplete and missing assistant responses never become AI proposals
+  ---
+  duration_ms: 11.9325
+  ...
+# Subtest: local schema validation rejects unsupported, malformed and oversized proposals
+    # Subtest: extra action
+    ok 1 - extra action
+      ---
+      duration_ms: 0.8377
+      ...
+    # Subtest: extra control
+    ok 2 - extra control
+      ---
+      duration_ms: 0.8168
+      ...
+    # Subtest: missing nullable control
+    ok 3 - missing nullable control
+      ---
+      duration_ms: 1.3151
+      ...
+    # Subtest: missing message
+    ok 4 - missing message
+      ---
+      duration_ms: 0.7083
+      ...
+    # Subtest: empty message
+    ok 5 - empty message
+      ---
+      duration_ms: 0.6567
+      ...
+    # Subtest: long message
+    ok 6 - long message
+      ---
+      duration_ms: 0.5975
+      ...
+    # Subtest: non-string message
+    ok 7 - non-string message
+      ---
+      duration_ms: 0.6017
+      ...
+    # Subtest: array changes
+    ok 8 - array changes
+      ---
+      duration_ms: 0.6618
+      ...
+    # Subtest: low tempo
+    ok 9 - low tempo
+      ---
+      duration_ms: 0.6096
+      ...
+    # Subtest: high tempo
+    ok 10 - high tempo
+      ---
+      duration_ms: 1.0491
+      ...
+    # Subtest: string tempo
+    ok 11 - string tempo
+      ---
+      duration_ms: 0.7506
+      ...
+    # Subtest: unsupported instrument
+    ok 12 - unsupported instrument
+      ---
+      duration_ms: 0.9654
+      ...
+    # Subtest: unsupported mood
+    ok 13 - unsupported mood
+      ---
+      duration_ms: 0.6775
+      ...
+    # Subtest: unsupported genre
+    ok 14 - unsupported genre
+      ---
+      duration_ms: 0.6778
+      ...
+    # Subtest: string boolean
+    ok 15 - string boolean
+      ---
+      duration_ms: 0.6689
+      ...
+    # Subtest: numeric boolean
+    ok 16 - numeric boolean
+      ---
+      duration_ms: 0.6949
+      ...
+    # Subtest: long suggestion
+    ok 17 - long suggestion
+      ---
+      duration_ms: 0.6339
+      ...
+    # Subtest: many suggestions
+    ok 18 - many suggestions
+      ---
+      duration_ms: 0.5812
+      ...
+    # Subtest: non-string suggestion
+    ok 19 - non-string suggestion
+      ---
+      duration_ms: 0.5844
+      ...
+    # Subtest: empty suggestion
+    ok 20 - empty suggestion
+      ---
+      duration_ms: 1.9303
+      ...
+    # Subtest: object suggestions
+    ok 21 - object suggestions
+      ---
+      duration_ms: 0.6811
+      ...
+    1..21
+ok 37 - local schema validation rejects unsupported, malformed and oversized proposals
+  ---
+  duration_ms: 21.1553
+  ...
+# Subtest: slowdowns beyond the arrangement limit fall back, including notes beyond the sent sample
+ok 38 - slowdowns beyond the arrangement limit fall back, including notes beyond the sent sample
+  ---
+  duration_ms: 1.5912
+  ...
+# Subtest: unsafe rule fallback removes only the tempo change when melody context is supplied
+    # Subtest: missing key
+    ok 1 - missing key
+      ---
+      duration_ms: 0.8496
+      ...
+    # Subtest: provider failure
+    ok 2 - provider failure
+      ---
+      duration_ms: 1.1089
+      ...
+    # Subtest: unsafe AI response
+    ok 3 - unsafe AI response
+      ---
+      duration_ms: 0.9403
+      ...
+    1..3
+ok 39 - unsafe rule fallback removes only the tempo change when melody context is supplied
+  ---
+  duration_ms: 3.8849
+  ...
+# Subtest: safe or absent melody context preserves legacy rule proposals exactly
+ok 40 - safe or absent melody context preserves legacy rule proposals exactly
+  ---
+  duration_ms: 0.7815
+  ...
+# Subtest: a timeout aborts the provider and releases its slot for the next request
+ok 41 - a timeout aborts the provider and releases its slot for the next request
+  ---
+  duration_ms: 48.223
+  ...
+# Subtest: timeout covers the response body as well as the initial HTTP request
+ok 42 - timeout covers the response body as well as the initial HTTP request
+  ---
+  duration_ms: 26.3427
+  ...
+# Subtest: at most two paid requests start concurrently and busy requests immediately use rules
+ok 43 - at most two paid requests start concurrently and busy requests immediately use rules
+  ---
+  duration_ms: 1.8384
+  ...
+# Subtest: proposes supported creative settings without changing the current settings
+ok 44 - proposes supported creative settings without changing the current settings
+  ---
+  duration_ms: 6.0326
+  ...
+# Subtest: all supported moods, instruments and genres produce actual settings
+ok 45 - all supported moods, instruments and genres produce actual settings
+  ---
+  duration_ms: 1.3237
+  ...
+# Subtest: relative tempo requests respect current tempo and musical bounds
+ok 46 - relative tempo requests respect current tempo and musical bounds
+  ---
+  duration_ms: 0.6666
+  ...
+# Subtest: negative directions remove musical layers without selecting forbidden sounds
+ok 47 - negative directions remove musical layers without selecting forbidden sounds
+  ---
+  duration_ms: 0.6529
+  ...
+# Subtest: adding chords enables the supported accompaniment layer
+ok 48 - adding chords enables the supported accompaniment layer
+  ---
+  duration_ms: 0.4053
+  ...
+# Subtest: piano accompaniment requests select actual piano backing and explain the lead
+ok 49 - piano accompaniment requests select actual piano backing and explain the lead
+  ---
+  duration_ms: 4.8273
+  ...
+# Subtest: piano backing inference respects explicit genre choices and negative requests
+ok 50 - piano backing inference respects explicit genre choices and negative requests
+  ---
+  duration_ms: 0.9038
+  ...
+# Subtest: direction explanations describe the implemented mood, lead and tempo behavior
+ok 51 - direction explanations describe the implemented mood, lead and tempo behavior
+  ---
+  duration_ms: 2.4231
+  ...
+# Subtest: unrecognised requests stay honest and suggestions can be interpreted
+ok 52 - unrecognised requests stay honest and suggestions can be interpreted
+  ---
+  duration_ms: 1.9291
+  ...
+# Subtest: words containing recognised words do not cause accidental changes
+ok 53 - words containing recognised words do not cause accidental changes
+  ---
+  duration_ms: 1.4789
+  ...
+# Subtest: new projects have independent defaults and a usable identity
+ok 54 - new projects have independent defaults and a usable identity
+  ---
+  duration_ms: 11.8959
+  ...
+# Subtest: saved melody and settings reopen without original audio or extra properties
+ok 55 - saved melody and settings reopen without original audio or extra properties
+  ---
+  duration_ms: 2.4488
+  ...
+# Subtest: saving an existing project updates it instead of creating a duplicate
+ok 56 - saving an existing project updates it instead of creating a duplicate
+  ---
+  duration_ms: 0.9221
+  ...
+# Subtest: corrupt, missing and unavailable storage recover as an empty library
+ok 57 - corrupt, missing and unavailable storage recover as an empty library
+  ---
+  duration_ms: 0.7775
+  ...
+# Subtest: storage write failures explain why saving failed
+ok 58 - storage write failures explain why saving failed
+  ---
+  duration_ms: 2.4374
+  ...
+# Subtest: invalid notes and settings cannot reenter the musical engine
+ok 59 - invalid notes and settings cannot reenter the musical engine
+  ---
+  duration_ms: 0.8412
+  ...
+# Subtest: malicious objects and unbounded project data are discarded or bounded
+ok 60 - malicious objects and unbounded project data are discarded or bounded
+  ---
+  duration_ms: 25.062
+  ...
+# Subtest: a library stays bounded and keeps recently saved projects
+ok 61 - a library stays bounded and keeps recently saved projects
+  ---
+  duration_ms: 18.191
+  ...
+# Subtest: saving rejects unusable identities and loading removes duplicate identities
+ok 62 - saving rejects unusable identities and loading removes duplicate identities
+  ---
+  duration_ms: 1.2333
+  ...
+# (node:14952) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: health reports a working SQLite backend and the empty library is real
+ok 63 - health reports a working SQLite backend and the empty library is real
+  ---
+  duration_ms: 154.244
+  ...
+# Subtest: HTTP projects save, list, reopen and update through the database
+ok 64 - HTTP projects save, list, reopen and update through the database
+  ---
+  duration_ms: 60.8583
+  ...
+# Subtest: a saved project survives closing and restarting the server
+ok 65 - a saved project survives closing and restarting the server
+  ---
+  duration_ms: 110.5826
+  ...
+# Subtest: invalid musical data and unsafe project values receive useful 400 errors
+ok 66 - invalid musical data and unsafe project values receive useful 400 errors
+  ---
+  duration_ms: 150.8241
+  ...
+# Subtest: HTTP arrangement invokes the music engine and rejects absent or invalid melody
+ok 67 - HTTP arrangement invokes the music engine and rejects absent or invalid melody
+  ---
+  duration_ms: 69.5104
+  ...
+# Subtest: HTTP arrangement rejects a slowdown that would drop notes beyond the render limit
+ok 68 - HTTP arrangement rejects a slowdown that would drop notes beyond the render limit
+  ---
+  duration_ms: 38.9016
+  ...
+# Subtest: HTTP arrangement preserves a normal 60-second take at the maximum fivefold slowdown
+ok 69 - HTTP arrangement preserves a normal 60-second take at the maximum fivefold slowdown
+  ---
+  duration_ms: 29.9386
+  ...
+# Subtest: HTTP producer returns honest supported proposals and validates direction input
+ok 70 - HTTP producer returns honest supported proposals and validates direction input
+  ---
+  duration_ms: 45.7143
+  ...
+# Subtest: producer status reports configuration without credentials and retains method validation
+ok 71 - producer status reports configuration without credentials and retains method validation
+  ---
+  duration_ms: 29.0348
+  ...
+# Subtest: AI proposals receive validated musical context without mutating saved projects
+ok 72 - AI proposals receive validated musical context without mutating saved projects
+  ---
+  duration_ms: 44.0388
+  ...
+# Subtest: invalid producer context never reaches the AI provider and notes remain optional
+ok 73 - invalid producer context never reaches the AI provider and notes remain optional
+  ---
+  duration_ms: 62.25
+  ...
+# Subtest: the real producer adapter serves AI and provider-failure fallback through HTTP
+ok 74 - the real producer adapter serves AI and provider-failure fallback through HTTP
+  ---
+  duration_ms: 58.9048
+  ...
+# Subtest: a context-aware rules fallback keeps a long melody playable after Apply
+ok 75 - a context-aware rules fallback keeps a long melody playable after Apply
+  ---
+  duration_ms: 38.4102
+  ...
+# Subtest: malformed, oversized and unsupported HTTP requests return JSON errors
+ok 76 - malformed, oversized and unsupported HTTP requests return JSON errors
+  ---
+  duration_ms: 40.2144
+  ...
+# Subtest: production static serving supports SPA routes and protects files outside dist
+ok 77 - production static serving supports SPA routes and protects files outside dist
+  ---
+  duration_ms: 57.2385
+  ...
+# Subtest: WAV encoder interleaves stereo signed PCM with a valid header and clamps peaks
+ok 78 - WAV encoder interleaves stereo signed PCM with a valid header and clamps peaks
+  ---
+  duration_ms: 7.0226
+  ...
+# Subtest: MIDI export contains the captured pitches and a tempo event in a standard file
+ok 79 - MIDI export contains the captured pitches and a tempo event in a standard file
+  ---
+  duration_ms: 2.0762
+  ...
+# Subtest: play rejects empty music without changing transport or firing completion
+ok 80 - play rejects empty music without changing transport or firing completion
+  ---
+  duration_ms: 1.8726
+  ...
+# Subtest: browser-only playback and rendering fail clearly when Web Audio is unavailable
+ok 81 - browser-only playback and rendering fail clearly when Web Audio is unavailable
+  ---
+  duration_ms: 0.8735
+  ...
+# Subtest: pause freezes musical progress, cancels old voices and resume excludes paused wall time
+ok 82 - pause freezes musical progress, cancels old voices and resume excludes paused wall time
+  ---
+  duration_ms: 3.1454
+  ...
+# Subtest: pause while audio is unlocking prevents late playback and can be resumed
+ok 83 - pause while audio is unlocking prevents late playback and can be resumed
+  ---
+  duration_ms: 0.8206
+  ...
+# Subtest: a stopped pending play cannot start voices after audio unlock
+ok 84 - a stopped pending play cannot start voices after audio unlock
+  ---
+  duration_ms: 0.4051
+  ...
+# Subtest: stopping from a progress callback suppresses the natural completion callback
+ok 85 - stopping from a progress callback suppresses the natural completion callback
+  ---
+  duration_ms: 99.7251
+  ...
+1..85
+# tests 126
+# suites 0
+# pass 126
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5434.9394

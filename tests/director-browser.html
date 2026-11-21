@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MUSE — Production Director browser checks</title>
+    <style>
+      body { margin:24px; font:15px/1.6 Arial,sans-serif; background:#111; color:#eee; }
+      #results { white-space:pre-wrap; overflow-wrap:anywhere; }
+      #director-harness { max-width:1100px; margin-top:28px; }
+      #run { padding:12px 20px; cursor:pointer; }
+    </style>
+  </head>
+  <body>
+    <h1>Production Director browser checks</h1>
+    <p>Developer-only synthetic notes and isolated planner responses. No recordings are loaded or uploaded.</p>
+    <button id="run" type="button">Run Director checks</button>
+    <pre id="results" role="status"></pre>
+    <div id="director-harness"></div>
+    <script type="module" src="/tests/director-browser-tests.jsx"></script>
+  </body>
+</html>
